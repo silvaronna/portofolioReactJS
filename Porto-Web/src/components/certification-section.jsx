@@ -10,121 +10,70 @@ export default function CertificationSection() {
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
   const [autoScrollPaused, setAutoScrollPaused] = useState(false)
-  const [isTransitioning, setIsTransitioning] = useState(false)
 
   // Certification data - easy to manage and replace
   const certifications = [
     {
       id: 1,
-      title: "Fundamental of Network Engineering",
-      issuer: "Course-Net",
-      issuedDate: "February 2023",
-      image: "/public/coursenet.png?height=280&width=450",
-      skills: ["Cisco", "Network Design", "TCP/IP", "Routing"],
+      title: "Certified in CyberSecurity",
+      issuer: "ISC2",
+      issuedDate: "May 2025",
+      image: "/isc2.jpeg",
+      skills: ["Risk Management", "Access Control", "Security Principles", "Network & Security"],
       description:
-        "Covers the foundational knowledge of computer networks including OSI layers, IP addressing, subnetting, routing, switching, and basic Cisco configurations. Prepares learners to understand and design small to medium-sized network topologies.",
+        "Establishes the core knowledge required of any cybersecurity role and provides a springboard to intermediate-level cybersecurity jobs, covering essential principles for network security and risk management.",
+      credentialLink: "https://drive.google.com/file/d/1O7XAwKO-IMyiNq1qyEao33X_FwPrGLug/view?usp=drive_link",
     },
     {
       id: 2,
       title: "Fundamental of Red Hat Enterprise Linux Server",
       issuer: "Coursera - RedHat",
       issuedDate: "June 2024",
-      image: "/public/redhat.jpg?height=280&width=450",
-      skills: ["RedHat System Administration", "Process Management and Monitoring", "System Permission", "User and Group"],
+      image: "/redhat.jpg",
+      skills: ["RedHat System Administration", "Process Management and Monitoring", "System Permission", "User   and Group"],
       description:
         "Provides foundational knowledge of Red Hat Enterprise Linux system administration, including user and group management, file system permissions, process control, and essential command-line operations for server environments.",
+      credentialLink: "https://www.coursera.org/account/accomplishments/verify/JS8PLJ9R9G6X",
     },
     {
       id: 3,
       title: "IT Support Technical Skills Helpdesk",
       issuer: "Udemy",
       issuedDate: "March 2023",
-      image: "/public/udemy.jpg?height=280&width=450",
+      image: "/udemy.jpg",
       skills: ["Office 365", "Ticketing System", "Active Directory", "File & Printer Sharing"],
       description:
         "Covers essential IT support skills including user account management, troubleshooting hardware/software issues, working with ticketing systems, and supporting productivity tools such as Office 365 in a helpdesk environment.",
+      credentialLink: "https://www.udemy.com/certificate/UC-988d5836-144b-4fab-8fbe-d933fe5d70ac/",
     },
     {
       id: 4,
-      title: "Wordpress Website Development",
-      issuer: "Kursus Digital",
-      issuedDate: "January 2023",
-      image: "/public/kursusdigital.png?height=280&width=450",
-      skills: ["Wordpress Development", "Elementor", "Plugin"],
+      title: "Fundamental of Network Engineering",
+      issuer: "Course-Net",
+      issuedDate: "February 2023",
+      image: "/coursenet.png",
+      skills: ["Cisco", "Network Design", "TCP/IP", "Routing"],
       description:
-        "Establishes the core knowledge required of any cybersecurity role and provides a springboard to intermediate-level cybersecurity jobs, covering essential principles for network security and risk management.",
+        "Covers the foundational knowledge of computer networks including OSI layers, IP addressing, subnetting, routing, switching, and basic Cisco configurations. Prepares learners to understand and design small to medium-sized network topologies.",
+      credentialLink: "https://course-net.com/certificate-verifier/1330E0B76-1330DE465-3036A9C/",
     },
     {
       id: 5,
       title: "Basic Mikrotik",
       issuer: "ID Networkers",
       issuedDate: "May 2024",
-      image: "/public/idnid.png?height=280&width=450",
+      image: "/idnid.png",
       skills: ["VLAN", "TCP/IP", "Subnetting", "Firewall", "Routing"],
       description:
         "Validates the skills and knowledge to implement, monitor, and maintain Microsoft Azure solutions, including major services related to compute, storage, network, and security.",
+      credentialLink: "https://drive.google.com/file/d/1FPgDPUVeFSVCzy9KpkUOwv12zIX4ydk1/view?usp=drive_link",
     },
   ]
 
-  // Clone certifications for smooth infinite scroll
-  const allCertifications = [...certifications, ...certifications, ...certifications]
-
-  // Auto scroll functionality with smooth looping
-  useEffect(() => {
-    let interval
-
-    if (!autoScrollPaused && sliderRef.current) {
-      interval = setInterval(() => {
-        if (sliderRef.current) {
-          // Increment scroll position smoothly
-          sliderRef.current.scrollLeft += 1
-
-          // Check if we need to loop back
-          const maxScroll = sliderRef.current.scrollWidth - sliderRef.current.clientWidth
-          const currentScroll = sliderRef.current.scrollLeft
-
-          // If we're near the end, prepare to loop
-          if (currentScroll > maxScroll - 20) {
-            // Set a flag to prevent jerky transitions
-            setIsTransitioning(true)
-
-            // Jump back to the first set of duplicates (smooth transition)
-            setTimeout(() => {
-              if (sliderRef.current) {
-                // Disable smooth scrolling temporarily for the jump
-                sliderRef.current.style.scrollBehavior = "auto"
-                sliderRef.current.scrollLeft = currentScroll - certifications.length * 458 // 450px width + 8px gap
-
-                // Re-enable smooth scrolling
-                setTimeout(() => {
-                  if (sliderRef.current) {
-                    sliderRef.current.style.scrollBehavior = "smooth"
-                    setIsTransitioning(false)
-                  }
-                }, 50)
-              }
-            }, 100)
-          }
-        }
-      }, 20)
-    }
-
-    return () => clearInterval(interval)
-  }, [autoScrollPaused, isTransitioning])
-
-  // Initialize scroll position to start with the middle set of duplicates
+  // Initialize scroll position to start with the first set of certifications
   useEffect(() => {
     if (sliderRef.current) {
-      // Disable smooth scrolling for initial positioning
-      sliderRef.current.style.scrollBehavior = "auto"
-      sliderRef.current.scrollLeft = certifications.length * 458 // Position at the start of the middle set
-
-      // Re-enable smooth scrolling after positioning
-      setTimeout(() => {
-        if (sliderRef.current) {
-          sliderRef.current.style.scrollBehavior = "smooth"
-        }
-      }, 100)
+      sliderRef.current.scrollLeft = 0; // Start at the beginning
     }
   }, [])
 
@@ -134,10 +83,6 @@ export default function CertificationSection() {
       const { current } = sliderRef
       const scrollAmount = direction === "left" ? -450 : 450
       current.scrollBy({ left: scrollAmount, behavior: "smooth" })
-
-      // Pause auto scroll temporarily
-      setAutoScrollPaused(true)
-      setTimeout(() => setAutoScrollPaused(false), 4000)
     }
   }
 
@@ -147,22 +92,10 @@ export default function CertificationSection() {
     setStartX(e.pageX - sliderRef.current.offsetLeft)
     setScrollLeft(sliderRef.current.scrollLeft)
     setAutoScrollPaused(true)
-
-    // Change cursor style
-    if (sliderRef.current) {
-      sliderRef.current.style.cursor = "grabbing"
-    }
   }
 
   const handleMouseUp = () => {
     setIsDragging(false)
-    // Resume auto scroll after a delay
-    setTimeout(() => setAutoScrollPaused(false), 4000)
-
-    // Reset cursor style
-    if (sliderRef.current) {
-      sliderRef.current.style.cursor = "grab"
-    }
   }
 
   const handleMouseMove = (e) => {
@@ -176,13 +109,6 @@ export default function CertificationSection() {
   const handleMouseLeave = () => {
     if (isDragging) {
       setIsDragging(false)
-      // Resume auto scroll after a delay
-      setTimeout(() => setAutoScrollPaused(false), 4000)
-
-      // Reset cursor style
-      if (sliderRef.current) {
-        sliderRef.current.style.cursor = "grab"
-      }
     }
   }
 
@@ -203,37 +129,11 @@ export default function CertificationSection() {
 
   const handleTouchEnd = () => {
     setIsDragging(false)
-    setTimeout(() => setAutoScrollPaused(false), 4000)
   }
-
-  // Handle wheel events for horizontal scrolling
-  const handleWheel = (e) => {
-    if (sliderRef.current) {
-      e.preventDefault()
-      sliderRef.current.scrollLeft += e.deltaY
-
-      // Pause auto scroll temporarily
-      setAutoScrollPaused(true)
-      setTimeout(() => setAutoScrollPaused(false), 4000)
-    }
-  }
-
-  // Add wheel event listener
-  useEffect(() => {
-    const slider = sliderRef.current
-    if (slider) {
-      slider.addEventListener("wheel", handleWheel, { passive: false })
-
-      return () => {
-        slider.removeEventListener("wheel", handleWheel)
-      }
-    }
-  }, [])
 
   const handleCertClick = (cert) => {
     setSelectedCert(cert.id === selectedCert ? null : cert.id)
     setAutoScrollPaused(true)
-    setTimeout(() => setAutoScrollPaused(false), 8000)
   }
 
   const selectedCertData = certifications.find((cert) => cert.id === selectedCert)
@@ -248,9 +148,6 @@ export default function CertificationSection() {
       </div>
 
       <div className="cert-slider-container">
-        <div className="fade-edge-left"></div>
-        <div className="fade-edge-right"></div>
-
         <button
           onClick={() => scroll("left")}
           className="absolute left-6 top-1/2 -translate-y-1/2 z-10 bg-[#252525]/80 hover:bg-amber-900/80 text-amber-400 p-4 rounded-full backdrop-blur-sm transition-all shadow-lg"
@@ -270,10 +167,9 @@ export default function CertificationSection() {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Triple the certifications for smooth infinite scroll */}
-          {allCertifications.map((cert, index) => (
+          {certifications.map((cert) => (
             <div
-              key={`${cert.id}-${index}`}
+              key={cert.id}
               className={`cert-card snap-start ${selectedCert === cert.id ? "cert-card-active" : ""}`}
               onClick={() => handleCertClick(cert)}
             >
@@ -291,11 +187,6 @@ export default function CertificationSection() {
                     <span>{cert.issuedDate}</span>
                   </div>
                 </div>
-
-                {/* Futuristic overlay effect */}
-                <div className="absolute inset-0 border border-amber-500/0 group-hover:border-amber-500/30 transition-all duration-300"></div>
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent transform translate-x-full group-hover:-translate-x-full transition-transform duration-1000"></div>
               </div>
             </div>
           ))}
@@ -350,7 +241,7 @@ export default function CertificationSection() {
               </div>
 
               <a
-                href="#"
+                href={selectedCertData.credentialLink}
                 className="inline-flex items-center px-6 py-3 bg-amber-700/20 hover:bg-amber-700/40 text-amber-300 rounded-lg transition-colors text-lg"
               >
                 <ExternalLink size={20} className="mr-2" />
@@ -363,4 +254,3 @@ export default function CertificationSection() {
     </section>
   )
 }
-

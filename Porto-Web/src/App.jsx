@@ -127,12 +127,12 @@ function App() {
               </p>
             </div>
 
-            {/* Running Text dengan ukuran lebih besar */}
+            {/* Running Text */}
             <div className="w-full overflow-hidden absolute bottom-[15%] left-0 z-20">
               <div className="relative whitespace-nowrap w-full overflow-hidden">
                 <div className="inline-block animate-runningText text-[clamp(6rem,15vw,14rem)] font-bold text-white shadow-text">
-                  <span className="inline-block pr-[100px] text-gradient-gold">- System Administrator</span>
-                  <span className="inline-block pr-[100px] text-gradient-gold">- Cloud Engineer</span>
+                  <span className="inline-block pr-[100px] text-gradient-gold">- System Engineer</span>
+                  <span className="inline-block pr-[100px] text-gradient-gold">- Security Enthusiast</span>
                 </div>
               </div>
             </div>

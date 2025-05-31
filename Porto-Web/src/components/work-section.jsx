@@ -10,57 +10,39 @@ export default function WorkSection() {
   const projects = [
     {
       id: 1,
-      title: "Asia Sistem Indonesia",
-      categories: "System Administration - Infrastructure - Technical Support",
-      logo: "/public/AsiaSistem.jpeg?height=50&width=50",
-      period: "June 2024 - Present",
-      description: "Managed server infrastructure and provided technical support for enterprise clients.",
+      title: "Media Telekomunikasi Mandiri",
+      categories: "System Engineer",
+      logo: "/public/mtm.png",
+      period: "June 2025 - Present",
+      description: "Managed server HPE with VMware Operating System",
       fullDescription:
-        "Responsible for maintaining and optimizing Linux and Windows server environments, implementing security protocols, and providing technical support for enterprise clients. Collaborated with the development team to ensure smooth deployment of applications and services.",
+        "Responsible for maintaining and optimizing RedHat server environments, maintaining container based application.",
       jobDesc: [
-        "Managed and maintained Linux and Windows server environments",
-        "Implemented weekly automation for database backup",
+        "Managed and maintained RedHat Enterprise Linux",
         "Provided technical support for enterprise clients",
-        "Collaborated with development team for application deployment",
+        "Maintaining Container based with microservices concept application",
         "Monitored system performance and optimized resources",
       ],
       screenshots: ["/placeholder.svg?height=250&width=450", "/placeholder.svg?height=250&width=450"],
     },
     {
       id: 2,
-      title: "Ayu Derma Pharmacy",
-      categories: "Hardware Troubleshooting - IT Staff",
-      logo: "/placeholder.svg?height=50&width=50",
-      period: "January 2022 - April 2024",
-      description: "Provided IT support and hardware troubleshooting for pharmacy systems.",
+      title: "Asia Sistem Indonesia",
+      categories: "System Administrator Associate - Technical Support",
+      logo: "/public/AsiaSistem.jpeg",
+      period: "June 2024 - June 2025",
+      description: "Managed server infrastructure include Dell and HPE Server with Vmware and Fortigate for Networking.",
       fullDescription:
-        "Served as IT staff responsible for maintaining computer systems, troubleshooting hardware issues, and ensuring the pharmacy management software ran smoothly. Implemented backup solutions and trained staff on basic IT procedures.",
+        "Responsible for maintaining and optimizing on-premise server environments, designing and implementing security protocols. Collaborated with the development team to ensure smooth deployment of applications and services.",
       jobDesc: [
-        "Maintained computer systems and network infrastructure",
-        "Troubleshot hardware and software issues",
-        "Implemented backup and recovery solutions",
-        "Trained staff on basic IT procedures",
-        "Managed pharmacy management software",
+        "Configure and maintained Linux and Windows server environments",
+        "Configure and maintained Maintaining Dell and HPE Server Unit",
+        "Configure and maintained Vmware ESXi with VCenter Orechestration",
+        "Configure and maintained Fortigate for VLAN Tagging and Security Server environments",
+        "Collaborated with development team for application deployment",
+        "Monitored system performance and optimized resources",
       ],
-      screenshots: ["/placeholder.svg?height=250&width=450", "/placeholder.svg?height=250&width=450"],
-    },
-    {
-      id: 3,
-      title: "GASSOLUTION",
-      categories: "Windows Troubleshooting - Helpdesk Support - IT Support",
-      logo: "/placeholder.svg?height=50&width=50",
-      period: "January 2023 - April 2023",
-      description: "Provided helpdesk and IT support for Windows-based systems.",
-      fullDescription:
-        "Worked as helpdesk support specialist, resolving Windows-based system issues, assisting users with software and hardware problems, and documenting solutions for future reference. Participated in system upgrades and maintenance activities.",
-      jobDesc: [
-        "Resolved Windows-based system issues",
-        "Assisted users with software and hardware problems",
-        "Documented solutions for knowledge base",
-        "Participated in system upgrades and maintenance",
-        "Provided remote support for distributed teams",
-      ],
-      screenshots: ["/placeholder.svg?height=250&width=450", "/placeholder.svg?height=250&width=450"],
+      screenshots: ["/public/asiasistem-act1.jpeg?height=250&width=450", "/public/asiasistem-act2.jpeg?height=250&width=450"],
     },
   ]
 
@@ -76,10 +58,6 @@ export default function WorkSection() {
           <p className="text-gray-300 mt-10 text-2xl animate-on-scroll delay-100">
             Explore my professional experience and projects I've worked on.
           </p>
-
-          <button className="mt-10 px-10 py-5 bg-gradient-gold text-white rounded-full text-xl font-medium hover:opacity-90 transition-opacity shadow-lg hover:shadow-xl gold-shadow animate-on-scroll delay-200">
-            View All Projects
-          </button>
         </div>
         <div className="md:col-span-2">
           {projects.map((project, index) => (
@@ -130,7 +108,7 @@ export default function WorkSection() {
                       ))}
                     </ul>
 
-                    <h4 className="text-amber-500 font-medium mb-5 text-xl">Project Screenshots:</h4>
+                    <h4 className="text-amber-500 font-medium mb-5 text-xl">Photos:</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {project.screenshots.map((screenshot, i) => (
                         <div
@@ -144,16 +122,6 @@ export default function WorkSection() {
                           />
                         </div>
                       ))}
-                    </div>
-
-                    <div className="mt-8 text-right">
-                      <a
-                        href="#"
-                        className="inline-flex items-center px-6 py-3 bg-amber-700/20 hover:bg-amber-700/40 text-amber-300 rounded-lg transition-colors text-lg"
-                      >
-                        <ExternalLink size={20} className="mr-2" />
-                        View Project Details
-                      </a>
                     </div>
                   </div>
                 )}
