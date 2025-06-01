@@ -10,7 +10,7 @@ export default function Footer() {
             <h2 className="text-6xl font-bold mb-8">Have something in mind?</h2>
             <div className="flex items-center">
               <div className="w-20 h-20 rounded-full bg-gradient-gold mr-6 overflow-hidden">
-                <img src="/placeholder.svg" alt="Azka Abdillah" className="w-full h-full object-cover" />
+                <img src="/mylogo.png" alt="Azka Abdillah" className="w-full h-full object-cover" />
               </div>
               <p className="text-4xl font-medium">let's build it together.</p>
             </div>
@@ -20,7 +20,7 @@ export default function Footer() {
             className="px-12 py-6 rounded-full bg-white text-amber-900 font-medium text-2xl hover:bg-amber-100 transition-colors flex items-center shadow-lg animate-on-scroll"
           >
             <Icon name="Mail" className="mr-4" size={28} />
-            Get in touch
+            Reach me out
           </a>
         </div>
 

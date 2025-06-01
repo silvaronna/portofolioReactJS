@@ -17,11 +17,11 @@ export default function Portfolio() {
       <SectionDivider />
       <SkillsSection />
       <SectionDivider />
-      <EducationSection />
+      <WorkSection />
       <SectionDivider />
       <CertificationSection />
       <SectionDivider />
-      <WorkSection />
+      <EducationSection />
       <Footer />
     </main>
   )

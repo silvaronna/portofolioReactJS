@@ -19,10 +19,10 @@ export const skills = {
     },
     {
       icon: "Container",
-      title: "Tools",
+      title: "Deployment Tools",
       description:
-        "Skilled in setting up containers, Web Servers, Automation tools, and streamlining development workflows.",
-      tools: ["Docker", "Ansible", "Vagrant", "Nginx", "Cloudflare", "GitHub"],
+        "Skilled in setting up containers, managing multi-container apps, and streamlining development workflows.",
+      tools: ["Docker", "Nginx", "Cloudflare", "Ansible"],
       bgClass: "container-bg",
     },
     {
@@ -165,11 +165,13 @@ export const workExperience = [
     period: "June 2025 - Present",
     description: "Managed server HPE with VMware Operating System",
     fullDescription:
-      "Responsible for maintaining and optimizing RedHat server environments, maintaining container based application.",
+      "Responsible for maintaining and optimizing Linux and Windows server environments, implementing security protocols, and providing technical support for enterprise clients. Collaborated with the development team to ensure smooth deployment of applications and services.",
     jobDesc: [
-      "Managed and maintained RedHat Enterprise Linux",
+      "Managed and maintained Linux and Windows server environments",
       "Provided technical support for enterprise clients",
       "Maintaining Container based with microservices concept application",
+      "Implemented weekly automation for database backup",
+      "Collaborated with development team for application deployment",
       "Monitored system performance and optimized resources",
     ],
     screenshots: ["/placeholder.svg?height=250&width=450", "/placeholder.svg?height=250&width=450"],
@@ -177,30 +179,26 @@ export const workExperience = [
   {
     id: 2,
     title: "Asia Sistem Indonesia",
-    categories: "System Administrator Associate - Technical Support",
+    categories: "System Administrator Associate - IT Support",
     logo: "/AsiaSistem.jpeg",
-    period: "June 2024 - June 2025",
+    period: "June 2024 - May 2025",
     description: "Managed server infrastructure include Dell and HPE Server with Vmware and Fortigate for Networking.",
     fullDescription:
       "Responsible for maintaining and optimizing on-premise server environments, designing and implementing security protocols. Collaborated with the development team to ensure smooth deployment of applications and services.",
     jobDesc: [
       "Configure and maintained Linux and Windows server environments",
-      "Configure and maintained Maintaining Dell and HPE Server Unit",
-      "Configure and maintained Vmware ESXi with VCenter Orechestration",
+      "Configure and maintained Dell and HPE Server Unit",
+      "Configure and maintained Vmware ESXi with VCenter Orchestration",
       "Configure and maintained Fortigate for VLAN Tagging and Security Server environments",
       "Collaborated with development team for application deployment",
       "Monitored system performance and optimized resources",
     ],
-    screenshots: [
-      "/asiasistem-act1.jpeg?height=250&width=450",
-      "/asiasistem-act2.jpeg?height=250&width=450",
-    ],
+    screenshots: ["/asiasistem-act1.jpeg?height=250&width=450", "/asiasistem-act2.jpeg?height=250&width=450"],
   },
 ]
 
 export const socialLinks = [
   { icon: "Linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/azkaabdillah/" },
-  { icon: "Twitter", label: "Twitter", href: "#" },
   { icon: "Instagram", label: "Instagram", href: "https://www.instagram.com/abdi.azkaa/" },
   { icon: "Github", label: "Github", href: "https://github.com/silvaronna" },
 ]
