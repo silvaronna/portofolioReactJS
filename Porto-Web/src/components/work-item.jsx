@@ -20,4 +20,3 @@ export default function WorkItem({ title, categories, index }) {
     </div>
   )
 }
-

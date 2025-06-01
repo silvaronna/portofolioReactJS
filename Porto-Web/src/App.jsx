@@ -11,18 +11,10 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       // Detect if scrolled down
-      if (window.scrollY > 50) {
-        setScrolled(true)
-      } else {
-        setScrolled(false)
-      }
+      setScrolled(window.scrollY > 50)
 
       // Detect if in white section (after hero)
-      if (window.scrollY > window.innerHeight - 100) {
-        setIsWhiteSection(true)
-      } else {
-        setIsWhiteSection(false)
-      }
+      setIsWhiteSection(window.scrollY > window.innerHeight - 100)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -49,66 +41,20 @@ function App() {
           </div>
           <nav>
             <ul className="flex gap-16">
-              <li>
-                <a
-                  href="#about"
-                  className={`font-medium text-2xl transition-all duration-300 hover:scale-110 transform inline-block ${
-                    isWhiteSection
-                      ? "text-amber-900 hover:text-amber-700 bg-amber-100/90 backdrop-blur-sm px-8 py-4 rounded-full shadow-md"
-                      : "text-white hover:text-amber-300"
-                  }`}
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#skills"
-                  className={`font-medium text-2xl transition-all duration-300 hover:scale-110 transform inline-block ${
-                    isWhiteSection
-                      ? "text-amber-900 hover:text-amber-700 bg-amber-100/90 backdrop-blur-sm px-8 py-4 rounded-full shadow-md"
-                      : "text-white hover:text-amber-300"
-                  }`}
-                >
-                  Skills
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#education"
-                  className={`font-medium text-2xl transition-all duration-300 hover:scale-110 transform inline-block ${
-                    isWhiteSection
-                      ? "text-amber-900 hover:text-amber-700 bg-amber-100/90 backdrop-blur-sm px-8 py-4 rounded-full shadow-md"
-                      : "text-white hover:text-amber-300"
-                  }`}
-                >
-                  Education
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#work"
-                  className={`font-medium text-2xl transition-all duration-300 hover:scale-110 transform inline-block ${
-                    isWhiteSection
-                      ? "text-amber-900 hover:text-amber-700 bg-amber-100/90 backdrop-blur-sm px-8 py-4 rounded-full shadow-md"
-                      : "text-white hover:text-amber-300"
-                  }`}
-                >
-                  Work
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className={`font-medium text-2xl transition-all duration-300 hover:scale-110 transform inline-block ${
-                    isWhiteSection
-                      ? "text-amber-900 hover:text-amber-700 bg-amber-100/90 backdrop-blur-sm px-8 py-4 rounded-full shadow-md"
-                      : "text-white hover:text-amber-300"
-                  }`}
-                >
-                  Contact
-                </a>
-              </li>
+              {["about", "skills", "education", "work", "contact"].map((item) => (
+                <li key={item}>
+                  <a
+                    href={`#${item}`}
+                    className={`font-medium text-2xl transition-all duration-300 hover:scale-110 transform inline-block ${
+                      isWhiteSection
+                        ? "text-amber-900 hover:text-amber-700 bg-amber-100/90 backdrop-blur-sm px-8 py-4 rounded-full shadow-md"
+                        : "text-white hover:text-amber-300"
+                    }`}
+                  >
+                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
@@ -119,7 +65,7 @@ function App() {
         {/* Hero Section */}
         <section className="flex items-center justify-center h-[calc(100vh-8rem)] relative">
           <div className="container mx-auto px-12 relative h-full flex flex-col items-center justify-center max-w-[1800px]">
-            {/* Tambahkan animasi fade-in untuk intro text */}
+            {/* Intro text with fade-in animation */}
             <div className="mb-20 opacity-0 animate-[fadeIn_1s_ease-in-out_0.5s_forwards]">
               <h1 className="text-white text-6xl md:text-8xl font-bold text-center mb-6">Hello, I'm Azka</h1>
               <p className="text-gray-300 text-2xl md:text-3xl text-center max-w-4xl mx-auto">
@@ -137,7 +83,7 @@ function App() {
               </div>
             </div>
 
-            {/* Tambahkan scroll indicator */}
+            {/* Scroll indicator */}
             <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 animate-bounce">
               <div className="w-12 h-20 rounded-full border-2 border-amber-300 flex items-start justify-center p-3">
                 <div className="w-3 h-5 bg-amber-300 rounded-full animate-[scrollDown_1.5s_infinite]"></div>
@@ -146,7 +92,7 @@ function App() {
           </div>
         </section>
 
-        {/* Portfolio Sections (About + Work) */}
+        {/* Portfolio Sections */}
         <Portfolio />
       </main>
     </div>
@@ -154,4 +100,3 @@ function App() {
 }
 
 export default App
-

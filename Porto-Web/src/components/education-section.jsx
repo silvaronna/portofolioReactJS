@@ -1,44 +1,18 @@
 "use client"
 
 import { useState } from "react"
-import { GraduationCap, Calendar, MapPin, ChevronRight } from "lucide-react"
+import Icon from "./ui/Icon"
+import SectionHeading from "./ui/SectionHeading"
+import { education } from "../data"
 
 export default function EducationSection() {
   const [activeTab, setActiveTab] = useState(1)
-
-  const education = [
-    {
-      id: 1,
-      institution: "Cakrawala University",
-      degree: "Bachelor of Computer Science",
-      field: "Information System and Technology",
-      location: "Jakarta, Indonesia",
-      period: "2024 - 2028",
-      description: "Learned on Software Development include Frontend and Relational Database fundamental, Information System Management & Bussiness, Network Architecture, etc.",
-      fullDescription:
-        "Gained hands-on experience in software development focusing on C++ and JavaScript, with a solid understanding of frontend development, relational databases, and structured information systems. Also explored essential concepts in network architecture and IT infrastructure.",
-      courses: ["Information System Management", "Bussiness and Technology Modelling", "Database Modelling and Query Languages ", "Web Client Development", "User Experience Design", "Object Oriented Programming"],
-    },
-    {
-      id: 2,
-      institution: "SMK-TI Umar Fatah",
-      degree: "Vocational High School",
-      field: "Computer and Network Engineering",
-      location: "Rembang, Indonesia",
-      period: "2021 - 2024",
-      description:
-        "Learned fundamentals of Network, Linux System Administration, and Software Fundamentals such as HTML and CSS.",
-      fullDescription:
-        "Participated in network simulations, Linux configuration practices, and local tech competitions during the final year of school.",
-      courses: ["Computer Network Basics", "Linux System Administration", "HTML CSS Fundamentals", "Computer Hardware"],
-    },
-  ]
 
   return (
     <section id="education" className="section-container bg-dark">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
         <div className="animate-on-scroll">
-          <h2 className="section-heading text-amber-400">Education</h2>
+          <SectionHeading title="Education" />
 
           <div className="mt-16 space-y-6">
             {education.map((item) => (
@@ -57,7 +31,7 @@ export default function EducationSection() {
                       activeTab === item.id ? "bg-amber-900/30 text-amber-400" : "bg-[#252525] text-gray-400"
                     }`}
                   >
-                    <GraduationCap size={24} />
+                    <Icon name="GraduationCap" size={24} />
                   </div>
                   <div>
                     <h3 className={`text-xl font-bold ${activeTab === item.id ? "text-amber-400" : "text-gray-300"}`}>
@@ -65,7 +39,7 @@ export default function EducationSection() {
                     </h3>
                     <p className="text-gray-400">{item.period}</p>
                   </div>
-                  {activeTab === item.id && <ChevronRight size={24} className="ml-auto text-amber-500" />}
+                  {activeTab === item.id && <Icon name="ChevronRight" size={24} className="ml-auto text-amber-500" />}
                 </div>
               </button>
             ))}
@@ -92,11 +66,11 @@ export default function EducationSection() {
 
                     <div className="flex flex-wrap gap-8 mb-6">
                       <div className="flex items-center text-gray-400 text-lg">
-                        <Calendar size={20} className="mr-3 text-amber-600/70" />
+                        <Icon name="Calendar" size={20} className="mr-3 text-amber-600/70" />
                         <span>{item.period}</span>
                       </div>
                       <div className="flex items-center text-gray-400 text-lg">
-                        <MapPin size={20} className="mr-3 text-amber-600/70" />
+                        <Icon name="MapPin" size={20} className="mr-3 text-amber-600/70" />
                         <span>{item.location}</span>
                       </div>
                     </div>
@@ -129,4 +103,3 @@ export default function EducationSection() {
     </section>
   )
 }
-
