@@ -161,7 +161,7 @@ export const workExperience = [
     id: 1,
     title: "Media Telekomunikasi Mandiri",
     categories: "System Engineer",
-    logo: "/public/mtm.png",
+    logo: "/mtm.png",
     period: "June 2025 - Present",
     description: "Managed server HPE with VMware Operating System",
     fullDescription:
@@ -178,7 +178,7 @@ export const workExperience = [
     id: 2,
     title: "Asia Sistem Indonesia",
     categories: "System Administrator Associate - Technical Support",
-    logo: "/public/AsiaSistem.jpeg",
+    logo: "/AsiaSistem.jpeg",
     period: "June 2024 - June 2025",
     description: "Managed server infrastructure include Dell and HPE Server with Vmware and Fortigate for Networking.",
     fullDescription:
@@ -192,8 +192,8 @@ export const workExperience = [
       "Monitored system performance and optimized resources",
     ],
     screenshots: [
-      "/public/asiasistem-act1.jpeg?height=250&width=450",
-      "/public/asiasistem-act2.jpeg?height=250&width=450",
+      "/asiasistem-act1.jpeg?height=250&width=450",
+      "/asiasistem-act2.jpeg?height=250&width=450",
     ],
   },
 ]
