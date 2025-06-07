@@ -41,7 +41,7 @@ function App() {
           </div>
           <nav>
             <ul className="flex gap-16">
-              {["about", "skills", "education", "work", "contact"].map((item) => (
+              {["about", "skills", "work", "education", "contact"].map((item) => (
                 <li key={item}>
                   <a
                     href={`#${item}`}

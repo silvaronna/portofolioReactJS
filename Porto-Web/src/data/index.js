@@ -1,6 +1,3 @@
-// Centralized data file for all portfolio content
-// This makes it easier to update content without touching component logic
-
 export const skills = {
   hard: [
     {
