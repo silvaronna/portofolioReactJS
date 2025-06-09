@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-[1800px] mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-32 gap-16">
           <div className="mb-8 md:mb-0 animate-on-scroll">
-            <h2 className="text-6xl font-bold mb-8">Have something in mind?</h2>
+            <h2 className="text-6xl font-bold mb-8">Have something to Build?</h2>
             <div className="flex items-center">
               <div className="w-20 h-20 rounded-full bg-gradient-gold mr-6 overflow-hidden">
                 <img src="/mylogo.png" alt="Azka Abdillah" className="w-full h-full object-cover" />
@@ -26,7 +26,7 @@ export default function Footer() {
 
         <div className="border-t border-amber-900/50 pt-16 flex flex-col md:flex-row justify-between items-center">
           <p className="text-amber-300 mb-10 md:mb-0 text-xl animate-on-scroll">
-            Built with <span className="text-amber-500 text-3xl">❤</span> by Azka Abdillah
+            Built with spirit by Azka Abdillah
           </p>
           <div className="flex space-x-10 animate-on-scroll">
             {socialLinks.map((social, index) => (
