@@ -1,10 +1,17 @@
 import Icon from "./Icon"
 
 export default function CertificationDetail({ certification }) {
+  console.log("CertificationDetail rendered with:", certification) // Debug log
+
+  if (!certification) {
+    console.log("No certification data provided") // Debug log
+    return null
+  }
+
   return (
-    <div className="cert-detail animate-[fadeIn_0.3s_ease-out]">
+    <div className="bg-[#252525] rounded-xl p-10 border border-gray-800 animate-[fadeIn_0.3s_ease-out] shadow-xl">
       <div className="flex flex-col md:flex-row gap-10">
-        <div className="md:w-1/3">
+        <div className="md:w-1/3 animate-on-scroll">
           <img
             src={certification.image || "/placeholder.svg"}
             alt={certification.title}
@@ -12,7 +19,7 @@ export default function CertificationDetail({ certification }) {
           />
         </div>
 
-        <div className="md:w-2/3">
+        <div className="md:w-2/3 animate-on-scroll delay-100">
           <h3 className="text-3xl font-bold text-amber-400 mb-3">{certification.title}</h3>
 
           <div className="flex items-center mb-6">
@@ -34,7 +41,8 @@ export default function CertificationDetail({ certification }) {
             {certification.skills.map((skill, index) => (
               <span
                 key={index}
-                className="px-4 py-2 bg-amber-900/20 text-amber-300 rounded-full text-lg border border-amber-700/30"
+                className="px-4 py-2 bg-amber-900/20 text-amber-300 rounded-full text-lg border border-amber-700/30 animate-on-scroll"
+                style={{ transitionDelay: `${200 + index * 50}ms` }}
               >
                 {skill}
               </span>
@@ -43,7 +51,9 @@ export default function CertificationDetail({ certification }) {
 
           <a
             href={certification.credentialLink}
-            className="inline-flex items-center px-6 py-3 bg-amber-700/20 hover:bg-amber-700/40 text-amber-300 rounded-lg transition-colors text-lg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-6 py-3 bg-amber-700/20 hover:bg-amber-700/40 text-amber-300 rounded-lg transition-colors text-lg animate-on-scroll delay-300"
           >
             <Icon name="ExternalLink" size={20} className="mr-2" />
             View Certificate

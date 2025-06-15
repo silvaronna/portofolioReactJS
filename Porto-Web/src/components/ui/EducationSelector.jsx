@@ -4,7 +4,7 @@ import Icon from "./Icon"
 
 export default function EducationSelector({ education, activeTab, onTabSelect }) {
   return (
-    <div className="mt-16 space-y-6">
+    <div className="space-y-6">
       {education.map((item) => (
         <button
           key={item.id}
@@ -24,7 +24,7 @@ export default function EducationSelector({ education, activeTab, onTabSelect })
               <Icon name="GraduationCap" size={24} />
             </div>
 
-            <div>
+            <div className="flex-1">
               <h3 className={`text-xl font-bold ${activeTab === item.id ? "text-amber-400" : "text-gray-300"}`}>
                 {item.institution}
               </h3>

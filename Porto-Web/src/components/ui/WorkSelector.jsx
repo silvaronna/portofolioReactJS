@@ -4,7 +4,7 @@ import Icon from "./Icon"
 
 export default function WorkSelector({ workExperience, activeWork, onWorkSelect }) {
   return (
-    <div className="mt-16 space-y-6">
+    <div className="space-y-6">
       {workExperience.map((work) => (
         <button
           key={work.id}

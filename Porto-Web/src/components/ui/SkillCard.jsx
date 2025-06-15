@@ -4,7 +4,7 @@ export default function SkillCard({ skill, index, showTools = false }) {
   return (
     <div
       className={`flex flex-col card-dark p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 gold-shadow animate-on-scroll ${skill.bgClass || ""}`}
-      style={{ transitionDelay: `${index * 100}ms` }}
+      style={{ transitionDelay: `${300 + index * 100}ms` }}
     >
       <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-amber-900/30 to-amber-700/20 flex items-center justify-center mb-8 text-amber-500 border border-amber-700/30">
         <Icon name={skill.icon} size={42} />

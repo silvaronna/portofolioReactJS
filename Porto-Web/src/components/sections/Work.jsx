@@ -11,17 +11,19 @@ export default function Work() {
 
   return (
     <section id="work" className="section-container bg-dark">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
-        <div className="animate-on-scroll">
-          <SectionHeading title="Recent Work" />
-          <p className="text-gray-300 mt-10 text-2xl animate-on-scroll delay-100">
-            Explore my professional experience and projects I've worked on
-          </p>
+      <div className="mb-16 animate-on-scroll">
+        <SectionHeading title="Recent Work" />
+        <p className="text-gray-300 mt-10 text-2xl animate-on-scroll delay-100">
+          Explore my professional experience and projects I've worked on
+        </p>
+      </div>
 
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
+        <div className="lg:col-span-2 animate-on-scroll delay-200">
           <WorkSelector workExperience={workExperience} activeWork={activeWork} onWorkSelect={setActiveWork} />
         </div>
 
-        <div className="md:col-span-2">
+        <div className="lg:col-span-3 animate-on-scroll delay-300">
           <WorkDetail workExperience={workExperience} activeWork={activeWork} />
         </div>
       </div>

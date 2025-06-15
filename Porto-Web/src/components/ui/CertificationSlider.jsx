@@ -27,8 +27,11 @@ export default function CertificationSlider({ certifications, selectedCert, onCe
         {certifications.map((cert) => (
           <div
             key={cert.id}
-            className={`cert-card snap-start ${selectedCert === cert.id ? "cert-card-active" : ""}`}
-            onClick={() => onCertClick(cert)}
+            className={`cert-card snap-start cursor-pointer ${selectedCert === cert.id ? "cert-card-active" : ""}`}
+            onClick={() => {
+              console.log("Clicked cert:", cert.id) // Debug log
+              onCertClick(cert)
+            }}
           >
             <div className="h-full w-full overflow-hidden relative group">
               <img

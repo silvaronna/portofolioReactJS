@@ -37,6 +37,17 @@
     @apply absolute -bottom-4 left-0 w-24 h-1 bg-amber-600;
   }
 
+  .section-heading-center {
+    @apply text-5xl md:text-6xl font-bold relative text-center;
+  }
+
+  .section-heading-center::after {
+    content: "";
+    @apply absolute -bottom-4 w-24 h-1 bg-amber-600;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .text-gradient-gold {
     background: linear-gradient(to right, #f59e0b, #d97706, #92400e);
     -webkit-background-clip: text;

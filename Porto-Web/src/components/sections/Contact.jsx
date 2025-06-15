@@ -8,7 +8,7 @@ export default function Contact() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-32 gap-16">
           <div className="mb-8 md:mb-0 animate-on-scroll">
             <h2 className="text-6xl font-bold mb-8">Have something to Build?</h2>
-            <div className="flex items-center">
+            <div className="flex items-center animate-on-scroll delay-100">
               <div className="w-20 h-20 rounded-full bg-gradient-gold mr-6 overflow-hidden">
                 <img src="/mylogo.png" alt="Azka Abdillah" className="w-full h-full object-cover" />
               </div>
@@ -18,7 +18,7 @@ export default function Contact() {
 
           <a
             href="mailto:azka.abdillah@outlook.co.id"
-            className="px-12 py-6 rounded-full bg-white text-amber-900 font-medium text-2xl hover:bg-amber-100 transition-colors flex items-center shadow-lg animate-on-scroll"
+            className="px-12 py-6 rounded-full bg-white text-amber-900 font-medium text-2xl hover:bg-amber-100 transition-colors flex items-center shadow-lg animate-on-scroll delay-200"
           >
             <Icon name="Mail" className="mr-4" size={28} />
             Reach me out
@@ -26,14 +26,17 @@ export default function Contact() {
         </div>
 
         <div className="border-t border-amber-900/50 pt-16 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-amber-300 mb-10 md:mb-0 text-xl animate-on-scroll">Built with spirit by Azka Abdillah</p>
+          <p className="text-amber-300 mb-10 md:mb-0 text-xl animate-on-scroll delay-300">
+            Built with spirit by Azka Abdillah
+          </p>
 
-          <div className="flex space-x-10 animate-on-scroll">
+          <div className="flex space-x-10 animate-on-scroll delay-400">
             {socialLinks.map((social, index) => (
               <a
                 key={index}
                 href={social.href}
                 className="text-amber-300 hover:text-white transition-colors p-4 hover:bg-amber-800/30 rounded-full"
+                style={{ animationDelay: `${500 + index * 100}ms` }}
               >
                 <Icon name={social.icon} size={28} />
                 <span className="sr-only">{social.label}</span>
