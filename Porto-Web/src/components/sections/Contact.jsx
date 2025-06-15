@@ -1,7 +1,7 @@
-import Icon from "./ui/Icon"
-import { socialLinks } from "../data"
+import Icon from "../ui/Icon"
+import { socialLinks } from "../../data"
 
-export default function Footer() {
+export default function Contact() {
   return (
     <footer id="contact" className="bg-gradient-to-r from-[#0a1525] to-[#3a2000] text-white py-40 px-12">
       <div className="max-w-[1800px] mx-auto">
@@ -15,6 +15,7 @@ export default function Footer() {
               <p className="text-4xl font-medium">let's build it together.</p>
             </div>
           </div>
+
           <a
             href="mailto:azka.abdillah@outlook.co.id"
             className="px-12 py-6 rounded-full bg-white text-amber-900 font-medium text-2xl hover:bg-amber-100 transition-colors flex items-center shadow-lg animate-on-scroll"
@@ -25,9 +26,8 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-amber-900/50 pt-16 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-amber-300 mb-10 md:mb-0 text-xl animate-on-scroll">
-            Built with spirit by Azka Abdillah
-          </p>
+          <p className="text-amber-300 mb-10 md:mb-0 text-xl animate-on-scroll">Built with spirit by Azka Abdillah</p>
+
           <div className="flex space-x-10 animate-on-scroll">
             {socialLinks.map((social, index) => (
               <a
