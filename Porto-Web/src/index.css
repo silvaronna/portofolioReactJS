@@ -34,7 +34,8 @@
 
   .section-heading::after {
     content: "";
-    @apply absolute -bottom-4 left-0 w-24 h-1 bg-amber-600;
+    @apply absolute -bottom-4 left-0 w-24 h-1;
+    background-color: #df8107;
   }
 
   .section-heading-center {
@@ -43,21 +44,22 @@
 
   .section-heading-center::after {
     content: "";
-    @apply absolute -bottom-4 w-24 h-1 bg-amber-600;
+    @apply absolute -bottom-4 w-24 h-1;
+    background-color: #df8107;
     left: 50%;
     transform: translateX(-50%);
   }
 
   .text-gradient-gold {
-    background: linear-gradient(to right, #f59e0b, #d97706, #92400e);
+    background: linear-gradient(to right, #df8107, #794604);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+    text-shadow: 0 0 10px rgba(223, 129, 7, 0.3);
   }
 
   .bg-gradient-gold {
-    background: linear-gradient(135deg, #f59e0b, #d97706, #92400e);
+    background: linear-gradient(135deg, #df8107, #794604);
   }
 
   .bg-dark {
@@ -337,11 +339,11 @@
   }
 
   .gold-shadow {
-    box-shadow: 0 15px 30px -5px rgba(245, 158, 11, 0.2);
+    box-shadow: 0 15px 30px -5px rgba(223, 129, 7, 0.2);
   }
 
   .gold-glow {
-    filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.5));
+    filter: drop-shadow(0 0 8px rgba(223, 129, 7, 0.5));
   }
 
   .animate-on-scroll {
