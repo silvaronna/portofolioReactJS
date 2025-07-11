@@ -1,27 +1,45 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Icon from "./Icon" // Pastikan path ke komponen Icon ini benar
+import { useState, useEffect, useReducer, useMemo } from "react"
+import Icon from "./Icon"
 
-const messageCategories = [
-  { value: "job-opportunity", label: "Job Opportunity" },
-  { value: "feedback", label: "Feedback & Suggestions" },
-  { value: "other", label: "Other" },
-]
+// Reducer for form state management
+const formReducer = (state, action) => {
+  switch (action.type) {
+    case "UPDATE_FIELD":
+      return { ...state, [action.field]: action.value }
+    case "RESET_FORM":
+      return initialFormState
+    default:
+      return state
+  }
+}
+
+// Initial state for the form
+const initialFormState = {
+  name: "",
+  email: "",
+  category: "",
+  subject: "",
+  message: "",
+}
 
 export default function ContactModal({ isOpen, onClose }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    category: "",
-    subject: "",
-    message: "",
-  })
-
+  const [formData, dispatch] = useReducer(formReducer, initialFormState)
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+
+  // Memoize message categories to prevent re-creation on every render
+  const messageCategories = useMemo(
+    () => [
+      { value: "job-opportunity", label: "Job Opportunity" },
+      { value: "feedback", label: "Feedback & Suggestions" },
+      { value: "other", label: "Other" },
+    ],
+    [],
+  )
 
   // Handle modal animations
   useEffect(() => {
@@ -76,7 +94,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    dispatch({ type: "UPDATE_FIELD", field: name, value })
 
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }))
@@ -108,16 +126,10 @@ export default function ContactModal({ isOpen, onClose }) {
 
       setIsSubmitted(true)
 
-      // Reset form dan tutup modal setelah 3 detik
+      // Reset form and close modal after 3 seconds
       setTimeout(() => {
         setIsSubmitted(false)
-        setFormData({
-          name: "",
-          email: "",
-          category: "",
-          subject: "",
-          message: "",
-        })
+        dispatch({ type: "RESET_FORM" })
         onClose()
       }, 3000)
     } catch (error) {
@@ -130,13 +142,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
   const handleClose = () => {
     if (!isSubmitting) {
-      setFormData({
-        name: "",
-        email: "",
-        category: "",
-        subject: "",
-        message: "",
-      })
+      dispatch({ type: "RESET_FORM" })
       setErrors({})
       setIsSubmitted(false)
       onClose()

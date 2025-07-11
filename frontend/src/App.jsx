@@ -4,11 +4,13 @@ import { useState, useEffect } from "react"
 import Header from "./components/layout/Header"
 import Hero from "./components/sections/Hero"
 import Portfolio from "./pages/Portfolio"
+import { useLocalStorage } from "./hooks/useLocalStorage" // Import useLocalStorage
 import "./App.css"
 
 function App() {
   const [scrolled, setScrolled] = useState(false)
   const [isWhiteSection, setIsWhiteSection] = useState(false)
+  const [hasVisited, setHasVisited] = useLocalStorage("hasVisited", false) // Example usage of useLocalStorage
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +21,14 @@ function App() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Set hasVisited to true after initial render
+  useEffect(() => {
+    if (!hasVisited) {
+      setHasVisited(true)
+      console.log("First visit detected and recorded!")
+    }
+  }, [hasVisited, setHasVisited])
 
   return (
     <div
