@@ -167,11 +167,11 @@ export const workExperience = [
       "Managed and maintained Linux server environments",
       "Maintaining ROA Dashboard for Network Monitoring and Optimization",
       "Maintaining Container based with microservices concept application",
-      "Implemented weekly automation for database backup",
+      "Implemented Vmware Hypervisor Monitoring with Grafana x InfluxDB x Telegraf",
       "Collaborated with Network Division for effectiveness of application",
       "Maintain and Managed Proliant and PowerEdge Server device",
     ],
-    screenshots: ["/poweredge.jpeg?height=250&width=450", "/placeholder.svg?height=250&width=450"],
+    screenshots: ["/poweredge.jpeg?height=250&width=450", "/metricVmwareVisualization.png?height=250&width=450"],
   },
   {
     id: 2,
