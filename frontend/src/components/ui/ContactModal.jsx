@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Icon from "./Icon" // Pastikan path ke komponen Icon ini benar
 
 const messageCategories = [
@@ -21,6 +21,17 @@ export default function ContactModal({ isOpen, onClose }) {
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
+
+  // Handle modal animations
+  useEffect(() => {
+    if (isOpen) {
+      setIsVisible(true)
+    } else {
+      const timer = setTimeout(() => setIsVisible(false), 300)
+      return () => clearTimeout(timer)
+    }
+  }, [isOpen])
 
   const validateForm = () => {
     const newErrors = {}
@@ -72,7 +83,6 @@ export default function ContactModal({ isOpen, onClose }) {
     }
   }
 
-  // --- PERUBAHAN UTAMA ADA DI SINI ---
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -81,32 +91,22 @@ export default function ContactModal({ isOpen, onClose }) {
     setIsSubmitting(true)
 
     try {
-      // 1. Mengirim data ke server backend kita, bukan lagi membuat mailto link
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
+      // Simulate API call delay for better UX
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+
+      const response = await fetch("/api/send-email", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        // Kirim semua data dari form dalam format JSON
         body: JSON.stringify(formData),
-      });
+      })
 
-      // 2. Cek apakah server merespons dengan sukses (status code 2xx)
       if (!response.ok) {
-        // Jika server memberikan error, kita lempar error agar ditangkap oleh blok catch
-        throw new Error('Something went wrong on the server. Please try again.');
+        throw new Error("Something went wrong on the server. Please try again.")
       }
 
-      // 3. Jika berhasil, tampilkan pesan sukses di UI
       setIsSubmitted(true)
-      
-      // Ubah pesan sukses agar lebih sesuai
-      // (Pesan lama: "Your email client will open shortly...")
-      const successMessageElement = document.querySelector("#success-message");
-      if (successMessageElement) {
-          successMessageElement.textContent = "Thank you for reaching out! I will get back to you soon.";
-      }
-
 
       // Reset form dan tutup modal setelah 3 detik
       setTimeout(() => {
@@ -120,17 +120,13 @@ export default function ContactModal({ isOpen, onClose }) {
         })
         onClose()
       }, 3000)
-
     } catch (error) {
-      // Tangkap error (baik dari jaringan atau dari server) dan tampilkan ke pengguna
       console.error("Error sending message:", error)
       alert("Failed to send message. Please check your connection and try again.")
     } finally {
-      // Apapun hasilnya, hentikan status submitting
       setIsSubmitting(false)
     }
   }
-  // --- AKHIR DARI PERUBAHAN ---
 
   const handleClose = () => {
     if (!isSubmitting) {
@@ -147,204 +143,297 @@ export default function ContactModal({ isOpen, onClose }) {
     }
   }
 
-  if (!isOpen) return null
+  if (!isVisible) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${
+        isOpen ? "opacity-100" : "opacity-0"
+      }`}
+    >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={handleClose} />
+      <div
+        className={`absolute inset-0 bg-black/80 backdrop-blur-sm transition-all duration-300 ${
+          isOpen ? "opacity-100" : "opacity-0"
+        }`}
+        onClick={handleClose}
+      />
 
       {/* Modal */}
-      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] rounded-2xl border border-amber-700/30 shadow-2xl">
-        {/* Close Button */}
-        <button
-          onClick={handleClose}
-          disabled={isSubmitting}
-          className="absolute top-6 right-6 p-2 text-gray-400 hover:text-amber-400 transition-colors z-10 disabled:opacity-50"
-        >
-          <Icon name="X" size={24} />
-        </button>
-
+      <div
+        className={`relative w-full max-w-7xl max-h-[90vh] bg-gradient-to-br from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] rounded-3xl border border-amber-700/30 shadow-2xl overflow-hidden transition-all duration-500 ease-out transform ${
+          isOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-8"
+        }`}
+      >
         <div className="p-8 md:p-12">
-          {/* Header */}
-          <div className="text-center mb-10">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              SEND ME <span className="text-gradient-gold">AN EMAIL</span>
-            </h2>
-            <p className="text-gray-400 text-lg">I'm very responsive to messages</p>
-          </div>
+          {/* Close Button */}
+          <button
+            onClick={handleClose}
+            disabled={isSubmitting}
+            className="absolute top-6 right-6 p-3 text-gray-400 hover:text-amber-400 transition-all duration-300 z-10 disabled:opacity-50 hover:bg-amber-900/20 rounded-2xl group"
+          >
+            <Icon name="X" size={24} className="group-hover:rotate-90 transition-transform duration-300" />
+          </button>
 
           {/* Success State */}
           {isSubmitted ? (
-            <div className="text-center py-12">
-              <div className="w-20 h-20 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-6">
-                <Icon name="Check" size={32} className="text-black" />
+            <div className="text-center py-20 animate-[fadeInUp_0.6s_ease-out]">
+              <div className="w-24 h-24 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-8 animate-[bounce_1s_ease-in-out_infinite]">
+                <Icon name="Check" size={36} className="text-black animate-[checkmark_0.6s_ease-out_0.3s_both]" />
               </div>
-              <h3 className="text-2xl font-bold text-amber-400 mb-4">Message Sent!</h3>
-              <p id="success-message" className="text-gray-300 text-lg">Thank you for reaching out! I will get back to you soon.</p>
+              <h3 className="text-3xl font-bold text-amber-400 mb-6">Message Sent Successfully!</h3>
+              <p id="success-message" className="text-gray-300 text-xl">
+                Thank you for reaching out! I will get back to you soon.
+              </p>
+              <div className="mt-8">
+                <div className="w-16 h-1 bg-gradient-gold mx-auto rounded-full animate-pulse"></div>
+              </div>
             </div>
           ) : (
-            /* Form */
-            <form className="space-y-6">
-              {/* Name Field */}
-              <div className="space-y-2">
-                <label htmlFor="name" className="block text-amber-400 font-medium">
-                  Your Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-4 bg-black/50 border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
-                    errors.name
-                      ? "border-red-500 focus:ring-red-500/50"
-                      : "border-gray-700 focus:border-amber-500 focus:ring-amber-500/50"
-                  }`}
-                  placeholder="Enter your full name"
-                />
-                {errors.name && (
-                  <p className="text-red-400 text-sm flex items-center">
-                    <Icon name="AlertCircle" size={16} className="mr-1" />
-                    {errors.name}
-                  </p>
-                )}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 h-full">
+              {/* Left Side - Header & Info */}
+              <div
+                className={`flex flex-col justify-center space-y-8 lg:pr-8 transition-all duration-700 delay-100 ${
+                  isOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+                }`}
+              >
+                <div>
+                  <h2 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    SEND ME <span className="text-gradient-gold">AN EMAIL</span>
+                  </h2>
+                  <p className="text-gray-400 text-xl mb-10">I'm very responsive to messages</p>
+                </div>
+
+                {/* Contact Info Cards */}
+                <div className="space-y-6">
+                  <div
+                    className={`flex items-center p-6 bg-black/30 rounded-2xl border border-amber-700/20 hover:border-amber-700/40 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/10 ${
+                      isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    }`}
+                    style={{ transitionDelay: "200ms" }}
+                  >
+                    <div className="w-14 h-14 bg-gradient-gold rounded-2xl flex items-center justify-center mr-6 shadow-lg">
+                      <Icon name="Mail" size={24} className="text-black" />
+                    </div>
+                    <div>
+                      <p className="text-amber-400 font-semibold text-lg">Email</p>
+                      <p className="text-gray-300 text-lg">azka.abdillah@outlook.co.id</p>
+                    </div>
+                  </div>
+
+                  <div
+                    className={`flex items-center p-6 bg-black/30 rounded-2xl border border-amber-700/20 hover:border-amber-700/40 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/10 ${
+                      isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    }`}
+                    style={{ transitionDelay: "300ms" }}
+                  >
+                    <div className="w-14 h-14 bg-gradient-gold rounded-2xl flex items-center justify-center mr-6 shadow-lg">
+                      <Icon name="Clock" size={24} className="text-black" />
+                    </div>
+                    <div>
+                      <p className="text-amber-400 font-semibold text-lg">Response Time</p>
+                      <p className="text-gray-300 text-lg">Usually within 24 hours</p>
+                    </div>
+                  </div>
+
+                  <div
+                    className={`flex items-center p-6 bg-black/30 rounded-2xl border border-amber-700/20 hover:border-amber-700/40 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/10 ${
+                      isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    }`}
+                    style={{ transitionDelay: "400ms" }}
+                  >
+                    <div className="w-14 h-14 bg-gradient-gold rounded-2xl flex items-center justify-center mr-6 shadow-lg">
+                      <Icon name="MessageCircle" size={24} className="text-black" />
+                    </div>
+                    <div>
+                      <p className="text-amber-400 font-semibold text-lg">Availability</p>
+                      <p className="text-gray-300 text-lg">Open for opportunities</p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Email Field */}
-              <div className="space-y-2">
-                <label htmlFor="email" className="block text-amber-400 font-medium">
-                  Your Email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-4 bg-black/50 border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
-                    errors.email
-                      ? "border-red-500 focus:ring-red-500/50"
-                      : "border-gray-700 focus:border-amber-500 focus:ring-amber-500/50"
-                  }`}
-                  placeholder="Enter your email address"
-                />
-                {errors.email && (
-                  <p className="text-red-400 text-sm flex items-center">
-                    <Icon name="AlertCircle" size={16} className="mr-1" />
-                    {errors.email}
-                  </p>
-                )}
-              </div>
+              {/* Right Side - Form */}
+              <div
+                className={`lg:pl-8 lg:border-l lg:border-amber-700/20 transition-all duration-700 delay-200 ${
+                  isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+                }`}
+              >
+                <form className="space-y-6 h-full flex flex-col">
+                  {/* Name and Email Row */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <label htmlFor="name" className="block text-amber-400 font-semibold text-base">
+                        Your Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        className={`w-full px-4 py-4 bg-black/50 border rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all duration-300 text-base hover:bg-black/60 ${
+                          errors.name
+                            ? "border-red-500 focus:ring-red-500/50"
+                            : "border-gray-700 focus:border-amber-500 focus:ring-amber-500/50"
+                        }`}
+                        placeholder="Enter your name"
+                      />
+                      {errors.name && (
+                        <p className="text-red-400 text-sm flex items-center animate-[slideIn_0.3s_ease-out]">
+                          <Icon name="AlertCircle" size={16} className="mr-2" />
+                          {errors.name}
+                        </p>
+                      )}
+                    </div>
 
-              {/* Category Field */}
-              <div className="space-y-2">
-                <label htmlFor="category" className="block text-amber-400 font-medium">
-                  Message Category *
-                </label>
-                <select
-                  id="category"
-                  name="category"
-                  value={formData.category}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-4 bg-black/50 border rounded-xl text-white focus:outline-none focus:ring-2 transition-all ${
-                    errors.category
-                      ? "border-red-500 focus:ring-red-500/50"
-                      : "border-gray-700 focus:border-amber-500 focus:ring-amber-500/50"
-                  }`}
-                >
-                  <option value="" className="bg-gray-800">
-                    Select a category
-                  </option>
-                  {messageCategories.map((category) => (
-                    <option key={category.value} value={category.value} className="bg-gray-800">
-                      {category.label}
-                    </option>
-                  ))}
-                </select>
-                {errors.category && (
-                  <p className="text-red-400 text-sm flex items-center">
-                    <Icon name="AlertCircle" size={16} className="mr-1" />
-                    {errors.category}
-                  </p>
-                )}
-              </div>
+                    <div className="space-y-3">
+                      <label htmlFor="email" className="block text-amber-400 font-semibold text-base">
+                        Your Email *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className={`w-full px-4 py-4 bg-black/50 border rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all duration-300 text-base hover:bg-black/60 ${
+                          errors.email
+                            ? "border-red-500 focus:ring-red-500/50"
+                            : "border-gray-700 focus:border-amber-500 focus:ring-amber-500/50"
+                        }`}
+                        placeholder="Enter your email"
+                      />
+                      {errors.email && (
+                        <p className="text-red-400 text-sm flex items-center animate-[slideIn_0.3s_ease-out]">
+                          <Icon name="AlertCircle" size={16} className="mr-2" />
+                          {errors.email}
+                        </p>
+                      )}
+                    </div>
+                  </div>
 
-              {/* Subject Field */}
-              <div className="space-y-2">
-                <label htmlFor="subject" className="block text-amber-400 font-medium">
-                  Subject *
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-4 bg-black/50 border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
-                    errors.subject
-                      ? "border-red-500 focus:ring-red-500/50"
-                      : "border-gray-700 focus:border-amber-500 focus:ring-amber-500/50"
-                  }`}
-                  placeholder="Enter message subject"
-                />
-                {errors.subject && (
-                  <p className="text-red-400 text-sm flex items-center">
-                    <Icon name="AlertCircle" size={16} className="mr-1" />
-                    {errors.subject}
-                  </p>
-                )}
-              </div>
+                  {/* Category and Subject Row */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <label htmlFor="category" className="block text-amber-400 font-semibold text-base">
+                        Category *
+                      </label>
+                      <select
+                        id="category"
+                        name="category"
+                        value={formData.category}
+                        onChange={handleInputChange}
+                        className={`w-full px-4 py-4 bg-black/50 border rounded-2xl text-white focus:outline-none focus:ring-2 transition-all duration-300 text-base hover:bg-black/60 ${
+                          errors.category
+                            ? "border-red-500 focus:ring-red-500/50"
+                            : "border-gray-700 focus:border-amber-500 focus:ring-amber-500/50"
+                        }`}
+                      >
+                        <option value="" className="bg-gray-800">
+                          Select category
+                        </option>
+                        {messageCategories.map((category) => (
+                          <option key={category.value} value={category.value} className="bg-gray-800">
+                            {category.label}
+                          </option>
+                        ))}
+                      </select>
+                      {errors.category && (
+                        <p className="text-red-400 text-sm flex items-center animate-[slideIn_0.3s_ease-out]">
+                          <Icon name="AlertCircle" size={16} className="mr-2" />
+                          {errors.category}
+                        </p>
+                      )}
+                    </div>
 
-              {/* Message Field */}
-              <div className="space-y-2">
-                <label htmlFor="message" className="block text-amber-400 font-medium">
-                  Your Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={6}
-                  className={`w-full px-4 py-4 bg-black/50 border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all resize-none ${
-                    errors.message
-                      ? "border-red-500 focus:ring-red-500/50"
-                      : "border-gray-700 focus:border-amber-500 focus:ring-amber-500/50"
-                  }`}
-                  placeholder="Enter your message here..."
-                />
-                {errors.message && (
-                  <p className="text-red-400 text-sm flex items-center">
-                    <Icon name="AlertCircle" size={16} className="mr-1" />
-                    {errors.message}
-                  </p>
-                )}
-              </div>
+                    <div className="space-y-3">
+                      <label htmlFor="subject" className="block text-amber-400 font-semibold text-base">
+                        Subject *
+                      </label>
+                      <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        className={`w-full px-4 py-4 bg-black/50 border rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all duration-300 text-base hover:bg-black/60 ${
+                          errors.subject
+                            ? "border-red-500 focus:ring-red-500/50"
+                            : "border-gray-700 focus:border-amber-500 focus:ring-amber-500/50"
+                        }`}
+                        placeholder="Enter subject"
+                      />
+                      {errors.subject && (
+                        <p className="text-red-400 text-sm flex items-center animate-[slideIn_0.3s_ease-out]">
+                          <Icon name="AlertCircle" size={16} className="mr-2" />
+                          {errors.subject}
+                        </p>
+                      )}
+                    </div>
+                  </div>
 
-              {/* Submit Button */}
-              <div className="pt-4">
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  disabled={isSubmitting}
-                  className="w-full py-4 px-8 bg-gradient-gold text-black font-bold text-lg rounded-xl hover:shadow-lg hover:shadow-amber-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin mr-3" />
-                      Sending Message...
-                    </>
-                  ) : (
-                    <>
-                      <Icon name="Send" size={20} className="mr-3" />
-                      Send Message
-                    </>
-                  )}
-                </button>
+                  {/* Message Field */}
+                  <div className="space-y-3 flex-1">
+                    <label htmlFor="message" className="block text-amber-400 font-semibold text-base">
+                      Your Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      rows={5}
+                      className={`w-full px-4 py-4 bg-black/50 border rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all duration-300 resize-none text-base h-full min-h-[120px] hover:bg-black/60 ${
+                        errors.message
+                          ? "border-red-500 focus:ring-red-500/50"
+                          : "border-gray-700 focus:border-amber-500 focus:ring-amber-500/50"
+                      }`}
+                      placeholder="Enter your message here..."
+                    />
+                    {errors.message && (
+                      <p className="text-red-400 text-sm flex items-center animate-[slideIn_0.3s_ease-out]">
+                        <Icon name="AlertCircle" size={16} className="mr-2" />
+                        {errors.message}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="pt-6">
+                    <button
+                      type="button"
+                      onClick={handleSubmit}
+                      disabled={isSubmitting}
+                      className="w-full py-4 px-8 bg-gradient-gold text-black font-bold text-xl rounded-2xl hover:shadow-xl hover:shadow-amber-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center hover:scale-105 active:scale-95 relative overflow-hidden group"
+                    >
+                      {/* Loading overlay */}
+                      {isSubmitting && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 animate-[shimmer_2s_infinite]"></div>
+                      )}
+
+                      <div className="relative z-10 flex items-center">
+                        {isSubmitting ? (
+                          <>
+                            <div className="w-6 h-6 border-3 border-black/30 border-t-black rounded-full animate-spin mr-3"></div>
+                            <span className="animate-pulse">Sending Message...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Icon
+                              name="Send"
+                              size={20}
+                              className="mr-3 group-hover:translate-x-1 transition-transform duration-300"
+                            />
+                            Send Message
+                          </>
+                        )}
+                      </div>
+                    </button>
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
           )}
         </div>
       </div>
