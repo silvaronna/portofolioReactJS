@@ -1,14 +1,19 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react" // Import useRef
 import Icon from "../ui/Icon"
 import ContactModal from "../ui/ContactModal"
 import { socialLinks } from "../../data"
 
 export default function Contact() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [buttonRect, setButtonRect] = useState(null) // State to store button's position
+  const contactButtonRef = useRef(null) // Ref for the "Reach me out" button
 
   const handleOpenModal = () => {
+    if (contactButtonRef.current) {
+      setButtonRect(contactButtonRef.current.getBoundingClientRect()) // Get button position
+    }
     setIsModalOpen(true)
   }
 
@@ -32,6 +37,7 @@ export default function Contact() {
             </div>
 
             <button
+              ref={contactButtonRef} // Assign the ref to the button
               onClick={handleOpenModal}
               className="px-12 py-6 rounded-full bg-white text-amber-900 font-medium text-2xl hover:bg-amber-100 transition-all duration-300 flex items-center shadow-lg animate-on-scroll delay-200 hover:scale-105 hover:shadow-xl"
             >
@@ -65,7 +71,7 @@ export default function Contact() {
       </footer>
 
       {/* Contact Modal */}
-      <ContactModal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <ContactModal isOpen={isModalOpen} onClose={handleCloseModal} buttonRect={buttonRect} />
     </>
   )
 }

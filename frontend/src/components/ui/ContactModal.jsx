@@ -24,12 +24,13 @@ const initialFormState = {
   message: "",
 }
 
-export default function ContactModal({ isOpen, onClose }) {
+export default function ContactModal({ isOpen, onClose, buttonRect }) {
   const [formData, dispatch] = useReducer(formReducer, initialFormState)
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const [modalContentStyle, setModalContentStyle] = useState({}) // State for dynamic modal style
 
   // Memoize message categories to prevent re-creation on every render
   const messageCategories = useMemo(
@@ -41,15 +42,73 @@ export default function ContactModal({ isOpen, onClose }) {
     [],
   )
 
-  // Handle modal animations
+  // Handle modal visibility and animations
   useEffect(() => {
-    if (isOpen) {
-      setIsVisible(true)
-    } else {
-      const timer = setTimeout(() => setIsVisible(false), 300)
-      return () => clearTimeout(timer)
+    if (!buttonRect) {
+      // Fallback for when buttonRect is not available (e.g., initial render or error)
+      setModalContentStyle({
+        opacity: isOpen ? 1 : 0,
+        transform: isOpen ? "scale(1)" : "scale(0.95)",
+        transition: "transform 0.3s ease-out, opacity 0.3s ease-out",
+      })
+      if (isOpen) setIsVisible(true)
+      else setTimeout(() => setIsVisible(false), 300) // Match fallback transition duration
+      return
     }
-  }, [isOpen])
+
+    const viewportWidth = window.innerWidth
+    const viewportHeight = window.innerHeight
+
+    // Approximate modal dimensions based on Tailwind classes (max-w-7xl and max-h-[90vh])
+    // max-w-7xl is 1280px. p-12 means 48px padding on each side.
+    const assumedModalWidth = Math.min(1280, viewportWidth - 96) // 96px for p-12 on each side
+    const assumedModalHeight = viewportHeight * 0.9 // 90vh
+
+    const buttonCenterX = buttonRect.left + buttonRect.width / 2
+    const buttonCenterY = buttonRect.top + buttonRect.height / 2
+
+    const modalTargetCenterX = viewportWidth / 2
+    const modalTargetCenterY = viewportHeight / 2
+
+    // Calculate translation needed to move the modal from its centered position to the button's center
+    const translateX = buttonCenterX - modalTargetCenterX
+    const translateY = buttonCenterY - modalTargetCenterY
+
+    // Calculate scale needed to shrink the modal to the button's size
+    const scaleX = buttonRect.width / assumedModalWidth
+    const scaleY = buttonRect.height / assumedModalHeight
+
+    if (isOpen) {
+      setIsVisible(true) // Make modal visible immediately for animation
+      // Set initial state (hidden, at button's position, scaled down)
+      setModalContentStyle({
+        opacity: 0,
+        transform: `translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY})`,
+        transition: "none", // No transition for initial setup
+      })
+
+      // Animate to final state (visible, centered, full size)
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          // Double rAF for guaranteed repaint
+          setModalContentStyle({
+            opacity: 1,
+            transform: `translate(0px, 0px) scale(1)`,
+            transition: `transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.4s ease-out`, // Spring-like easing
+          })
+        })
+      })
+    } else {
+      // Animate from full size to button's position/scale
+      setModalContentStyle({
+        opacity: 0,
+        transform: `translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY})`,
+        transition: `transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.4s ease-out`, // Spring-like easing
+      })
+      // Hide modal completely after animation
+      setTimeout(() => setIsVisible(false), 600) // Match transform transition duration
+    }
+  }, [isOpen, buttonRect])
 
   const validateForm = () => {
     const newErrors = {}
@@ -167,9 +226,8 @@ export default function ContactModal({ isOpen, onClose }) {
 
       {/* Modal */}
       <div
-        className={`relative w-full max-w-7xl max-h-[90vh] bg-gradient-to-br from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] rounded-3xl border border-amber-700/30 shadow-2xl overflow-hidden transition-all duration-500 ease-out transform ${
-          isOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-8"
-        }`}
+        className={`relative w-full max-w-7xl max-h-[90vh] bg-gradient-to-br from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] rounded-3xl border border-amber-700/30 shadow-2xl overflow-hidden`}
+        style={modalContentStyle} // Apply dynamic style here
       >
         <div className="p-8 md:p-12">
           {/* Close Button */}
