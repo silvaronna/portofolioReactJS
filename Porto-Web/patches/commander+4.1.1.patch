@@ -1,0 +1,12 @@
+diff --git a/node_modules/commander/index.js b/node_modules/commander/index.js
+index 37d20cc..b478e22 100644
+--- a/node_modules/commander/index.js
++++ b/node_modules/commander/index.js
+@@ -1590,7 +1590,6 @@ function humanReadableArgName(arg) {
+     : '[' + nameOutput + ']';
+ }
+ 
+-// for versions before node v0.8 when there weren't `fs.existsSync`
+ function exists(file) {
+   try {
+     if (fs.statSync(file).isFile()) {

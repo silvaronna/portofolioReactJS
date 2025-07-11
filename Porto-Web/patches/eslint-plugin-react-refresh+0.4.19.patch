@@ -1,0 +1,36 @@
+diff --git a/node_modules/eslint-plugin-react-refresh/README.md b/node_modules/eslint-plugin-react-refresh/README.md
+index dad9549..4901dc4 100644
+--- a/node_modules/eslint-plugin-react-refresh/README.md
++++ b/node_modules/eslint-plugin-react-refresh/README.md
+@@ -151,7 +151,6 @@ const defaultOptions: Options = {
+ };
+ ```
+ 
+-### allowExportNames <small>(v0.4.4)</small>
+ 
+ > Default: `[]`
+ 
+@@ -168,7 +167,6 @@ Example for [Remix](https://remix.run/docs/en/main/discussion/hot-module-replace
+ }
+ ```
+ 
+-### allowConstantExport <small>(v0.4.0)</small>
+ 
+ > Default: `false` (`true` in `vite` config)
+ 
+@@ -192,7 +190,6 @@ export const CONSTANT = 3;
+ export const Foo = () => <></>;
+ ```
+ 
+-### checkJS <small>(v0.3.3)</small>
+ 
+ > Default: `false`
+ 
+@@ -204,7 +201,6 @@ If your using JSX inside `.js` files (which I don't recommend because it forces
+ }
+ ```
+ 
+-### customHOCs <small>(v0.4.15)</small>
+ 
+ If you're exporting a component wrapped in a custom HOC, you can use this option to avoid false positives.
+ 

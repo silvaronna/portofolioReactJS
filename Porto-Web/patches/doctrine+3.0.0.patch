@@ -1,0 +1,25 @@
+diff --git a/node_modules/doctrine/CHANGELOG.md b/node_modules/doctrine/CHANGELOG.md
+index 6141026..760ff3d 100644
+--- a/node_modules/doctrine/CHANGELOG.md
++++ b/node_modules/doctrine/CHANGELOG.md
+@@ -76,12 +76,10 @@ v1.0.0 - December 21, 2015
+ 
+ * New: parse caption tags in examples into separate property. (fixes #131) (Tom MacWright)
+ 
+-v0.7.2 - November 27, 2015
+ 
+ * Fix: Line numbers for some tags (fixes #138) Fixing issue where input was not consumed via advance() but was skipped when parsing tags resulting in sometimes incorrect reported lineNumber. (TEHEK)
+ * Build: Add missing linefix package (Nicholas C. Zakas)
+ 
+-v0.7.1 - November 13, 2015
+ 
+ * Update: Begin switch to Makefile.js (Nicholas C. Zakas)
+ * Fix: permit return tag without type (fixes #136) (Tom MacWright)
+@@ -90,7 +88,6 @@ v0.7.1 - November 13, 2015
+ * Fix: Last tag always has \n in the description (fixes #87) (Burak Yigit Kaya)
+ * Docs: Add changelog (Nicholas C. Zakas)
+ 
+-v0.7.0 - September 21, 2015
+ 
+ * Docs: Update README with new info (fixes #127) (Nicholas C. Zakas)
+ * Fix: Parsing fix for param with arrays and properties (fixes #111) (Gyandeep Singh)

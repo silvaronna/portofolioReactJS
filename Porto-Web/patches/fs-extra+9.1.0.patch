@@ -1,0 +1,64 @@
+diff --git a/node_modules/fs-extra/CHANGELOG.md b/node_modules/fs-extra/CHANGELOG.md
+index 225fdca..a27763c 100644
+--- a/node_modules/fs-extra/CHANGELOG.md
++++ b/node_modules/fs-extra/CHANGELOG.md
+@@ -204,7 +204,6 @@ Thanks to [Mani Maghsoudlou (@manidlou)](https://github.com/manidlou) & [Jan Pee
+ ------------------
+ 
+ ### Removed
+-- **BREAKING:** Removed support for Node `v0.12`. The Node foundation stopped officially supporting it
+ on Jan 1st, 2017.
+ - **BREAKING:** Remove `walk()` and `walkSync()`. `walkSync()` was only part of `fs-extra` for a little
+ over two months. Use [klaw](https://github.com/jprichardson/node-klaw) instead of `walk()`, in fact, `walk()` was just
+@@ -229,7 +228,6 @@ to [Ryan Zim](https://github.com/RyanZim) for leading the charge on this release
+ - `walkSync()`
+ 
+ ### Changed
+-- **BREAKING**: dropped Node v0.10 support.
+ - disabled `rimaf` globbing, wasn't used. [#280]
+ - deprecate `copy()/copySync()` option `filter` if it's a `RegExp`. `filter` should now be a function.
+ - inline `rimraf`. This is temporary and was done because `rimraf` depended upon the beefy `glob` which `fs-extra` does not use. [#300]
+@@ -242,11 +240,9 @@ to [Ryan Zim](https://github.com/RyanZim) for leading the charge on this release
+ 
+ 0.30.0 / 2016-04-28
+ -------------------
+-- Brought back Node v0.10 support. I didn't realize there was still demand. Official support will end **2016-10-01**.
+ 
+ 0.29.0 / 2016-04-27
+ -------------------
+-- **BREAKING**: removed support for Node v0.10. If you still want to use Node v0.10, everything should work except for `ensureLink()/ensureSymlink()`. Node v0.12 is still supported but will be dropped in the near future as well.
+ 
+ 0.28.0 / 2016-04-17
+ -------------------
+@@ -335,7 +331,6 @@ this package had both `fs.readJsonFile` and `fs.readJson` that were aliases to e
+ 
+ 0.19.0 / 2015-06-08
+ -------------------
+-- `fs.copy()` had support for Node v0.8, dropped support
+ 
+ 0.18.4 / 2015-05-22
+ -------------------
+@@ -379,7 +374,6 @@ this package had both `fs.readJsonFile` and `fs.readJson` that were aliases to e
+ 
+ 0.16.2 / 2015-01-28
+ -------------------
+-- fixed `fs.copy` for Node v0.8 (support is temporary and will be removed in the near future)
+ 
+ 0.16.1 / 2015-01-28
+ -------------------
+@@ -533,7 +527,6 @@ from `~` to `^`. [#67]
+ 0.1.2 / 2012-06-15
+ ------------------
+ * Bug fix: `deleteSync()` didn't exist.
+-* Verified Node v0.8 compatibility.
+ 
+ 0.1.1 / 2012-06-15
+ ------------------
+@@ -569,7 +562,6 @@ from `~` to `^`. [#67]
+ [#335]: https://github.com/jprichardson/node-fs-extra/pull/335      "Refactor move() tests [feature-move]"
+ [#334]: https://github.com/jprichardson/node-fs-extra/pull/334      "Cleanup lib/move/index.js [feature-move]"
+ [#333]: https://github.com/jprichardson/node-fs-extra/pull/333      "Rename clobber to overwrite [feature-copy, feature-move]"
+-[#332]: https://github.com/jprichardson/node-fs-extra/pull/332      "BREAKING: Drop Node v0.12 & io.js support"
+ [#331]: https://github.com/jprichardson/node-fs-extra/issues/331    "Add support for chmodr [enhancement, future]"
+ [#330]: https://github.com/jprichardson/node-fs-extra/pull/330      "BREAKING: Do not error when copy destination exists & clobber: false [feature-copy]"
+ [#329]: https://github.com/jprichardson/node-fs-extra/issues/329    "Does .walk() scale to large directories? [question]"

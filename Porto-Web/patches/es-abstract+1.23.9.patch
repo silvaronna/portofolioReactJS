@@ -1,0 +1,28 @@
+diff --git a/node_modules/es-abstract/CHANGELOG.md b/node_modules/es-abstract/CHANGELOG.md
+index e05ad07..fddaf4c 100644
+--- a/node_modules/es-abstract/CHANGELOG.md
++++ b/node_modules/es-abstract/CHANGELOG.md
+@@ -349,7 +349,6 @@
+   * [meta] operations: use a URL object instead of a URL string
+   * [meta] remove defunct greenkeeper config
+   * [meta] better `eccheck` command; fix indentation
+-  * [Tests] node v0.6 lacks `RegExp.prototype.source`
+   * [Tests] remove a stray `console.log`
+   * [Tests] properly set the lastIndex in IE 8
+   * [Tests] skip test due to IE 6-8 sparse/undefined bug
+@@ -385,7 +384,6 @@
+ 1.18.7 / 2021-09-28
+ =================
+   * [Fix] `getOwnPropertyDescriptor` helper: avoid crashing in IE < 9
+-  * [Fix] `ArraySetLength`: `node` `v0.6` has a bug where array lengths can be Set but not Defined
+   * [eslint] remove unused directive
+   * [Tests] fix spelling
+ 
+@@ -820,7 +818,6 @@
+   * [Fix] `ES6.ToNumber`: should give `NaN` for explicitly signed hex strings (#4)
+   * [Refactor] `ES6.ToNumber`: No need to double-trim
+   * [Refactor] group tests better
+-  * [Tests] should still pass on `node` `v0.8`
+ 
+ 1.4.2 / 2015-11-02
+ =================
