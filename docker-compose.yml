@@ -4,7 +4,7 @@ services:
   backend:
     build:
       context: ./email-server
-      dockerfile: backend.Dockerfile
+      dockerfile: Dockerfile
     container_name: portfolio_backend
     restart: unless-stopped
     env_file:
@@ -15,7 +15,7 @@ services:
   frontend:
     build:
       context: ./Porto-Web
-      dockerfile: frontend.Dockerfile
+      dockerfile: Dockerfile
     container_name: portfolio_frontend
     restart: unless-stopped
     ports:

@@ -82,7 +82,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
     try {
       // 1. Mengirim data ke server backend kita, bukan lagi membuat mailto link
-      const response = await fetch('http://backend:4000/api/send-email', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
