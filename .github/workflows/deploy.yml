@@ -1,0 +1,49 @@
+name: CI/CD Pipeline
+
+# Trigger action?
+on:
+  push:
+    branches:
+      - main
+
+# To Do is:
+jobs:
+  build-test-and-deploy:
+    name: Build, Test, and Deploy
+    runs-on: self-hosted
+
+    # Step
+    steps:
+      - name: 1. Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: 2. Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # --- CI Pipeline ---
+      - name: 3. Run Backend Tests
+        run: |
+          echo "🧪 Running backend tests..."
+          cd backend
+          npm install
+          npm test
+
+      - name: 4. Run Frontend Tests
+        run: |
+          echo "🧪 Running frontend tests..."
+          cd frontend
+          npm install
+          npm test
+
+      - name: 5. Deploy with Docker Compose
+        run: |
+          echo "✅ All tests passed. Starting deployment..."
+          cd ${{ github.workspace }}
+          docker-compose up --build -d --remove-orphans
+          echo "🚀 Deployment finished!"
+
+      - name: 6. Clean Up Old Docker Images
+        if: always()
+        run: docker image prune -af
