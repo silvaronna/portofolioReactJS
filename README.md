@@ -32,6 +32,7 @@ This project follows a decoupled, client-server architecture.
 
 * **Deployment & Infrastructure**:
     * Containerization: **Docker**, **Docker Compose**
+    * CI/CD: **GitHub Actions**
     * Web Server / Reverse Proxy: **Nginx**
 
 ## Running The Project
