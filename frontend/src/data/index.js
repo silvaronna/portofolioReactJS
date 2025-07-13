@@ -18,8 +18,8 @@ export const skills = {
       icon: "Container",
       title: "Deployment Tools",
       description:
-        "Skilled in setting up containers, managing multi-container apps, and streamlining development workflows.",
-      tools: ["Docker", "Nginx", "Cloudflare", "Ansible"],
+        "Skilled in setting up containers, managing multi-container apps, and streamlining CI/CD Pipeline Workflows.",
+      tools: ["Docker", "Nginx", "Cloudflare", "Ansible", "GitHub Actions"],
       bgClass: "container-bg",
     },
     {
