@@ -38,6 +38,8 @@ jobs:
           npm test
 
       - name: 5. Deploy with Docker Compose
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: |
           echo "✅ All tests passed. Starting deployment..."
           cd ${{ github.workspace }}

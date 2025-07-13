@@ -7,8 +7,8 @@ services:
       dockerfile: Dockerfile
     container_name: portfolio_backend
     restart: unless-stopped
-    env_file:
-      - ./backend/.env.local
+    environment:
+      RESEND_API_KEY: ${RESEND_API_KEY}
     networks:
       - app-network
 
@@ -24,6 +24,7 @@ services:
       - app-network
     depends_on:
       - backend
+
 networks:
   app-network:
     driver: bridge
