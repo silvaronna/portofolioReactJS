@@ -198,32 +198,32 @@ export const workExperience = [
 export const techStack = [
   {
     name: "Docker",
-    logo: "/public/docker.png",
+    logo: "/docker.png",
     description: "Containerization platform for deployment",
   },
   {
     name: "Red Hat",
-    logo: "/public/redhat.png",
+    logo: "redhat.png",
     description: "Enterprise Linux for server infrastructure",
   },
   {
     name: "GitHub Actions",
-    logo: "/public/github-actions.png",
+    logo: "/github-actions.png",
     description: "CI/CD automation workflows",
   },
   {
     name: "Tailwind CSS",
-    logo: "/public/tailwindcss.png",
+    logo: "/tailwindcss.png",
     description: "Utility-first CSS framework",
   },
   {
     name: "React",
-    logo: "/public/react.png",
+    logo: "/react.png",
     description: "React JS with Vite for frontend",
   },
   {
     name: "Node.js",
-    logo: "/public/nodejs.png",
+    logo: "/nodejs.png",
     description: "JavaScript runtime for backend",
   },
 ]
