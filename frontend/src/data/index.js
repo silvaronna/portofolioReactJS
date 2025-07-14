@@ -160,7 +160,8 @@ export const workExperience = [
     categories: "System Engineer",
     logo: "/mtm.png",
     period: "June 2025 - Present",
-    description: "Managed Proliant and PowerEdge server with VMware Operating System including dedicated VM that contains in it",
+    description:
+      "Managed Proliant and PowerEdge server with VMware Operating System including dedicated VM that contains in it",
     fullDescription:
       "Responsible for maintaining and optimizing On-Premise Vmware server environments, Health Check, and providing technical support for enterprise clients. Collaborated with the Network Division team to ensure effectiveness of the application.",
     jobDesc: [
@@ -191,6 +192,39 @@ export const workExperience = [
       "Monitored system performance and optimized resources",
     ],
     screenshots: ["/asiasistem-act1.jpeg?height=250&width=450", "/asiasistem-act2.jpeg?height=250&width=450"],
+  },
+]
+
+export const techStack = [
+  {
+    name: "Docker",
+    logo: "/public/docker.png",
+    description: "Containerization platform for deployment",
+  },
+  {
+    name: "Red Hat",
+    logo: "/public/redhat.png",
+    description: "Enterprise Linux for server infrastructure",
+  },
+  {
+    name: "GitHub Actions",
+    logo: "/public/github-actions.png",
+    description: "CI/CD automation workflows",
+  },
+  {
+    name: "Tailwind CSS",
+    logo: "/public/tailwindcss.png",
+    description: "Utility-first CSS framework",
+  },
+  {
+    name: "React",
+    logo: "/public/react.png",
+    description: "React JS with Vite for frontend",
+  },
+  {
+    name: "Node.js",
+    logo: "/public/nodejs.png",
+    description: "JavaScript runtime for backend",
   },
 ]
 
