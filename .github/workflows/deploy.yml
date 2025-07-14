@@ -43,7 +43,10 @@ jobs:
         run: |
           echo "✅ All tests passed. Starting deployment..."
           cd ${{ github.workspace }}
-          docker compose up --build --force-recreate --no-cache -d --remove-orphans
+          echo "Building images from scratch (no cache)..."
+          docker compose build --no-cache
+          echo "Starting containers with new images..."
+          docker compose up --force-recreate -d --remove-orphans 
           echo "🚀 Deployment finished!"
 
       - name: 6. Clean Up Old Docker Images
