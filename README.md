@@ -45,17 +45,16 @@ This method will build and run both the frontend and backend containers.
 
 1.  **Clone this repository:**
     ```bash
-    git clone [https://github.com/silvaronna/portofolioReactJS.git](https://github.com/silvaronna/portofolioReactJS.git)
+    git clone https://github.com/silvaronna/portofolioReactJS.git
     cd portofolioReactJS
     ```
 
 2.  **Configure Backend Environment:**
-    Navigate to the `email-server` directory and create a `.env.local` file. This file will hold your secret API key for the email service.
+    Navigate to the root directory same as docker.compose file and create a `.env` file. This file will hold your secret API key for the email service.
     ```bash
-    cd email-server
-    cp .env.example .env.local 
+    cd backend 
     ```
-    Now, edit `.env.local` and add your Resend API key.
+    Now, edit `.env` and add your Resend API key.
 
 3.  **Build and Run with Docker Compose:**
     Return to the root directory of the project and run the following command:
