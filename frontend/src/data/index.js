@@ -230,19 +230,19 @@ export const portfolioActivities = [
     gallery: [
       {
         src: "/Openshift-Clusters.drawio.png",
-        caption: "Topologi High Availability Cluster OpenShift pada lingkungan VMware."
+        caption: "Designing Architecture High Availability OpenShift Cluster with Load Balancer HAProxy and VIP Keepalived."
       },
       {
         src: "/PoweringOnCluster.png",
-        caption: "Proses inisialisasi node cluster dan verifikasi konektivitas antar node."
+        caption: "Initial Power On Cluster Node OpenShift using Assisted Installer Mechanism."
       },
       {
         src: "/OCP-Dashboard-I.png",
-        caption: "Tampilan dashboard OpenShift Web Console yang menunjukkan status kesehatan cluster."
+        caption: "Dashboard Overview Cluster OpenShift Container Platform on Web Console."
       },
       {
         src: "/OCP-Dashboard-II.png",
-        caption: "Monitoring detail penggunaan resource (CPU/Memory) pada setiap node."
+        caption: "Post Installation Health Check Cluster OpenShift Container Platform."
       }
     ],
     description: [
@@ -264,24 +264,25 @@ export const portfolioActivities = [
     gallery: [
       {
         src: "/Dashboard-Craft.png",
-        caption: "Custom Dashboard Grafana untuk visualisasi metrik server secara real-time."
+        caption: "Crafting Custom Grafana Dashboard for Visualizing Server Performance Metrics."
       },
       {
         src: "/InfluxDB-Dashboard.png",
-        caption: "Konfigurasi Datasource InfluxDB untuk penyimpanan metrik time-series."
+        caption: "Configuring InfluxDB as Time-Series Database for Storing Monitoring Data."
       },
       {
         src: "/Deploy-withAnsible.png",
-        caption: "Automasi deployment agent monitoring menggunakan Ansible Playbook."
+        caption: "Automating Deployment Process on multiple Apstra Nodes using Ansible Playbook for Consistent Setup."
       },
       {
         src: "/SuccessVisualizedGrafanawithNodeExporter.png",
-        caption: "Integrasi sukses Node Exporter untuk monitoring hardware resource."
+        caption: "Integrating Node Exporter to gather General Linux Metrics."
       },
       {
         src: "/bgp-flap.png",
-        caption: "Panel monitoring jaringan untuk mendeteksi BGP Flapping."
-      }
+        caption: "Crafting Dashboard to Monitoring BGP Flaps on Juniper Switch Devices."
+      },
+
     ],
     description: [
       "Building Container Pipeline for Grafana Monitoring System",
@@ -291,10 +292,82 @@ export const portfolioActivities = [
       "Developed custom dashboards for visualizing server performance, network traffic, and application metrics.",
       "Perform Deployment with Ansible Automation to streamline setup and configuration for above 20+ various endpoints."
     ],
-    techStack: ["Docker", "Ansible", "Grafana"],
+    techStack: ["Docker", "Ansible", "Grafana", "PostgreSQL", "InfluxDB", "Prometheus", "Node Exporter"],
+    docLink: "https://www.notion.so/Grafana-Various-Metrics-Monitoring-Guide-2c87649716e7809aaf66ec6d221f245e?source=copy_link"
+  },
+  {
+    id: 3,
+    title: "On-Prem Virtualization Infrastructure Deployment",
+    location: "Asia Sistem Indonesia",
+    date: "Apr 2025",
+    coverImage: "/vmware-wpp.jpg",
+    gallery: [
+      {
+        src: "/proliant-poweredge-devices.jpeg",
+        caption: "Manage Bare-Metal HPE Proliant and Dell PowerEdge Server"
+      },
+      {
+        src: "/ESXi-Installation.jpeg",
+        caption: "Installing VMware ESXi on Bare-Metal Server for Virtualization Platform."
+      },
+      {
+        src: "/vSwitch-Configuration-VLANTagging.jpeg",
+        caption: "Configuring vSwitch with VLAN Tagging for Network Segmentation, such as DMZ, Internal, and Management VLAN."
+      },
+      {
+        src: "/vCenter-Deployment.jpeg",
+        caption: "Deploying VCenter Server Appliance for Centralized Management of ESXi Hosts."
+      },
+      {
+        src: "/vSphere-clustering.jpeg",
+        caption: "Setting up vSphere Cluster with multiple ESXi Hosts for Resource Pooling"
+      },
+      {
+        src: "/Interhost-Migration.jpeg",
+        caption: "Cold Migrating Virtual Machines between ESXi Hosts"
+      },
+    ],
+    description: [
+      "Configure Dell PowerEdge and HPE ProLiant servers with VMware ESXi 6.5 custom images.",
+      "Deploy and configure vCenter Server Appliance (VCSA) for centralized host management.",
+      "Implemented vSwitch and Port Group configuration with VLAN tagging ( Include Management VLAN, Internal VLAN, and DMZ VLAN).",
+      "Enabled iDRAC (Dell) and iLO (HPE) for out-of-band server access and monitoring.",
+      "Integrated ESXi hosts with FortiGate firewall for inter-VLAN routing and segmentation.",
+      "Configured firewall policies on FortiGate to secure specifics port service access (HTTPS, SSH, DNS, FTP, etc.).",
+      "Built cluster and datacenter on vCenter to enable host grouping and resource control."
+    ],
+    techStack: ["VMware ESXi", "vCenter", "FortiGate", "Dell PowerEdge", "HPE Proliant", "iLO", "iDRAC"],
     docLink: "#"
+  },
+  {
+    id: 4,
+    title: "HRIS Data Normalization, ETL, and Visualization Project",
+    location: "Cakrawala University",
+    date: "Nov 2025",
+    coverImage: "/metabase-wpp.jpg",
+    gallery: [
+      {
+        src: "/pg-metabase.jpeg",
+        caption: "Deployed PostgreSQL & Metabase on Red Hat Enterprise Linux Server for HRIS Data Visualization"
+      },
+      {
+        src: "/metabase-visualize.jpeg",
+        caption: "Creating Interactive Dashboards in Metabase for HRIS Data Analysis"
+      },
+    ],
+    description: [
+      "Engineered an end-to-end HR analytics pipeline, converting raw CSVs into a dynamic BI dashboard.",
+      "Architected a 13-table ERD, normalizing the database from 2NF to 3NF.",
+      "Implemented the schema on PostgreSQL (v17) hosted on a Red Hat-based server.",
+      "Built a staging pipelining to clean and load data to 3NF Normalized Database Table.",
+      "Deployed Metabase using Docker and connect it to PostgreSQL.",
+      "Built a live dashboard to visualize key metrics like departmental turnover, compensation benchmarks, age distribution, etc."
+    ],
+    techStack: ["PostgreSQL", "MetaBase", "RedHat", "Podman", "ERD"],
+    docLink: "https://www.linkedin.com/in/azkaabdillah/details/projects/1083832146/multiple-media-viewer/?profileId=ACoAAEDMn1gBnWAcTSKzuNUvMvHwlbxbgSxSlGU&treasuryMediaId=1762020423957&type=DOCUMENT"
   }
 ]
+
 
 export const techStack = [
   {

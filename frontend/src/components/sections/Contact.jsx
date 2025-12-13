@@ -34,7 +34,7 @@ export default function Contact() {
           {/* Bagian Atas: Call to Action */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-20 gap-10">
             <div className="mb-8 md:mb-0 animate-on-scroll">
-              <h2 className="text-2xl md:text-4xl font-bold mb-6 tracking-tight">Have something to Build?</h2>
+              <h2 className="text-2xl md:text-4xl font-bold text-amber-400 mb-6 tracking-tight">Have something to Build?</h2>
               
               <div className="flex items-center animate-on-scroll delay-100">
                 {/* Logo wrapper: w-20 -> w-14 */}
