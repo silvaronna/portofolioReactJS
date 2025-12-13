@@ -195,6 +195,45 @@ export const workExperience = [
   },
 ]
 
+export const portfolioActivities = [
+  {
+    id: 1,
+    title: "Building High Availability Cluster OpenShift",
+    location: "Media Telekomunikasi Mandiri",
+    date: "August 2025",
+    coverImage: "/poweredge.jpeg", // Gunakan gambar yang ada dulu sebagai placeholder
+    gallery: [
+       "/poweredge.jpeg", 
+       "/metricVmwareVisualization.png",
+       "/asiasistem-act1.jpeg"
+    ],
+    description: [
+      "Designed and deployed a highly available OpenShift cluster on bare metal servers.",
+      "Configured HAProxy for load balancing traffic across control plane and worker nodes.",
+      "Implemented persistent storage using Ceph / ODF for stateful applications.",
+      "Hardened security using SELinux policies and RBAC for multi-tenant isolation."
+    ],
+    techStack: ["OpenShift", "Kubernetes", "HAProxy", "Ansible", "RHEL"],
+    docLink: "#" // Ganti dengan link dokumentasi asli nanti
+  },
+  {
+    id: 2,
+    title: "Hardening Linux Server for Enterprise Banking",
+    location: "Asia Sistem Indonesia",
+    date: "January 2025",
+    coverImage: "/redhat.jpg",
+    gallery: ["/redhat.jpg", "/asiasistem-act2.jpeg"],
+    description: [
+      "Implemented CIS Benchmark standards for RHEL 8 servers.",
+      "Configured Firewalld and Fail2Ban to prevent brute-force attacks.",
+      "Set up auditd for logging and monitoring system calls for security compliance.",
+      "Managed SSH keys and disabled root login to enhance access control."
+    ],
+    techStack: ["RHEL", "CIS Benchmark", "Auditd", "Bash Scripting"],
+    docLink: "#"
+  }
+]
+
 export const techStack = [
   {
     name: "Docker",
