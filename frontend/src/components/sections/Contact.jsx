@@ -34,8 +34,7 @@ export default function Contact() {
           {/* Bagian Atas: Call to Action */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-20 gap-10">
             <div className="mb-8 md:mb-0 animate-on-scroll">
-              {/* Heading: text-6xl -> text-4xl/5xl */}
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Have something to Build?</h2>
+              <h2 className="text-2xl md:text-4xl font-bold mb-6 tracking-tight">Have something to Build?</h2>
               
               <div className="flex items-center animate-on-scroll delay-100">
                 {/* Logo wrapper: w-20 -> w-14 */}
@@ -43,7 +42,7 @@ export default function Contact() {
                   <img src="/mylogo.png" alt="Azka Abdillah" className="w-full h-full object-cover" />
                 </div>
                 {/* Subtext: text-4xl -> text-2xl */}
-                <p className="text-2xl md:text-3xl font-medium text-gray-200">let's build it together.</p>
+                <p className="text-2xl md:text-2xl font-medium text-gray-200">let's build it together.</p>
               </div>
             </div>
 

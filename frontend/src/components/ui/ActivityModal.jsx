@@ -16,7 +16,6 @@ export default function ActivityModal({ isOpen, onClose, activity }) {
       setShouldRender(true)
       setTimeout(() => setIsVisible(true), 10) 
       
-      // Lock Scroll & Store Position
       scrollY = window.scrollY
       document.body.style.position = "fixed"
       document.body.style.top = `-${scrollY}px`
@@ -26,25 +25,16 @@ export default function ActivityModal({ isOpen, onClose, activity }) {
       setIsVisible(false)
       setTimeout(() => {
         setShouldRender(false)
-        
-        // Unlock Scroll & Restore Position
         const scrollYStyle = document.body.style.top
-        
-        // FIX: Matikan smooth scroll sebentar agar restore posisi instan
         document.documentElement.style.scrollBehavior = "auto"
-        
         document.body.style.position = ""
         document.body.style.top = ""
         document.body.style.width = ""
         document.body.style.paddingRight = ""
-        
         window.scrollTo(0, parseInt(scrollYStyle || "0") * -1)
-
-        // Kembalikan smooth scroll setelah restore selesai
         setTimeout(() => {
             document.documentElement.style.scrollBehavior = ""
         }, 50)
-        
       }, 300)
     }
   }, [isOpen])
@@ -55,7 +45,10 @@ export default function ActivityModal({ isOpen, onClose, activity }) {
 
   if (!shouldRender || !activity) return null
 
-  // --- IMAGE CONTROLS ---
+  const currentImage = activity.gallery[currentImageIndex]
+  const imageSrc = typeof currentImage === 'string' ? currentImage : currentImage.src
+  const imageCaption = typeof currentImage === 'string' ? "" : currentImage.caption
+
   const handleNext = (e) => {
     e?.stopPropagation()
     setSlideDirection("right")
@@ -75,18 +68,21 @@ export default function ActivityModal({ isOpen, onClose, activity }) {
   }
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      {/* Backdrop */}
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-6">
+      
+      {/* REFACTOR: Backdrop Opacity
+        Diubah jadi bg-black/60 (sebelumnya 90) agar background website di belakangnya terlihat (transparan)
+      */}
       <div 
-        className={`absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity duration-300 ${
+        className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
           isVisible ? "opacity-100" : "opacity-0"
         }`}
         onClick={onClose}
       />
 
-      {/* Modal Container */}
+      {/* REFACTOR: Size updated to max-w-[85vw] h-[82vh] */}
       <div 
-        className={`relative w-full max-w-6xl max-h-[90vh] bg-[#1a1a1a] rounded-3xl border border-white/10 shadow-2xl overflow-hidden flex flex-col lg:flex-row transform origin-center ${
+        className={`relative w-full max-w-[85vw] h-[82vh] bg-[#1a1a1a] rounded-3xl border border-white/10 shadow-2xl overflow-hidden flex flex-col lg:flex-row transform origin-center ${
           isVisible ? "animate-jelly-in" : "animate-jelly-out"
         }`}
       >
@@ -98,12 +94,13 @@ export default function ActivityModal({ isOpen, onClose, activity }) {
           <Icon name="X" size={20} />
         </button>
 
-        {/* --- LEFT SIDE: GALLERY --- */}
-        <div className="lg:w-[65%] bg-black flex flex-col relative group">
-          <div className="relative flex-1 min-h-[300px] lg:min-h-0 bg-[#0a0a0a] flex items-center justify-center overflow-hidden">
+        {/* --- LEFT SIDE: GALLERY (60%) --- */}
+        <div className="lg:w-[60%] bg-black flex flex-col relative group h-[45vh] lg:h-full border-r border-white/5">
+          
+          <div className="relative flex-1 min-h-0 bg-[#0a0a0a] flex items-center justify-center overflow-hidden p-4">
             <img 
               key={currentImageIndex}
-              src={activity.gallery[currentImageIndex] || "/placeholder.svg"} 
+              src={imageSrc || "/placeholder.svg"} 
               alt={`Gallery ${currentImageIndex + 1}`}
               className={`w-full h-full object-contain ${
                 slideDirection === "right" ? "animate-slide-right" : "animate-slide-left"
@@ -112,62 +109,75 @@ export default function ActivityModal({ isOpen, onClose, activity }) {
             
             {activity.gallery.length > 1 && (
               <>
-                <button onClick={handlePrev} className="absolute left-4 p-3 bg-black/40 text-white rounded-full hover:bg-amber-600 transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm border border-white/10">
+                <button onClick={handlePrev} className="absolute left-6 p-3 bg-black/50 text-white rounded-full hover:bg-amber-600 transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm border border-white/10">
                   <Icon name="ChevronLeft" size={24} />
                 </button>
-                <button onClick={handleNext} className="absolute right-4 p-3 bg-black/40 text-white rounded-full hover:bg-amber-600 transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm border border-white/10">
+                <button onClick={handleNext} className="absolute right-6 p-3 bg-black/50 text-white rounded-full hover:bg-amber-600 transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm border border-white/10">
                   <Icon name="ChevronRight" size={24} />
                 </button>
               </>
             )}
           </div>
 
-          {/* Thumbnails */}
+          <div className="bg-[#111] px-6 py-3 border-t border-white/10 flex flex-col justify-center min-h-[70px]">
+             <div className="flex items-center text-amber-500 text-[10px] font-bold uppercase tracking-wider mb-1">
+                <Icon name="Image" size={10} className="mr-1.5" />
+                Image {currentImageIndex + 1} / {activity.gallery.length}
+             </div>
+             <p className="text-gray-300 text-xs leading-relaxed">
+                {imageCaption || "No description available for this image."}
+             </p>
+          </div>
+
           {activity.gallery.length > 1 && (
-            <div className="h-24 bg-[#111] border-t border-white/10 p-4 flex gap-3 overflow-x-auto custom-scrollbar z-20">
-              {activity.gallery.map((img, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleThumbnailClick(idx)}
-                  className={`relative flex-shrink-0 h-full aspect-video rounded-lg overflow-hidden border-2 transition-all duration-300 ${
-                    idx === currentImageIndex 
-                      ? "border-amber-500 opacity-100 scale-105" 
-                      : "border-transparent opacity-50 hover:opacity-100 hover:scale-105"
-                  }`}
-                >
-                  <img src={img} alt="thumb" className="w-full h-full object-cover" />
-                </button>
-              ))}
+            <div className="h-20 bg-[#0a0a0a] border-t border-white/5 p-3 flex gap-3 overflow-x-auto custom-scrollbar z-20 flex-shrink-0 justify-center items-center">
+              {activity.gallery.map((img, idx) => {
+                const thumbSrc = typeof img === 'string' ? img : img.src
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => handleThumbnailClick(idx)}
+                    className={`relative flex-shrink-0 h-14 aspect-video rounded-md overflow-hidden border-2 transition-all duration-300 ${
+                      idx === currentImageIndex 
+                        ? "border-amber-500 opacity-100 scale-105 shadow-md shadow-amber-900/20" 
+                        : "border-transparent opacity-40 hover:opacity-100 hover:scale-105"
+                    }`}
+                  >
+                    <img src={thumbSrc} alt="thumb" className="w-full h-full object-cover" />
+                  </button>
+                )
+              })}
             </div>
           )}
         </div>
 
-        {/* --- RIGHT SIDE: DETAILS --- */}
-        <div className="lg:w-[35%] flex flex-col h-full bg-[#1a1a1a] border-l border-white/5">
-          <div className="p-8 overflow-y-auto custom-scrollbar flex-1">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-white mb-3 leading-tight">{activity.title}</h3>
-              <div className="flex flex-wrap items-center gap-3 text-sm">
-                <span className="bg-amber-900/20 text-amber-400 px-3 py-1 rounded-full border border-amber-900/30 flex items-center font-medium">
-                  <Icon name="MapPin" size={14} className="mr-1.5" />
+        {/* --- RIGHT SIDE: DETAILS (40%) --- */}
+        <div className="lg:w-[40%] flex flex-col h-full bg-[#1a1a1a] min-h-0">
+          
+          <div className="p-6 lg:p-8 overflow-y-auto custom-scrollbar flex-1">
+            <div className="mb-8">
+              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">{activity.title}</h3>
+              <div className="flex flex-wrap gap-2">
+                <div className="flex items-center text-amber-400 font-medium bg-amber-900/10 px-3 py-1.5 rounded-lg border border-amber-900/20 w-fit text-xs">
+                  <Icon name="MapPin" size={12} className="mr-1.5" />
                   {activity.location}
-                </span>
-                <span className="text-gray-500 flex items-center bg-black/20 px-3 py-1 rounded-full border border-white/5">
-                  <Icon name="Calendar" size={14} className="mr-1.5" />
+                </div>
+                <div className="flex items-center text-gray-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5 w-fit text-xs">
+                  <Icon name="Calendar" size={12} className="mr-1.5" />
                   {activity.date}
-                </span>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               <div>
-                <h4 className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-3 flex items-center">
-                  <Icon name="FileText" size={14} className="mr-2" /> Project Description
+                <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-3 flex items-center border-b border-white/10 pb-2">
+                  <Icon name="FileText" size={14} className="mr-2 text-amber-500" /> Project Description
                 </h4>
                 <div className="space-y-3">
                   {activity.description.map((desc, i) => (
-                    <div key={i} className="flex items-start text-gray-300 text-sm leading-relaxed">
-                      <span className="w-1.5 h-1.5 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0" />
+                    <div key={i} className="flex items-start text-gray-300 text-sm leading-relaxed group hover:text-white transition-colors">
+                      <span className="w-1 h-1 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0 group-hover:scale-150 transition-transform" />
                       {desc}
                     </div>
                   ))}
@@ -175,12 +185,12 @@ export default function ActivityModal({ isOpen, onClose, activity }) {
               </div>
 
               <div>
-                <h4 className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-3 flex items-center">
-                   <Icon name="Cpu" size={14} className="mr-2" /> Tech Stack
+                <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-3 flex items-center border-b border-white/10 pb-2">
+                   <Icon name="Cpu" size={14} className="mr-2 text-amber-500" /> Tech Stack
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {activity.techStack.map((tech, i) => (
-                    <span key={i} className="px-3 py-1.5 bg-[#252525] text-gray-300 hover:text-white rounded-full text-xs font-medium border border-white/5 transition-colors">
+                    <span key={i} className="px-3 py-1.5 bg-[#252525] text-gray-300 hover:text-white rounded-full text-xs font-medium border border-white/5 transition-all hover:border-amber-500/30 hover:bg-amber-900/10 shadow-sm cursor-default">
                       {tech}
                     </span>
                   ))}
@@ -189,17 +199,19 @@ export default function ActivityModal({ isOpen, onClose, activity }) {
             </div>
           </div>
 
-          <div className="p-6 border-t border-white/5 bg-[#151515]">
-            <a 
-              href={activity.docLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex w-full justify-center items-center px-6 py-4 bg-amber-600 hover:bg-amber-500 text-white rounded-full font-bold transition-all shadow-lg hover:shadow-amber-500/20 active:scale-95 group"
-            >
-              <Icon name="FileText" size={18} className="mr-2 group-hover:-translate-y-0.5 transition-transform" />
-              View Full Documentation
-            </a>
-          </div>
+          {activity.docLink && (
+            <div className="p-5 border-t border-white/5 bg-[#151515] flex-shrink-0 z-10">
+              <a 
+                href={activity.docLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full justify-center items-center px-6 py-3 bg-white text-black hover:bg-gray-200 rounded-xl font-bold text-sm transition-all shadow-lg hover:shadow-white/10 active:scale-95 group"
+              >
+                <Icon name="FileText" size={16} className="mr-2 group-hover:-translate-y-0.5 transition-transform" />
+                View Full Documentation
+              </a>
+            </div>
+          )}
         </div>
 
       </div>

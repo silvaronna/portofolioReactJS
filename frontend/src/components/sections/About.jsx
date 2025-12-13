@@ -6,12 +6,12 @@ const aboutCards = [
   {
     title: "Professional Goal",
     content:
-      "To become a skilled Security Engineer who can design, implement, and manage cyber-attack-safe infrastructure solutions.",
+      "To become a skillfull Security Engineer who can design, implement, and manage cyber-attack-safe infrastructure solutions.",
   },
   {
     title: "Personal Mission",
     content:
-      "To continuously learn and grow in the field of infrastructure while delivering value to organizations and clients.",
+      "Continuously learn and grow in the field of infrastructure while delivering value to organizations and clients.",
   },
 ]
 
@@ -27,7 +27,7 @@ export default function About() {
           <p className="text-gray-300 text-lg leading-relaxed mb-8 animate-on-scroll delay-100">
             College student as well as System Engineer, 
             who has a deep interest in Infrastructure and Security. 
-            Starting Career as an IT since 17.yo with work experience in the telecommunications industry and government, 
+            Starting Career as an IT since 17yo with work experience in the telecommunications industry and government, 
             I'm ready to work and be a source of joy and inspiration in every task i take on.
           </p>
 

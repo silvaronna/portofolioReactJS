@@ -4,6 +4,7 @@ import { useState } from "react"
 import SectionHeading from "../ui/SectionHeading"
 import ActivityModal from "../ui/ActivityModal"
 import Icon from "../ui/Icon"
+// FIX: Import nama variabel baru 'portfolioActivities' (bukan portfolioPortofolio)
 import { portfolioActivities } from "../../data"
 
 export default function Activities() {
@@ -21,22 +22,20 @@ export default function Activities() {
   return (
     <section id="activities" className="section-container bg-dark">
       <div className="mb-12 animate-on-scroll">
-        <SectionHeading title="Project Activities" />
+        <SectionHeading title="Portfolio" />
         <p className="text-gray-400 mt-4 text-lg max-w-2xl animate-on-scroll delay-100">
           Selected detailed implementations and projects I've executed in real-world environments.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* FIX: Map dari 'portfolioActivities' */}
         {portfolioActivities.map((activity, index) => (
-          // WRAPPER DIV: Menangani animasi muncul (animate-on-scroll). 
-          // State 'pressedId' tidak akan me-render ulang div ini, jadi animasi aman.
           <div 
             key={activity.id}
             className="animate-on-scroll h-full"
             style={{ transitionDelay: `${index * 100}ms` }}
           >
-            {/* INNER DIV: Menangani interaksi klik & hover */}
             <div
               onClick={() => handleCardClick(activity)}
               className={`group relative bg-[#252525] rounded-2xl overflow-hidden cursor-pointer border border-gray-800 hover:border-amber-500/50 transition-all duration-200 flex flex-col h-full ${

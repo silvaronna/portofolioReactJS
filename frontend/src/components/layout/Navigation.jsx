@@ -2,6 +2,7 @@ const navigationItems = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "work", label: "Work" },
+    { id: "activities", label: "Portofolio" },
   { id: "certifications", label: "Certifications" },
   { id: "education", label: "Education" },
   { id: "contact", label: "Contact" },

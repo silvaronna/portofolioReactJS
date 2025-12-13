@@ -27,7 +27,105 @@
 }
 
 @layer utilities {
-  /* ANIMASI JELLY / POP */
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px;  /* Sangat tipis */
+    height: 5px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1); /* Abu-abu transparan samar */
+    border-radius: 20px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(245, 158, 11, 0.8); /* Amber terang saat disentuh */
+  }
+}
+
+/* Global Scrollbar (Halaman Utama) */
+::-webkit-scrollbar {
+  width: 10px; /* Lebar sedang */
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a; /* Gelap pekat menyatu dengan background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333; /* Abu-abu gelap */
+  border-radius: 5px;
+  border: 2px solid #0a0a0a; /* Border ini memberi efek 'padding' pada scrollbar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b; /* Amber menyala saat di-hover */
+}
+
+/* Dukungan Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #333 #0a0a0a;
+}
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px;  /* Sangat tipis */
+    height: 5px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1); /* Abu-abu transparan samar */
+    border-radius: 20px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(245, 158, 11, 0.8); /* Amber terang saat disentuh */
+  }
+
+/* Global Scrollbar (Halaman Utama) */
+::-webkit-scrollbar {
+  width: 10px; /* Lebar sedang */
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a; /* Gelap pekat menyatu dengan background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333; /* Abu-abu gelap */
+  border-radius: 5px;
+  border: 2px solid #0a0a0a; /* Border ini memberi efek 'padding' pada scrollbar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b; /* Amber menyala saat di-hover */
+}
+
+/* Dukungan Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #333 #0a0a0a;
+}
+
+/* ANIMASI JELLY / POP */
   @keyframes jellyIn {
     0% { transform: scale(0.9); opacity: 0; }
     50% { transform: scale(1.03); opacity: 1; } /* Overshoot sedikit biar mantul */
@@ -66,7 +164,7 @@
   .animate-slide-left {
     animation: slideInLeft 0.4s ease-out forwards;
   }
-}
+
 
 @layer components {
   .shadow-text {

@@ -2,14 +2,14 @@ export const skills = {
   hard: [
     {
       icon: "Server",
-      title: "System Administration",
-      description: "Experienced in managing Linux and Windows servers, ensuring optimal performance and security.",
-      tools: ["Linux", "Windows Server", "VMware ESXi"],
+      title: "Server Engineering",
+      description: "Experienced in Various Operating System, ensuring optimal performance and security.",
+      tools: ["Linux", "Windows Server", "VMware ESXi", "OpenShift"],
       bgClass: "server-bg",
     },
     {
       icon: "Cloud",
-      title: "Cloud Management",
+      title: "Cloud Engineering",
       description: "Experienced hands-on cloud based server for deploying and managing scalable infrastructure.",
       tools: ["AWS", "Biznet Gio"],
       bgClass: "cloud-bg",
@@ -19,7 +19,7 @@ export const skills = {
       title: "Deployment Tools",
       description:
         "Skilled in setting up containers, managing multi-container apps, and streamlining CI/CD Pipeline Workflows.",
-      tools: ["Docker", "Nginx", "Cloudflare", "Ansible", "GitHub Actions"],
+      tools: ["Podman/Docker", "Nginx", "Cloudflare", "Ansible", "Jenkins", "SonarQube"],
       bgClass: "container-bg",
     },
     {
@@ -68,15 +68,29 @@ export const education = [
       "Gained hands-on experience in software development focusing on C++ and JavaScript, with a solid understanding of frontend development, relational databases, and structured information systems. Also explored essential concepts in network architecture and IT infrastructure.",
     courses: [
       "Information System Management",
-      "Bussiness and Technology Modelling",
-      "Database Modelling and Query Languages ",
-      "Web Client Development",
-      "User Experience Design",
-      "Object Oriented Programming",
+      "Business and Technology Modelling",
+      "Database Modelling and Query Languages",
+      "Backend and Frontend Development",
+      "User Interface and User Experience Design",
+      "Information System Analysis and Design",
     ],
   },
-  {
+    {
     id: 2,
+    institution: "Orbit Future Academy",
+    degree: "AWS Re/Start Program",
+    field: "Cloud Computing",
+    location: "Jakarta, Indonesia",
+    period: "2025",
+    description:
+      "Learned fundamentals of Cloud Computing, AWS Core Services, Cloud Security, Cloud Networking, and DevOps Basics.",
+    fullDescription:
+      "Learned fundamentals of Cloud Computing, AWS Core Services, Cloud Security, Cloud Networking, and DevOps Basics. Gained practical experience through hands-on labs and real-world projects simulating cloud infrastructure deployment and management.",
+    courses: ["Cloud Security principles", "CI/CD toolchain", "Virtual Private Cloud", "Serverless services", "EC2 Instances", "Cloud Storage with S3" ],
+  },
+
+  {
+    id: 3,
     institution: "SMK-TI Umar Fatah",
     degree: "Vocational High School",
     field: "Computer and Network Engineering",
@@ -104,6 +118,18 @@ export const certifications = [
   },
   {
     id: 2,
+    title: "RedHat System Administration (RH124-RH134)",
+    issuer: "RedHat",
+    issuedDate: "Oct 2025",
+    image: "/redhat.jpg",
+    skills: ["NFS", "SELinux", "FirewallD", "Bash Scripting", "User and Group Management", "Storage Management (LVM & Partitioning)", "Process Management", "Podman Container"],
+    description:
+      "Foundational Linux skills such as managing files, users, networking, services, storage management, security (SELinux), system tuning, boot troubleshooting, and Bash scripting for RHEL (Red Hat Enterprise Linux), preparing for the RHCSA certification",
+    credentialLink: "https://www.credly.com/badges/db926a27-a023-46f2-92cc-6022d0b6ff91/linked_in_profile",
+  },
+
+  {
+    id: 3,
     title: "Fundamental of Red Hat Enterprise Linux",
     issuer: "Coursera - RedHat",
     issuedDate: "June 2024",
@@ -119,7 +145,7 @@ export const certifications = [
     credentialLink: "https://www.coursera.org/account/accomplishments/verify/JS8PLJ9R9G6X",
   },
   {
-    id: 3,
+    id: 4,
     title: "IT Support Technical Skills Helpdesk",
     issuer: "Udemy",
     issuedDate: "March 2023",
@@ -130,7 +156,7 @@ export const certifications = [
     credentialLink: "https://www.udemy.com/certificate/UC-988d5836-144b-4fab-8fbe-d933fe5d70ac/",
   },
   {
-    id: 4,
+    id: 5,
     title: "Fundamental of Network Engineering",
     issuer: "Course-Net",
     issuedDate: "February 2023",
@@ -141,7 +167,7 @@ export const certifications = [
     credentialLink: "https://course-net.com/certificate-verifier/1330E0B76-1330DE465-3036A9C/",
   },
   {
-    id: 5,
+    id: 6,
     title: "Basic Mikrotik",
     issuer: "ID Networkers",
     issuedDate: "May 2024",
@@ -161,16 +187,15 @@ export const workExperience = [
     logo: "/mtm.png",
     period: "June 2025 - Present",
     description:
-      "Managed Proliant and PowerEdge server with VMware Operating System including dedicated VM that contains in it",
+      "Build, maintain, monitor, and optimized reliable server infrastructures.",
     fullDescription:
-      "Responsible for maintaining and optimizing On-Premise Vmware server environments, Health Check, and providing technical support for enterprise clients. Collaborated with the Network Division team to ensure effectiveness of the application.",
+      "During my time as a System Engineer, I was directly involved in, building, maintaining, and monitoring reliable server infrastructures.",
     jobDesc: [
-      "Managed and maintained Linux server environments",
-      "Maintaining ROA Dashboard for Network Monitoring and Optimization",
+      "Managed, Optimized, and Troubleshoot VMware ESXi, VCenter cluster orchestration.",
+      "Manage, Configure, and Optimized HPE Proliant, and Dell PowerEdge devices.",
       "Maintaining Container based with microservices concept application",
-      "Implemented Vmware Hypervisor Monitoring with Grafana x InfluxDB x Telegraf",
-      "Collaborated with Network Division for effectiveness of application",
-      "Maintain and Managed Proliant and PowerEdge Server device",
+      "Successfully reducing average deployment time by 80%+ with Ansible Automation Tools.",
+      "Build Containerized Robust Monitoring System with various endpoint and datasources using Grafana",
     ],
     screenshots: ["/poweredge.jpeg?height=250&width=450", "/metricVmwareVisualization.png?height=250&width=450"],
   },
@@ -185,9 +210,9 @@ export const workExperience = [
       "Responsible for maintaining and optimizing on-premise server environments, designing and implementing security protocols. Collaborated with the development team to ensure smooth deployment of applications and services.",
     jobDesc: [
       "Configure and maintained Linux and Windows server environments",
-      "Configure and maintained Dell and HPE Server Unit",
+      "Manage, Configure, and Optimized HPE Proliant, and Dell PowerEdge devices.",
       "Configure and maintained Vmware ESXi with VCenter Orchestration",
-      "Configure and maintained Fortigate for VLAN Tagging and Security Server environments",
+      "Configure and maintained Fortigate for VLAN Tagging and Firewall Policy to Securing Server environments",
       "Collaborated with development team for application deployment",
       "Monitored system performance and optimized resources",
     ],
@@ -199,37 +224,74 @@ export const portfolioActivities = [
   {
     id: 1,
     title: "Building High Availability Cluster OpenShift",
-    location: "Media Telekomunikasi Mandiri",
-    date: "August 2025",
-    coverImage: "/poweredge.jpeg", // Gunakan gambar yang ada dulu sebagai placeholder
+    location: "Independent Project",
+    date: "December 2025",
+    coverImage: "/openshift.png",
     gallery: [
-       "/poweredge.jpeg", 
-       "/metricVmwareVisualization.png",
-       "/asiasistem-act1.jpeg"
+      {
+        src: "/Openshift-Clusters.drawio.png",
+        caption: "Topologi High Availability Cluster OpenShift pada lingkungan VMware."
+      },
+      {
+        src: "/PoweringOnCluster.png",
+        caption: "Proses inisialisasi node cluster dan verifikasi konektivitas antar node."
+      },
+      {
+        src: "/OCP-Dashboard-I.png",
+        caption: "Tampilan dashboard OpenShift Web Console yang menunjukkan status kesehatan cluster."
+      },
+      {
+        src: "/OCP-Dashboard-II.png",
+        caption: "Monitoring detail penggunaan resource (CPU/Memory) pada setiap node."
+      }
     ],
     description: [
-      "Designed and deployed a highly available OpenShift cluster on bare metal servers.",
+      "Designed and deployed a highly availablity OpenShift cluster on VMware.",
       "Configured HAProxy for load balancing traffic across control plane and worker nodes.",
-      "Implemented persistent storage using Ceph / ODF for stateful applications.",
+      "Integrated VIP Keepalived and HAProxy to ensure failover capabilities for critical services.",
+      "Configured DNS Server for Communication Inter Node on Openshift Cluster.",
       "Hardened security using SELinux policies and RBAC for multi-tenant isolation."
     ],
-    techStack: ["OpenShift", "Kubernetes", "HAProxy", "Ansible", "RHEL"],
-    docLink: "#" // Ganti dengan link dokumentasi asli nanti
+    techStack: ["OpenShift", "Kubernetes", "HAProxy", "RHEL", "VMware", "Orchestrated Containers"],
+    docLink: "https://www.notion.so/OpenShift-Container-Platform-2c87649716e780aabf8df99e4f7b74dd?source=copy_link"
   },
   {
     id: 2,
-    title: "Hardening Linux Server for Enterprise Banking",
-    location: "Asia Sistem Indonesia",
-    date: "January 2025",
-    coverImage: "/redhat.jpg",
-    gallery: ["/redhat.jpg", "/asiasistem-act2.jpeg"],
-    description: [
-      "Implemented CIS Benchmark standards for RHEL 8 servers.",
-      "Configured Firewalld and Fail2Ban to prevent brute-force attacks.",
-      "Set up auditd for logging and monitoring system calls for security compliance.",
-      "Managed SSH keys and disabled root login to enhance access control."
+    title: "Robust Multi End-Point Grafana Monitoring System",
+    location: "Media Telekomunikasi Mandiri",
+    date: "July 2025",
+    coverImage: "/grafana-wpp.png",
+    gallery: [
+      {
+        src: "/Dashboard-Craft.png",
+        caption: "Custom Dashboard Grafana untuk visualisasi metrik server secara real-time."
+      },
+      {
+        src: "/InfluxDB-Dashboard.png",
+        caption: "Konfigurasi Datasource InfluxDB untuk penyimpanan metrik time-series."
+      },
+      {
+        src: "/Deploy-withAnsible.png",
+        caption: "Automasi deployment agent monitoring menggunakan Ansible Playbook."
+      },
+      {
+        src: "/SuccessVisualizedGrafanawithNodeExporter.png",
+        caption: "Integrasi sukses Node Exporter untuk monitoring hardware resource."
+      },
+      {
+        src: "/bgp-flap.png",
+        caption: "Panel monitoring jaringan untuk mendeteksi BGP Flapping."
+      }
     ],
-    techStack: ["RHEL", "CIS Benchmark", "Auditd", "Bash Scripting"],
+    description: [
+      "Building Container Pipeline for Grafana Monitoring System",
+      "Setting up PostgreSQL as Grafana Database Backend for better performance and reliability.",
+      "Integrated multiple data sources including Prometheus exporter, InfluxDB, and Node Exporter for specific metric device monitoring.",
+      "Monitoring various endpoint including RHEL Based Server, Juniper Switch, and VMware Esxi Clusters.",
+      "Developed custom dashboards for visualizing server performance, network traffic, and application metrics.",
+      "Perform Deployment with Ansible Automation to streamline setup and configuration for above 20+ various endpoints."
+    ],
+    techStack: ["Docker", "Ansible", "Grafana"],
     docLink: "#"
   }
 ]
