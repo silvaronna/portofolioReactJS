@@ -5,6 +5,7 @@ import About from "../components/sections/About"
 import Skills from "../components/sections/Skills"
 import Work from "../components/sections/Work"
 import Contact from "../components/sections/Contact"
+import Activities from "../components/sections/Activities"
 import SectionDivider from "../components/ui/SectionDivider"
 import { useScrollAnimation } from "../hooks/useScrollAnimation"
 
@@ -25,7 +26,7 @@ export default function Portfolio() {
       <SectionDivider />
       <Work />
       <SectionDivider />
-      {/* Wrap lazy-loaded components with Suspense */}
+      <Activities />
       <Suspense
         fallback={
           <div className="section-container text-center text-gray-400 text-xl min-h-[500px] flex items-center justify-center">

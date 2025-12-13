@@ -11,12 +11,12 @@ export default function Education() {
 
   return (
     <section id="education" className="section-container bg-dark">
-      <div className="mb-16 animate-on-scroll">
+      <div className="mb-12 animate-on-scroll">
         <SectionHeading title="Education" />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
-        <div className="lg:col-span-2 animate-on-scroll delay-100">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+        <div className="lg:col-span-2 animate-on-scroll delay-100 sticky top-24">
           <EducationSelector education={education} activeTab={activeTab} onTabSelect={setActiveTab} />
         </div>
 

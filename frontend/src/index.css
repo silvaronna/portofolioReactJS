@@ -15,6 +15,9 @@
     background-color: #1a1a1a;
     color: #f5f5f5;
     user-select: none;
+    /* Menambahkan antialiasing agar font terlihat tajam di ukuran kecil */
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
@@ -23,28 +26,169 @@
   }
 }
 
+@layer utilities {
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px;  /* Sangat tipis */
+    height: 5px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1); /* Abu-abu transparan samar */
+    border-radius: 20px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(245, 158, 11, 0.8); /* Amber terang saat disentuh */
+  }
+}
+
+/* Global Scrollbar (Halaman Utama) */
+::-webkit-scrollbar {
+  width: 10px; /* Lebar sedang */
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a; /* Gelap pekat menyatu dengan background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333; /* Abu-abu gelap */
+  border-radius: 5px;
+  border: 2px solid #0a0a0a; /* Border ini memberi efek 'padding' pada scrollbar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b; /* Amber menyala saat di-hover */
+}
+
+/* Dukungan Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #333 #0a0a0a;
+}
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px;  /* Sangat tipis */
+    height: 5px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1); /* Abu-abu transparan samar */
+    border-radius: 20px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(245, 158, 11, 0.8); /* Amber terang saat disentuh */
+  }
+
+/* Global Scrollbar (Halaman Utama) */
+::-webkit-scrollbar {
+  width: 10px; /* Lebar sedang */
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a; /* Gelap pekat menyatu dengan background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333; /* Abu-abu gelap */
+  border-radius: 5px;
+  border: 2px solid #0a0a0a; /* Border ini memberi efek 'padding' pada scrollbar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b; /* Amber menyala saat di-hover */
+}
+
+/* Dukungan Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #333 #0a0a0a;
+}
+
+/* ANIMASI JELLY / POP */
+  @keyframes jellyIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    50% { transform: scale(1.03); opacity: 1; } /* Overshoot sedikit biar mantul */
+    70% { transform: scale(0.98); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes jellyOut {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0; }
+  }
+
+  /* ANIMASI SLIDE GAMBAR */
+  @keyframes slideInRight {
+    from { transform: translateX(30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes slideInLeft {
+    from { transform: translateX(-30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  .animate-jelly-in {
+    animation: jellyIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .animate-jelly-out {
+    animation: jellyOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-slide-right {
+    animation: slideInRight 0.4s ease-out forwards;
+  }
+
+  .animate-slide-left {
+    animation: slideInLeft 0.4s ease-out forwards;
+  }
+
+
 @layer components {
   .shadow-text {
     text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
   }
 
+  /* REFACTOR: Ukuran Heading diperkecil agar proporsional */
   .section-heading {
-    @apply text-5xl md:text-6xl font-bold relative;
+    @apply text-3xl md:text-4xl font-bold relative;
   }
 
   .section-heading::after {
     content: "";
-    @apply absolute -bottom-4 left-0 w-24 h-1;
+    @apply absolute -bottom-3 left-0 w-16 h-1; /* Garis lebih pendek & tipis */
     background-color: #df8107;
   }
 
   .section-heading-center {
-    @apply text-5xl md:text-6xl font-bold relative text-center;
+    @apply text-3xl md:text-4xl font-bold relative text-center;
   }
 
   .section-heading-center::after {
     content: "";
-    @apply absolute -bottom-4 w-24 h-1;
+    @apply absolute -bottom-3 w-16 h-1;
     background-color: #df8107;
     left: 50%;
     transform: translateX(-50%);
@@ -70,8 +214,9 @@
     @apply bg-[#252525] border border-gray-800 hover:border-amber-700/50 transition-all;
   }
 
+  /* REFACTOR: Container dibatasi max-w-7xl (1280px) dan padding vertical dikurangi drastis */
   .section-container {
-    @apply max-w-[1800px] mx-auto px-12 py-48;
+    @apply max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-24;
   }
 
   /* Animation backgrounds */
@@ -140,11 +285,12 @@
   }
 
   /* Certification card styles */
+/* REFACTOR: Certification Card Size Adjustment */
   .cert-card {
     @apply bg-[#252525] rounded-xl overflow-hidden border border-gray-800 transition-all duration-300;
-    min-width: 400px;
-    max-width: 450px;
-    height: 280px;
+    min-width: 300px; /* Diperkecil dari 400px */
+    max-width: 350px; /* Diperkecil dari 450px */
+    height: 240px;    /* Diperkecil dari 280px */
     position: relative;
     cursor: pointer;
   }
