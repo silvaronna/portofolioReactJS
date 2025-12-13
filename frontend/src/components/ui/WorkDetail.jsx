@@ -4,21 +4,23 @@ export default function WorkDetail({ workExperience, activeWork }) {
   if (!activeWorkData) return null
 
   return (
-    // Container utama menggunakan rounded-xl
     <div className="bg-[#252525] rounded-xl p-6 md:p-8 shadow-2xl border border-gray-800 animate-fadeIn min-h-[400px]">
       
       <div className="mb-6 border-b border-gray-800 pb-6">
-        <h3 className="text-2xl font-bold text-white mb-2">{activeWorkData.title}</h3>
-        <div className="flex flex-wrap gap-3 text-sm">
-          <span className="bg-amber-900/20 text-amber-400 px-3 py-1 rounded-full border border-amber-900/30">{activeWorkData.categories}</span>
-          <span className="bg-black/20 text-gray-400 px-3 py-1 rounded-full flex items-center">
-             Let's ensure consistent radius here too
+        <h3 className="text-2xl font-bold text-white mb-3">{activeWorkData.title}</h3>
+        
+        {/* BAGIAN INI TADI BOCOR - SUDAH DIPERBAIKI */}
+        <div className="flex flex-wrap items-center gap-3 text-sm">
+          <span className="bg-amber-900/20 text-amber-400 px-4 py-1.5 rounded-full border border-amber-900/30 font-medium">
+            {activeWorkData.categories}
+          </span>
+          <span className="bg-black/20 text-gray-400 px-4 py-1.5 rounded-full flex items-center border border-white/5">
             {activeWorkData.period}
           </span>
         </div>
       </div>
 
-      <p className="text-gray-400 text-base mb-8 leading-relaxed animate-on-scroll py-4">
+      <p className="text-gray-400 text-base mb-8 leading-relaxed animate-on-scroll py-2">
         {activeWorkData.fullDescription}
       </p>
 
@@ -26,11 +28,10 @@ export default function WorkDetail({ workExperience, activeWork }) {
         <h5 className="text-amber-400 font-semibold mb-4 text-lg flex items-center">
           Key Responsibilities
         </h5>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Gap sedikit diperlebar */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {activeWorkData.jobDesc.map((responsibility, i) => (
             <div
               key={i}
-              // REFACTOR: rounded-lg -> rounded-xl. Padding p-3 -> p-4 agar lebih lega.
               className="flex items-start bg-black/20 rounded-xl p-4 hover:bg-amber-900/10 transition-colors animate-on-scroll border border-white/5 hover:border-amber-900/30 group"
               style={{ transitionDelay: `${200 + i * 50}ms` }}
             >
@@ -49,7 +50,6 @@ export default function WorkDetail({ workExperience, activeWork }) {
             {activeWorkData.screenshots.map((screenshot, i) => (
               <div
                 key={i}
-                // Ensure rounded-xl here too
                 className="rounded-xl overflow-hidden border border-gray-700 hover:border-amber-600/50 transition-all shadow-md hover:shadow-lg animate-on-scroll group relative"
                 style={{ transitionDelay: `${300 + i * 100}ms` }}
               >
