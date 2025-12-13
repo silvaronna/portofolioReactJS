@@ -17,19 +17,22 @@ const aboutCards = [
 export default function About() {
   return (
     <section id="about" className="section-container bg-dark">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+      {/* Gap dikurangi: gap-16 -> gap-12 */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
         <div className="animate-on-scroll">
           <SectionHeading title="About" />
         </div>
 
-        <div className="md:col-span-2">
-          <p className="text-gray-300 text-2xl leading-relaxed mb-10 animate-on-scroll delay-100">
+        <div className="lg:col-span-2">
+          {/* Paragraf utama: text-2xl -> text-lg. Warna gray-300 agar kontras cukup tapi tidak menyilaukan */}
+          <p className="text-gray-300 text-lg leading-relaxed mb-8 animate-on-scroll delay-100">
             Hello, I'm Azka a college student majoring in Information Systems and Technology at Cakrawala University, as
             well as an IT staff. I began my career in IT at 17, with a strong interest in System and Security
             Engineering. I'm always ready to contribute and be a source of joy and inspiration in every task I take on.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-16">
+          {/* Grid kartu: gap-10 -> gap-6 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
             {aboutCards.map((card, index) => (
               <Card
                 key={card.title}
