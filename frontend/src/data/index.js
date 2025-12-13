@@ -104,7 +104,7 @@ export const certifications = [
   },
   {
     id: 2,
-    title: "Fundamental of Red Hat Enterprise Linux Server",
+    title: "Fundamental of Red Hat Enterprise Linux",
     issuer: "Coursera - RedHat",
     issuedDate: "June 2024",
     image: "/redhat.jpg",
@@ -209,7 +209,7 @@ export const techStack = [
   {
     name: "GitHub Actions",
     logo: "/github-actions.png",
-    description: "CI/CD automation workflows",
+    description: "Simple light-weighted CI/CD automation workflows",
   },
   {
     name: "Tailwind CSS",

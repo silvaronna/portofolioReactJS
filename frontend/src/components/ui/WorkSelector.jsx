@@ -4,15 +4,17 @@ import Icon from "./Icon"
 
 export default function WorkSelector({ workExperience, activeWork, onWorkSelect }) {
   return (
-    <div className="space-y-6">
+    // REFACTOR: space-y-6 -> space-y-3. Lebih padat.
+    <div className="space-y-3">
       {workExperience.map((work) => (
         <button
           key={work.id}
           onClick={() => onWorkSelect(work.id)}
-          className={`w-full text-left px-6 py-7 text-lg rounded-2xl transition-all duration-300 ${
+          // REFACTOR: Padding dikurangi px-6 py-7 -> px-5 py-4
+          className={`w-full text-left px-5 py-4 rounded-xl transition-all duration-300 group ${
             activeWork === work.id
-              ? "bg-gradient-to-r from-amber-900/30 to-transparent border-l-4 border-amber-500 pl-5"
-              : "hover:bg-[#252525]/30"
+              ? "bg-gradient-to-r from-amber-900/40 to-transparent border-l-4 border-amber-500 pl-4"
+              : "hover:bg-[#252525] border-l-4 border-transparent"
           }`}
         >
           <div className="flex items-center">
@@ -20,24 +22,28 @@ export default function WorkSelector({ workExperience, activeWork, onWorkSelect 
               <img
                 src={work.logo || "/placeholder.svg"}
                 alt={`${work.title} logo`}
-                className={`w-12 h-12 rounded-md object-contain p-2 ${
-                  activeWork === work.id ? "bg-amber-900/30" : "bg-[#252525]"
+                // REFACTOR: Logo size w-12 -> w-10
+                className={`w-10 h-10 rounded-lg object-contain p-1.5 transition-colors ${
+                  activeWork === work.id ? "bg-amber-900/30" : "bg-[#2a2a2a] group-hover:bg-[#333]"
                 }`}
               />
             </div>
 
-            <div className="flex-1">
-              <h3 className={`text-xl font-bold ${activeWork === work.id ? "text-amber-400" : "text-gray-300"}`}>
+            <div className="flex-1 min-w-0"> {/* min-w-0 mencegah text truncate error */}
+              {/* REFACTOR: text-xl -> text-base */}
+              <h3 className={`text-base font-bold truncate ${activeWork === work.id ? "text-amber-400" : "text-gray-300 group-hover:text-white"}`}>
                 {work.title}
               </h3>
-              <p className="text-gray-400 text-sm mb-1">{work.categories}</p>
-              <div className="flex items-center text-amber-500/80 text-sm">
-                <Icon name="Calendar" size={16} className="mr-2" />
+              {/* REFACTOR: text-sm -> text-xs */}
+              <p className="text-gray-500 text-xs mb-1 truncate">{work.categories}</p>
+              
+              <div className="flex items-center text-amber-600/80 text-xs">
+                <Icon name="Calendar" size={14} className="mr-1.5" />
                 <span>{work.period}</span>
               </div>
             </div>
 
-            {activeWork === work.id && <Icon name="ChevronRight" size={24} className="ml-auto text-amber-500" />}
+            {activeWork === work.id && <Icon name="ChevronRight" size={18} className="ml-2 text-amber-500" />}
           </div>
         </button>
       ))}
