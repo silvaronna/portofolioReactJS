@@ -11,16 +11,14 @@ export default function Work() {
 
   return (
     <section id="work" className="section-container bg-dark">
-      {/* REFACTOR: mb-16 -> mb-10 agar tidak terlalu jauh */}
-      <div className="mb-10 animate-on-scroll">
+      <div className="mb-12 animate-on-scroll">
+        {/* Judul ini sekarang akan otomatis berwarna Emas */}
         <SectionHeading title="Recent Work" />
-        {/* REFACTOR: text-2xl -> text-lg, mt-10 -> mt-4. Lebih rapat ke judul. */}
         <p className="text-gray-400 mt-4 text-lg animate-on-scroll delay-100 max-w-2xl">
           Explore my professional experience and projects I've worked on.
         </p>
       </div>
 
-      {/* REFACTOR: gap-16 -> gap-8 agar panel kiri dan kanan lebih menyatu */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
         <div className="lg:col-span-2 animate-on-scroll delay-200 sticky top-24">
           <WorkSelector workExperience={workExperience} activeWork={activeWork} onWorkSelect={setActiveWork} />

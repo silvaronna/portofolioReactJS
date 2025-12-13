@@ -10,20 +10,19 @@ export default function Certifications() {
   const [selectedCert, setSelectedCert] = useState(null)
 
   const handleCertClick = (cert) => {
-    // Toggle: jika diklik lagi, tutup detailnya
     setSelectedCert(selectedCert?.id === cert.id ? null : cert)
   }
 
   return (
     <section id="certifications" className="section-container bg-dark">
       <div className="mb-12 animate-on-scroll">
+        {/* Judul ini sekarang akan otomatis berwarna Emas */}
         <SectionHeading title="Certifications" />
         <p className="text-gray-400 mt-4 text-lg max-w-2xl animate-on-scroll delay-100">
           Professional certifications that validate my expertise and knowledge in various IT domains.
         </p>
       </div>
 
-      {/* Slider Section */}
       <div className="animate-on-scroll delay-200 mb-12">
         <CertificationSlider 
           certifications={certifications} 
@@ -32,7 +31,6 @@ export default function Certifications() {
         />
       </div>
 
-      {/* Detail Section - Hanya render jika ada sertifikat yang dipilih */}
       {selectedCert && (
         <div className="animate-on-scroll delay-100 scroll-mt-24" id="cert-detail">
           <CertificationDetail certification={selectedCert} />

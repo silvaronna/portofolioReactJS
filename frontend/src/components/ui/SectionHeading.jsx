@@ -8,11 +8,11 @@
 export default function SectionHeading({ title, className = "" }) {
   return (
     <h2
-      // REFACTOR: Ukuran font diperkecil jadi text-3xl md:text-4xl agar lebih standar
-      className={`text-3xl md:text-4xl font-bold text-white mb-6 relative inline-block ${className}`}
+      // FIX: text-white diganti jadi text-amber-400 agar SEMUA section otomatis Emas
+      className={`text-3xl md:text-4xl font-bold text-amber-400 mb-6 relative inline-block ${className}`}
     >
       {title}
-      {/* Underline Amber */}
+      {/* Garis bawah emas */}
       <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-amber-500 rounded-full"></span>
     </h2>
   )
