@@ -9,7 +9,7 @@ export default function EducationDetail({ education, activeTab }) {
     <div className="bg-[#252525] rounded-xl p-6 md:p-8 shadow-2xl border border-gray-800 animate-fadeIn min-h-[350px]">
       
       {/* Header Section: Informasi Utama (Center Mobile, Left Desktop) */}
-      <div className="mb-6 border-b border-gray-800 pb-6 text-center md:text-left">
+      <div className="mb-1 border-b border-gray-800 pb-6 text-center md:text-left">
         <div className="flex flex-col gap-2 mb-4">
             {/* Nama Institusi */}
             <h3 className="text-2xl md:text-3xl font-bold text-white">
@@ -47,7 +47,7 @@ export default function EducationDetail({ education, activeTab }) {
       </div>
 
       {/* Deskripsi (Center Mobile) */}
-      <p className="text-gray-400 text-base mb-8 leading-relaxed animate-on-scroll text-center md:text-left">
+      <p className="text-gray-400 text-base mb-4 leading-relaxed animate-on-scroll text-center md:text-left">
         {activeEducationData.fullDescription}
       </p>
 

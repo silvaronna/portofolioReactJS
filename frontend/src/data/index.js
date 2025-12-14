@@ -4,14 +4,14 @@ export const skills = {
       icon: "Server",
       title: "Server Engineering",
       description: "Experienced in Various Operating System, ensuring optimal performance and security.",
-      tools: ["Linux", "Windows Server", "VMware ESXi", "OpenShift"],
+      tools: ["RedHat Enterprise Linux", "Windows Server", "VMware ESXi", "OpenShift"],
       bgClass: "server-bg",
     },
     {
       icon: "Cloud",
       title: "Cloud Engineering",
       description: "Experienced hands-on cloud based server for deploying and managing scalable infrastructure.",
-      tools: ["AWS", "Biznet Gio"],
+      tools: ["Amazon Web Services", "Biznet Gio"],
       bgClass: "cloud-bg",
     },
     {
@@ -19,13 +19,13 @@ export const skills = {
       title: "Deployment Tools",
       description:
         "Skilled in setting up containers, managing multi-container apps, and streamlining CI/CD Pipeline Workflows.",
-      tools: ["Podman/Docker", "Nginx", "Cloudflare", "Ansible", "Jenkins", "SonarQube"],
+      tools: ["Podman/Docker", "Nginx", "Cloudflare", "Ansible", "Jenkins", "SonarQube", "PostgreSQL"],
       bgClass: "container-bg",
     },
     {
       icon: "Network",
       title: "Network Engineering",
-      description: "Skilled in designing, implementing, and troubleshooting network architectures.",
+      description: "Knowledgeable in designing, manage, and general implementation network infrastructures.",
       tools: ["Cisco", "Mikrotik", "Fortinet"],
       bgClass: "network-bg",
     },
@@ -38,8 +38,8 @@ export const skills = {
     },
     {
       icon: "Users",
-      title: "Team Collaboration",
-      description: "Experience working in cross-functional teams to achieve project goals.",
+      title: "Communication",
+      description: "English proficiency in daily conversation and technical writing, able to work well in team settings.",
     },
     {
       icon: "Clock",
