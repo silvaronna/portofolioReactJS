@@ -23,7 +23,7 @@ export default function Activities() {
     <section id="activities" className="section-container bg-dark">
       <div className="mb-12 animate-on-scroll">
         <SectionHeading title="Portfolio" />
-        <p className="text-gray-400 mt-4 text-lg max-w-2xl animate-on-scroll delay-100">
+        <p className="text-center md:text-left text-gray-400 mt-4 text-lg max-w-2xl animate-on-scroll delay-100">
           Selected detailed implementations and projects I've executed in real-world environments.
         </p>
       </div>

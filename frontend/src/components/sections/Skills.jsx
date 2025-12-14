@@ -12,8 +12,8 @@ export default function Skills() {
       </div>
 
       <div className="mb-24">
-        <h3 className="text-2xl font-bold mb-12 text-amber-500 text-center animate-on-scroll delay-200">Hard Skills</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <h3 className=" text-2xl font-bold mb-12 text-amber-500 text-center animate-on-scroll delay-200">Hard Skills</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center">
           {skills.hard.map((skill, index) => (
             <SkillCard key={skill.title} skill={skill} index={index} showTools />
           ))}
@@ -22,7 +22,7 @@ export default function Skills() {
 
       <div>
         <h3 className="text-2xl font-bold mb-12 text-amber-500 text-center animate-on-scroll delay-300">Soft Skills</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center">
           {skills.soft.map((skill, index) => (
             <SkillCard key={skill.title} skill={skill} index={index + 4} />
           ))}
