@@ -6,7 +6,7 @@ export default function WorkDetail({ workExperience, activeWork }) {
   return (
     <div className="bg-[#252525] rounded-xl p-6 md:p-8 shadow-2xl border border-gray-800 animate-fadeIn min-h-[400px]">
       
-      <div className="mb-6 border-b border-gray-800 pb-6 text-center md:text-left">
+      <div className="mb-6 border-b border-gray-800 text-center md:text-left">
         <h3 className="text-2xl font-bold text-white mb-4">{activeWorkData.title}</h3>
         
         {/* Badge Container: Center di HP, Left di Desktop */}
@@ -21,7 +21,7 @@ export default function WorkDetail({ workExperience, activeWork }) {
       </div>
 
       {/* Deskripsi Utama: Center di HP, Left di Desktop */}
-      <p className="text-gray-400 text-base mb-8 leading-relaxed animate-on-scroll py-2 text-center md:text-left">
+      <p className="text-gray-400 text-base mb-4 leading-relaxed animate-on-scroll py-2 text-center md:text-left">
         {activeWorkData.fullDescription}
       </p>
 
@@ -46,8 +46,8 @@ export default function WorkDetail({ workExperience, activeWork }) {
 
       {/* Screenshots Section */}
       {activeWorkData.screenshots && activeWorkData.screenshots.length > 0 && (
-        <div className="animate-on-scroll delay-200 pt-6 border-t border-gray-800">
-          <h5 className="text-amber-400 font-semibold mb-4 text-lg text-center md:text-left">Project Snapshots</h5>
+        <div className="animate-on-scroll delay-200 pt-1 border-t border-gray-800">
+          <h5 className="text-amber-400 font-semibold mb-2 text-lg text-center md:text-left">Project Snapshots</h5>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {activeWorkData.screenshots.map((screenshot, i) => (
               <div
