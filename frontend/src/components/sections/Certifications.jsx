@@ -18,7 +18,7 @@ export default function Certifications() {
       <div className="mb-12 animate-on-scroll">
         {/* Judul ini sekarang akan otomatis berwarna Emas */}
         <SectionHeading title="Certifications" />
-        <p className="text-gray-400 mt-4 text-lg max-w-2xl animate-on-scroll delay-100">
+        <p className="text-center md:text-left text-gray-400 mt-4 text-lg max-w-2xl animate-on-scroll delay-100">
           Professional certifications that validate my expertise and knowledge in various IT domains.
         </p>
       </div>

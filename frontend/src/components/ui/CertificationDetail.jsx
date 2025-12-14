@@ -7,9 +7,9 @@ export default function CertificationDetail({ certification }) {
     <div className="bg-[#252525] rounded-xl p-6 md:p-8 border border-gray-800 shadow-2xl animate-[fadeIn_0.4s_ease-out]">
       <div className="flex flex-col md:flex-row gap-8">
         
-        {/* Kolom Kiri: Gambar */}
+        {/* Kolom Kiri: Gambar (Center di Mobile) */}
         <div className="md:w-1/3 animate-on-scroll">
-          <div className="rounded-xl overflow-hidden border border-gray-700 shadow-lg relative group">
+          <div className="rounded-xl overflow-hidden border border-gray-700 shadow-lg relative group max-w-sm mx-auto md:max-w-none">
              <div className="absolute inset-0 bg-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <img
               src={certification.image || "/placeholder.svg"}
@@ -19,9 +19,10 @@ export default function CertificationDetail({ certification }) {
           </div>
         </div>
 
-        {/* Kolom Kanan: Detail */}
-        <div className="md:w-2/3 animate-on-scroll delay-100">
-          <div className="flex justify-between items-start mb-4">
+        {/* Kolom Kanan: Detail (Center di Mobile, Left di Desktop) */}
+        <div className="md:w-2/3 animate-on-scroll delay-100 text-center md:text-left">
+          
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-start mb-4 gap-4 md:gap-0">
             <h3 className="text-2xl font-bold text-white leading-tight">{certification.title}</h3>
             
             <a
@@ -35,7 +36,8 @@ export default function CertificationDetail({ certification }) {
             </a>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
+          {/* Metadata Badge (Center di Mobile) */}
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-6 text-sm">
             <div className="flex items-center text-amber-400 font-medium bg-amber-900/20 px-4 py-1.5 rounded-full border border-amber-900/30">
               <Icon name="Award" className="mr-2" size={16} />
               <span>{certification.issuer}</span>
@@ -46,17 +48,17 @@ export default function CertificationDetail({ certification }) {
             </div>
           </div>
 
-          <p className="text-gray-300 text-base leading-relaxed mb-8 border-l-2 border-amber-500/50 pl-4 py-2 bg-black/10 rounded-r-lg">
+          <p className="text-gray-300 text-base leading-relaxed mb-8 border-l-0 md:border-l-2 border-amber-500/50 md:pl-4 py-2 bg-transparent md:bg-black/10 rounded-r-lg">
             {certification.description}
           </p>
 
           <div>
-            <h4 className="text-gray-400 font-medium mb-3 text-sm uppercase tracking-wider flex items-center">
+            <h4 className="text-gray-400 font-medium mb-3 text-sm uppercase tracking-wider flex items-center justify-center md:justify-start">
               <Icon name="Tag" className="mr-2" size={14} />
               Skills Validated
             </h4>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-center md:justify-start">
               {certification.skills.map((skill, index) => (
                 <span
                   key={index}

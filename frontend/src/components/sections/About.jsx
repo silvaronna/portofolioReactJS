@@ -24,14 +24,14 @@ export default function About() {
         </div>
 
         <div className="lg:col-span-2">
-          <p className="text-gray-300 text-lg leading-relaxed mb-8 animate-on-scroll delay-100">
+          <p className="text-center md:text-left px-4 md:px-0 flex flex-col gap-4 text-gray-300 leading-relaxed text-base md:text-lg">
             College student as well as System Engineer, 
             who has a deep interest in Infrastructure and Security. 
             Starting Career as an IT since 17yo with work experience in the telecommunications industry and government, 
             I'm ready to work and be a source of joy and inspiration in every task i take on.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 mb-16">
+          <div className="text-center md:text-left grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 mb-16">
             {aboutCards.map((card, index) => (
               <Card
                 key={card.title}
