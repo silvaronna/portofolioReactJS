@@ -238,7 +238,7 @@ export const portfolioActivities = [
       },
       {
         src: "/OCP-Dashboard-I.png",
-        caption: "Dashboard Overview Cluster OpenShift Container Platform on Web Console."
+        caption: "Cluster OpenShift Container Platform Web Console first Login Page."
       },
       {
         src: "/OCP-Dashboard-II.png",
@@ -299,7 +299,7 @@ export const portfolioActivities = [
     id: 3,
     title: "On-Prem Virtualization Infrastructure Deployment",
     location: "Asia Sistem Indonesia",
-    date: "Apr 2025",
+    date: "April 2025",
     coverImage: "/vmware-wpp.jpg",
     gallery: [
       {
@@ -337,13 +337,13 @@ export const portfolioActivities = [
       "Built cluster and datacenter on vCenter to enable host grouping and resource control."
     ],
     techStack: ["VMware ESXi", "vCenter", "FortiGate", "Dell PowerEdge", "HPE Proliant", "iLO", "iDRAC"],
-    docLink: "#"
+    docLink: ""
   },
   {
     id: 4,
     title: "HRIS Data Normalization, ETL, and Visualization Project",
     location: "Cakrawala University",
-    date: "Nov 2025",
+    date: "November 2025",
     coverImage: "/metabase-wpp.jpg",
     gallery: [
       {
@@ -365,6 +365,35 @@ export const portfolioActivities = [
     ],
     techStack: ["PostgreSQL", "MetaBase", "RedHat", "Podman", "ERD"],
     docLink: "https://www.linkedin.com/in/azkaabdillah/details/projects/1083832146/multiple-media-viewer/?profileId=ACoAAEDMn1gBnWAcTSKzuNUvMvHwlbxbgSxSlGU&treasuryMediaId=1762020423957&type=DOCUMENT"
+  },
+  {
+    id: 5,
+    title: "Building Containerization Pipeline for JS Full-Stack Application",
+    location: "Asia Sistem Indonesia",
+    date: "February 2025",
+    coverImage: "/dCompose-wpp.jpg",
+    gallery: [
+      {
+        src: "/docker-compose-pipeline.png",
+        caption: "Crafting Docker Compose yaml file for Multi-Container Application Deployment"
+      },
+      {
+        src: "/docker-compose-pipeline-2.png",
+        caption: "Successfully connecting each component service under Docker Network Bridge"
+      },
+      {
+        src: "/docker-compose-pipeline-3-nginx.png",
+        caption: "Crafting Nginx configuration file"
+      },
+    ],
+    description: [
+      "Build & Maintain Containerization Pipeline for Full-Stack JavaScript Application using Docker Compose.",
+      "Configure and Provisioning PostgreSQL Container for Database Service with Persistent Volume.",
+      "Implemented the schema on PostgreSQL (v17) hosted on a Red Hat-based server.",
+      "Configure secure HTTPS access using cloudflare",
+    ],
+    techStack: ["Ubuntu", "Docker", "Cloudflare", "Nginx", "PostgreSQL", "React", "Node.js"],
+    docLink: ""
   }
 ]
 
