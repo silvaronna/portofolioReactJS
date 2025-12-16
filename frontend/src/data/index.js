@@ -382,9 +382,9 @@ export const portfolioActivities = [
         caption: "Successfully connecting each component service under Docker Network Bridge"
       },
       {
-        src: "/docker-compose-pipeline-3-nginx.png",
-        caption: "Crafting Nginx configuration file"
-      },
+        src: "/dashboard-react.png",
+        caption: "Dashboard Frontend React Application successfully deployed and connected to Backend API Service"
+      }
     ],
     description: [
       "Build & Maintain Containerization Pipeline for Full-Stack JavaScript Application using Docker Compose.",
