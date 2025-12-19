@@ -1,3 +1,18 @@
+export const about = {
+  description: "College student as well as System Engineer, who has a deep interest in Infrastructure and Security. Starting Career as an IT since 17yo with work experience in the telecommunications industry and government, I'm ready to work and be a source of joy and inspiration in every task i take on.",
+  cards: [
+    {
+      title: "Professional Goal",
+      content: "To become a skillful Security Engineer designing cyber-attack-safe infrastructure.",
+    },
+    {
+      title: "Personal Mission",
+      content: "Continuously learn and grow in infrastructure while delivering value to organizations.",
+    }
+  ],
+  quote: "Mistakes is a best teacher, never stop making step only because you make mistakes. Embrace it, learn from it, and keep moving forward with greater wisdom and resilience."
+};
+
 export const skills = {
   hard: [
     {
