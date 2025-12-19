@@ -1,5 +1,6 @@
 import ScrollIndicator from "../ui/ScrollIndicator"
 import RunningText from "../ui/RunningText"
+import Snowfall from "react-snowfall"
 
 export default function Hero() {
   return (
@@ -17,7 +18,19 @@ export default function Hero() {
             Building secure and scalable infrastructure with a passion for system security.
           </p>
         </div>
-
+        <div className="absolute inset-0 z-10 pointer-events-none">
+          <Snowfall 
+            color="white" 
+            snowflakeCount={500}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+            }}
+          />
+        </div>
         <RunningText />
         <ScrollIndicator />
       </div>
