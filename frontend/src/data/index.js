@@ -139,7 +139,7 @@ export const certifications = [
     image: "/redhat.jpg",
     skills: ["NFS", "SELinux", "FirewallD", "Bash Scripting", "User and Group Management", "Storage Management (LVM & Partitioning)", "Process Management", "Podman Container"],
     description:
-      "Validate my Linux skills such as managing files, users, networking, services, storage management, security (SELinux), system tuning, boot troubleshooting, and Bash scripting for RHEL (Red Hat Enterprise Linux), preparing for the RHCSA certification",
+      "Validate my Linux skills such as managing files, users, networking, services, storage management, security (SELinux), system tuning, boot troubleshooting, and Bash scripting for RHEL (Red Hat Enterprise Linux) environments.",
     credentialLink: "https://www.credly.com/badges/4b4d5655-4b01-4b75-8ab7-9f95a9ae764b/public_url",
   },
 
