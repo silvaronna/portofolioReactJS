@@ -129,69 +129,60 @@ export const certifications = [
     skills: ["Risk Management", "Access Control", "Security Principles", "Network & Security"],
     description:
       "Establishes the core knowledge required of any cybersecurity role and provides a springboard to intermediate-level cybersecurity jobs, covering essential principles for network security and risk management.",
-    credentialLink: "https://drive.google.com/file/d/1O7XAwKO-IMyiNq1qyEao33X_FwPrGLug/view?usp=drive_link",
+    credentialLink: "https://www.credly.com/badges/f0b7cb10-ccb5-4d5c-a27a-536501895ce8",
   },
   {
     id: 2,
-    title: "RedHat System Administration (RH124-RH134)",
+    title: "RedHat Certified System Administrator (RHCSA)",
     issuer: "RedHat",
-    issuedDate: "Oct 2025",
+    issuedDate: "Mar 2025",
     image: "/redhat.jpg",
     skills: ["NFS", "SELinux", "FirewallD", "Bash Scripting", "User and Group Management", "Storage Management (LVM & Partitioning)", "Process Management", "Podman Container"],
     description:
-      "Foundational Linux skills such as managing files, users, networking, services, storage management, security (SELinux), system tuning, boot troubleshooting, and Bash scripting for RHEL (Red Hat Enterprise Linux), preparing for the RHCSA certification",
-    credentialLink: "https://www.credly.com/badges/db926a27-a023-46f2-92cc-6022d0b6ff91/linked_in_profile",
+      "Validate my Linux skills such as managing files, users, networking, services, storage management, security (SELinux), system tuning, boot troubleshooting, and Bash scripting for RHEL (Red Hat Enterprise Linux), preparing for the RHCSA certification",
+    credentialLink: "https://www.credly.com/badges/4b4d5655-4b01-4b75-8ab7-9f95a9ae764b/public_url",
   },
 
   {
     id: 3,
-    title: "Fundamental of Red Hat Enterprise Linux",
-    issuer: "Coursera - RedHat",
-    issuedDate: "June 2024",
-    image: "/redhat.jpg",
+    title: "AWS Cloud Practitioner",
+    issuer: "Amazon Web Services",
+    issuedDate: "Jan 2026",
+    image: "/aws.png",
     skills: [
-      "RedHat System Administration",
-      "Process Management and Monitoring",
-      "System Permission",
-      "User   and Group",
+      "Amazon Web Services (AWS) Core Services",
+      "Serverless Computing",
+      "Cloud Security",
+      "Cloud Networking and Virtual Private Cloud (VPC)",
+      "Cloud Storage Solutions (S3, EBS)",
+      "Cloud Deployment and Management",
     ],
     description:
       "Provides foundational knowledge of Red Hat Enterprise Linux system administration, including user and group management, file system permissions, process control, and essential command-line operations for server environments.",
-    credentialLink: "https://www.coursera.org/account/accomplishments/verify/JS8PLJ9R9G6X",
+    credentialLink: "https://www.credly.com/badges/2ef2b72a-4d8e-4083-bcc6-c7a88bdf85b4",
   },
   {
     id: 4,
-    title: "IT Support Technical Skills Helpdesk",
-    issuer: "Udemy",
-    issuedDate: "March 2023",
-    image: "/udemy.jpg",
-    skills: ["Office 365", "Ticketing System", "Active Directory", "File & Printer Sharing"],
+    title: "Fortinet Certified Fundamentals Cybersecurity",
+    issuer: "Fortinet",
+    issuedDate: "Dec 2025",
+    image: "/fortinet.jpg",
+    skills: ["Network Security", "Firewall Configuration", "Threat Detection", "Security Policies", "ZTNA (Zero Trust Network Access)", "Secure Access Service Edge (SASE)"],
     description:
       "Covers essential IT support skills including user account management, troubleshooting hardware/software issues, working with ticketing systems, and supporting productivity tools such as Office 365 in a helpdesk environment.",
-    credentialLink: "https://www.udemy.com/certificate/UC-988d5836-144b-4fab-8fbe-d933fe5d70ac/",
+    credentialLink: "https://www.credly.com/badges/433ca746-8258-48e1-9253-21aa19dbbd2e",
   },
   {
     id: 5,
-    title: "Fundamental of Network Engineering",
-    issuer: "Course-Net",
-    issuedDate: "February 2023",
-    image: "/coursenet.png",
-    skills: ["Cisco", "Network Design", "TCP/IP", "Routing"],
+    title: "AWS re/Start Graduate",
+    issuer: "Orbit Future Academy",
+    issuedDate: "Jan 2026",
+    image: "/aws.png",
+    skills: ["Cloud Fundamentals", "AWS Core Services", "Cloud Security", "Cloud Networking", "DevOps Basics"],
     description:
       "Covers the foundational knowledge of computer networks including OSI layers, IP addressing, subnetting, routing, switching, and basic Cisco configurations. Prepares learners to understand and design small to medium-sized network topologies.",
     credentialLink: "https://course-net.com/certificate-verifier/1330E0B76-1330DE465-3036A9C/",
-  },
-  {
-    id: 6,
-    title: "Basic Mikrotik",
-    issuer: "ID Networkers",
-    issuedDate: "May 2024",
-    image: "/idnid.png",
-    skills: ["VLAN", "TCP/IP", "Subnetting", "Firewall", "Routing"],
-    description:
-      "Validates the skills and knowledge to implement, monitor, and maintain Microsoft Azure solutions, including major services related to compute, storage, network, and security.",
-    credentialLink: "https://drive.google.com/file/d/1FPgDPUVeFSVCzy9KpkUOwv12zIX4ydk1/view?usp=drive_link",
-  },
+  }
 ]
 
 export const workExperience = [
@@ -212,7 +203,7 @@ export const workExperience = [
       "Successfully reducing average deployment time by 80%+ with Ansible Automation Tools.",
       "Build Containerized Robust Monitoring System with various endpoint and datasources using Grafana",
     ],
-    screenshots: ["/poweredge.jpeg?height=250&width=450", "/metricVmwareVisualization.png?height=250&width=450"],
+    screenshots: ["/ansiblee.png?height=250&width=450", "/metricVmwareVisualization.png?height=250&width=450"],
   },
   {
     id: 2,
@@ -420,11 +411,6 @@ export const techStack = [
     description: "Containerization platform for deployment",
   },
   {
-    name: "Red Hat",
-    logo: "redhat.png",
-    description: "Enterprise Linux for server infrastructure",
-  },
-  {
     name: "GitHub Actions",
     logo: "/github-actions.png",
     description: "Simple light-weighted CI/CD automation workflows",
@@ -438,11 +424,6 @@ export const techStack = [
     name: "React",
     logo: "/react.png",
     description: "React JS with Vite for frontend",
-  },
-  {
-    name: "Node.js",
-    logo: "/nodejs.png",
-    description: "JavaScript runtime for backend",
   },
 ]
 
