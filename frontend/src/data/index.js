@@ -261,8 +261,46 @@ export const portfolioActivities = [
     techStack: ["OpenShift", "Kubernetes", "HAProxy", "RHEL", "VMware", "Orchestrated Containers"],
     docLink: "https://www.notion.so/OpenShift-Container-Platform-2c87649716e780aabf8df99e4f7b74dd?source=copy_link"
   },
+
   {
     id: 2,
+    title: "Route Optimization and Analyzer (ROA) by Blue Planet",
+    location: "Media Telekomunikasi Mandiri",
+    date: "November 2025",
+    coverImage: "/blueplanet.jpg",
+    gallery: [
+      {
+        src: "/ansiblee.png",
+        caption: "Manage Complex Deployment Scenarios with Ansible."
+      },
+      {
+        src: "/bgp-igp-integration.png",
+        caption: "Integrating BGP and IGP Protocols for Route Optimization and Analysis."
+      },
+      {
+        src: "/configureCollector.png",
+        caption: "Configuring various metric Recorder include NetFlow, SNMP, RPM, etc for traffic breakdown analysis."
+      },
+      {
+        src: "/ManageCluster-withvCenter.png",
+        caption: "Managing Cluster with vCenter for Service Management."
+      }
+    ],
+    description: [
+      "Orchestrated a migration and fresh-install upgrade from CentOS 7 to RHEL 8.10 to deploy ROA v25.04 using Docker Swarm microservices.",
+      "Managed the provisioning of 12 dedicated nodes + 1 License Server, leveraging 12 HPE ProLiant DL380p Gen 10 bare-metal servers and VMware ESXi clusters to handle intensive telco-grade workloads.",
+      "Streamlined the installation lifecycle through Ansible playbooks and custom Bash scripts, ensuring a standardized and repeatable deployment process.",
+      "Integrated deep network monitoring using SNMP, Netflow, RPM, OSPF, and BGP to maintain high-precision traffic assurance for telecommunication clients (Telkomsel)",
+      "Authored high-standard documentation, including Method of Procedure (MoP), technical timelines, and severity matrices to ensure operational continuity.",
+      "Enhanced infrastructure security by integrating TACACS+ authentication and managing complex vCenter network interface mapping for service and management segregation.",
+      "Collaborated with MTM team to implementation, and international Principal Engineers for lab research and production validation, ensuring the deployment performed accurately."
+    ],
+    techStack: ["RedHat", "Ansible", "Docker Swarm", "VMware", "SNMP", "Netflow", "RPM", "OSPF", "BGP", "TACACS+", "vCenter"],
+    docLink: "https://www.notion.so/OpenShift-Container-Platform-2c87649716e780aabf8df99e4f7b74dd?source=copy_link"
+  },
+
+  {
+    id: 3,
     title: "Robust Multi End-Point Grafana Monitoring System",
     location: "Media Telekomunikasi Mandiri",
     date: "July 2025",
@@ -302,7 +340,7 @@ export const portfolioActivities = [
     docLink: "https://www.notion.so/Grafana-Various-Metrics-Monitoring-Guide-2c87649716e7809aaf66ec6d221f245e?source=copy_link"
   },
   {
-    id: 3,
+    id: 4,
     title: "On-Prem Virtualization Infrastructure Deployment",
     location: "Asia Sistem Indonesia",
     date: "April 2025",
@@ -346,7 +384,7 @@ export const portfolioActivities = [
     docLink: ""
   },
   {
-    id: 4,
+    id: 5,
     title: "HRIS Data Normalization, ETL, and Visualization Project",
     location: "Cakrawala University",
     date: "November 2025",
@@ -373,7 +411,7 @@ export const portfolioActivities = [
     docLink: "https://www.linkedin.com/in/azkaabdillah/details/projects/1083832146/multiple-media-viewer/?profileId=ACoAAEDMn1gBnWAcTSKzuNUvMvHwlbxbgSxSlGU&treasuryMediaId=1762020423957&type=DOCUMENT"
   },
   {
-    id: 5,
+    id: 6,
     title: "Building Containerization Pipeline for JS Full-Stack Application",
     location: "Asia Sistem Indonesia",
     date: "February 2025",
