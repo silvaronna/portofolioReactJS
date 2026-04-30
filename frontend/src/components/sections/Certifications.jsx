@@ -15,15 +15,14 @@ export default function Certifications() {
 
   return (
     <section id="certifications" className="section-container bg-dark">
-      <div className="mb-12 animate-on-scroll">
-        {/* Judul ini sekarang akan otomatis berwarna Emas */}
+      <div className="mb-8 animate-on-scroll">
         <SectionHeading title="Certifications" />
-        <p className="text-center md:text-left text-gray-400 mt-4 text-lg max-w-2xl animate-on-scroll delay-100">
+        <p className="text-center md:text-left text-gray-400 mt-3 text-sm md:text-base max-w-2xl animate-on-scroll delay-100">
           Professional certifications that validate my expertise and knowledge in various IT domains.
         </p>
       </div>
 
-      <div className="animate-on-scroll delay-200 mb-12">
+      <div className="animate-on-scroll delay-200 mb-8">
         <CertificationSlider 
           certifications={certifications} 
           selectedCert={selectedCert?.id} 

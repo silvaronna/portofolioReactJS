@@ -21,14 +21,14 @@ export default function Activities() {
 
   return (
     <section id="activities" className="section-container bg-dark">
-      <div className="mb-12 animate-on-scroll">
+      <div className="mb-8 animate-on-scroll">
         <SectionHeading title="Portfolio" />
-        <p className="text-center md:text-left text-gray-400 mt-4 text-lg max-w-2xl animate-on-scroll delay-100">
+        <p className="text-center md:text-left text-gray-400 mt-3 text-sm md:text-base max-w-2xl animate-on-scroll delay-100">
           Selected detailed implementations and projects I've executed in real-world environments.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* FIX: Map dari 'portfolioActivities' */}
         {portfolioActivities.map((activity, index) => (
           <div 
@@ -59,17 +59,17 @@ export default function Activities() {
               </div>
 
               {/* Content */}
-              <div className="p-6 flex flex-col flex-grow relative z-20 bg-[#252525]">
-                <h3 className="text-lg font-bold text-white mb-3 line-clamp-2 group-hover:text-amber-400 transition-colors">
+              <div className="p-5 flex flex-col flex-grow relative z-20 bg-[#252525]">
+                <h3 className="text-base font-bold text-white mb-2 line-clamp-2 group-hover:text-amber-400 transition-colors">
                   {activity.title}
                 </h3>
                 
-                <div className="flex items-center text-sm text-gray-400 mb-4">
-                   <Icon name="MapPin" size={14} className="mr-1.5 text-amber-600" />
+                <div className="flex items-center text-xs text-gray-400 mb-3">
+                   <Icon name="MapPin" size={12} className="mr-1.5 text-amber-600" />
                    {activity.location}
                 </div>
 
-                <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+                <div className="flex flex-wrap gap-1.5 mb-4 mt-auto">
                   {activity.techStack.slice(0, 3).map((tech, i) => (
                      <span key={i} className="text-[10px] uppercase font-bold tracking-wider text-gray-400 bg-black/30 px-2 py-1 rounded-md border border-white/5">
                        {tech}

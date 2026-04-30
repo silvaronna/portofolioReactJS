@@ -25,14 +25,14 @@ export default function CertificationSlider({ certifications, selectedCert, onCe
       </button>
 
       {/* Container Slider */}
-      <div ref={sliderRef} className="cert-slider flex gap-5 overflow-x-auto pb-8 pt-4 px-2 snap-x scroll-smooth hide-scrollbar" {...handlers}>
+      <div ref={sliderRef} className="cert-slider flex gap-4 overflow-x-auto pb-6 pt-2 px-2 snap-x scroll-smooth hide-scrollbar" {...handlers}>
         {certifications.map((cert) => (
           <div
             key={cert.id}
-            // Lebar kartu: w-72 (mobile) md:w-80 (desktop)
-            className={`flex-shrink-0 w-72 md:w-80 h-48 md:h-56 rounded-xl overflow-hidden relative cursor-pointer transition-all duration-300 snap-center border ${
+            // Lebar kartu: w-64 (mobile) md:w-72 (desktop)
+            className={`flex-shrink-0 w-64 md:w-72 h-40 md:h-48 rounded-xl overflow-hidden relative cursor-pointer transition-all duration-300 snap-center border ${
               selectedCert === cert.id 
-                ? "ring-2 ring-amber-500 border-transparent shadow-[0_0_20px_rgba(245,158,11,0.3)] scale-[1.02]" 
+                ? "ring-2 ring-amber-500 border-transparent shadow-[0_0_15px_rgba(245,158,11,0.25)] scale-[1.02]" 
                 : "border-gray-800 hover:border-amber-500/50 hover:shadow-lg"
             }`}
             onClick={() => onCertClick(cert)}
@@ -43,12 +43,12 @@ export default function CertificationSlider({ certifications, selectedCert, onCe
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
             />
             
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-5 flex flex-col justify-end text-left">
-              <h3 className="text-white font-bold text-lg leading-tight mb-1 line-clamp-2">{cert.title}</h3>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4 flex flex-col justify-end text-left">
+              <h3 className="text-white font-bold text-base leading-tight mb-1 line-clamp-2">{cert.title}</h3>
               <div className="flex justify-between items-end">
-                <p className="text-amber-400 text-xs font-medium">{cert.issuer}</p>
-                <div className="flex items-center text-gray-400 text-xs bg-black/30 px-2 py-1 rounded-full backdrop-blur-sm">
-                  <Icon name="Calendar" size={12} className="mr-1.5" />
+                <p className="text-amber-400 text-[10px] font-medium">{cert.issuer}</p>
+                <div className="flex items-center text-gray-400 text-[10px] bg-black/30 px-2 py-0.5 rounded-full backdrop-blur-sm">
+                  <Icon name="Calendar" size={10} className="mr-1" />
                   <span>{cert.issuedDate}</span>
                 </div>
               </div>

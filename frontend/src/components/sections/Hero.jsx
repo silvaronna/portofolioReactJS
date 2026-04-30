@@ -8,13 +8,13 @@ export default function Hero() {
       {/* Container max-w-7xl agar konsisten dengan section lain */}
       <div className="container mx-auto px-6 relative h-full flex flex-col items-center justify-center max-w-7xl">
         
-        <div className="text-center z-10 relative -mt-20"> {/* Margin top negatif dikurangi */}
-          {/* Title: 6xl/8xl -> 5xl/7xl */}
-          <h1 className="text-white text-5xl md:text-7xl font-bold text-center mb-4 animate-fadeIn tracking-tight">
+        <div className="text-center z-10 relative -mt-12"> {/* Reduced negative margin for better balance */}
+          {/* Title: 5xl/7xl -> 4xl/6xl */}
+          <h1 className="text-white text-4xl md:text-6xl font-bold text-center mb-4 animate-fadeIn tracking-tight">
             Hello, I'm Azka
           </h1>
-          {/* Subtitle: 2xl/3xl -> xl/2xl. text-gray-400 lebih lembut di mata */}
-          <p className="text-gray-400 text-xl md:text-2xl text-center max-w-2xl mx-auto animate-fadeIn delay-100 font-light leading-relaxed">
+          {/* Subtitle: xl/2xl -> lg/xl */}
+          <p className="text-gray-400 text-lg md:text-xl text-center max-w-2xl mx-auto animate-fadeIn delay-100 font-light leading-relaxed">
             Building secure and scalable infrastructure with a passion for system security.
           </p>
         </div>

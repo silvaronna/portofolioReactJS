@@ -10,22 +10,19 @@ export default function Work() {
   const [activeWork, setActiveWork] = useState(1)
 
   return (
-    // REVISI: Standard Padding py-24
-    <section id="work" className="bg-dark py-24">
-      <div className="container mx-auto px-6">
+    <section id="work" className="bg-dark py-16 md:py-20">
+      <div className="container mx-auto px-6 max-w-7xl">
         
         {/* Header Section */}
-        {/* REVISI: mb-12 -> mb-16 agar konsisten */}
-        <div className="mb-16 animate-on-scroll">
+        <div className="mb-12 animate-on-scroll">
           <SectionHeading title="Recent Work" />
-          <p className="text-center md:text-left text-gray-400 mt-4 text-lg animate-on-scroll delay-100 max-w-2xl">
+          <p className="text-center md:text-left text-gray-400 mt-3 text-sm md:text-base animate-on-scroll delay-100 max-w-2xl">
             Explore my professional experience and projects I've worked on.
           </p>
         </div>
 
         {/* Content Grid */}
-        {/* REVISI: gap-6 -> gap-10 agar lebih lega */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
           
           {/* Selector Column */}
           <div className="lg:col-span-2 animate-on-scroll delay-200 sticky top-24">

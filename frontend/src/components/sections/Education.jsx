@@ -10,23 +10,19 @@ export default function Education() {
   const [activeTab, setActiveTab] = useState(1)
 
   return (
-    // REVISI: Standard Padding py-24
-    <section id="education" className="bg-dark py-24">
-      <div className="container mx-auto px-6">
+    <section id="education" className="bg-dark py-16 md:py-20">
+      <div className="container mx-auto px-6 max-w-7xl">
         
         {/* Header Section */}
-        {/* REVISI: mb-12 -> mb-16 */}
-        <div className="mb-16 animate-on-scroll">
+        <div className="mb-12 animate-on-scroll">
           <SectionHeading title="Education" />
-          {/* REVISI: Tambahkan text-center md:text-left agar rapi di HP */}
-          <p className="text-center md:text-left text-gray-400 mt-4 text-lg max-w-2xl animate-on-scroll delay-100">
+          <p className="text-center md:text-left text-gray-400 mt-3 text-sm md:text-base max-w-2xl animate-on-scroll delay-100">
             My academic journey, qualifications, and educational background.
           </p>
         </div>
 
         {/* Content Grid */}
-        {/* REVISI: gap-8 -> gap-10 */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
           
           {/* Selector Column */}
           <div className="lg:col-span-2 animate-on-scroll delay-100 sticky top-20">
