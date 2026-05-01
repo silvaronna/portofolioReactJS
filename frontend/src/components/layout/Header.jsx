@@ -60,12 +60,22 @@ export default function Header() {
             : "bg-transparent py-2"
         }`}
       >
-        {/* LOGO */}
-        <a href="#" className="flex items-center gap-2 group z-20 md:pr-8">
-           <div className="bg-white p-[clamp(0.2rem,0.5vw,0.25rem)] rounded-full transition-transform duration-500 group-hover:rotate-12 shadow-sm">
-              <img src="/mylogo-nobg.png" alt="Logo" className="w-[clamp(1.2rem,2vw,1.5rem)] h-[clamp(1.2rem,2vw,1.5rem)]" />
+        {/* LOGO (Interactive Gravity Trigger) */}
+        <button 
+          onClick={(e) => {
+            e.preventDefault()
+            const rect = e.currentTarget.getBoundingClientRect()
+            window.dispatchEvent(new CustomEvent("spawn-socials", { 
+              detail: { x: rect.left + rect.width / 2, y: rect.bottom } 
+            }))
+          }}
+          className="flex items-center gap-2 group z-20 md:pr-8 cursor-pointer focus:outline-none"
+          title="Click me for a surprise!"
+        >
+           <div className="bg-white p-[clamp(0.2rem,0.5vw,0.25rem)] rounded-full transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12 shadow-sm relative">
+              <img src="/mylogo-nobg.png" alt="Logo" className="w-[clamp(1.2rem,2vw,1.5rem)] h-[clamp(1.2rem,2vw,1.5rem)] pointer-events-none" />
            </div>
-        </a>
+        </button>
 
         {/* DESKTOP MENU */}
         <nav className="hidden md:flex items-center gap-[clamp(1rem,2vw,1.5rem)]">

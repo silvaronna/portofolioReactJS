@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Header from "./components/layout/Header"
 import Hero from "./components/sections/Hero"
 import Portfolio from "./pages/Portfolio"
+import GravitySocials from "./components/ui/GravitySocials"
 import { useLocalStorage } from "./hooks/useLocalStorage" // Import useLocalStorage
 import "./App.css"
 
@@ -38,6 +39,7 @@ function App() {
       <div className="absolute inset-0 bg-[#0a1525] bg-opacity-70 z-0"></div>
 
       <Header scrolled={scrolled} isWhiteSection={isWhiteSection} />
+      <GravitySocials />
 
       <main className="flex-1 pt-32 relative z-20">
         <Hero />
