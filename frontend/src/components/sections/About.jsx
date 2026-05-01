@@ -6,8 +6,8 @@ import { about } from "../../data"
 
 export default function About() {
   return (
-    <section id="about" className="section-container bg-dark py-16 md:py-20">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+    <section id="about" className="section-container bg-dark py-12 md:py-16">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="animate-on-scroll">
           <SectionHeading title="About" />
         </div>
@@ -15,21 +15,21 @@ export default function About() {
         <div className="lg:col-span-2">
             
             {/* 2. Intro Text: Ambil dari about.description */}
-            <p className="text-center md:text-left text-gray-300 leading-relaxed text-sm md:text-base mb-10">
+            <p className="text-center md:text-left text-gray-300 leading-relaxed text-sm mb-8 max-w-3xl">
               {about.description}
             </p>
 
             {/* MOTION CARDS SECTION */}
-            <div className="flex flex-col md:flex-row justify-center items-center gap-6 w-full">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-5 w-full">
               {/* 3. Cards Map: Ambil dari about.cards */}
               {about.cards.map((card, index) => (
                 <div key={card.title} className={`w-full flex justify-center animate-on-scroll delay-${200 + index * 100}`}>
                   
                   {/* MOBILE CARD (Static) */}
-                  <div className="md:hidden w-full bg-[#252525] p-6 rounded-[15px] border border-white/10 shadow-2xl text-center flex flex-col items-center justify-between">
+                  <div className="md:hidden w-full bg-[#222222] p-5 rounded-2xl border border-white/5 shadow-lg text-center flex flex-col items-center justify-between">
                       <div>
-                        <div className="w-10 h-1 bg-amber-500 rounded-full mb-4 mx-auto"></div>
-                        <h3 className="text-white font-bold text-lg mb-3 tracking-wide">
+                        <div className="w-8 h-1 bg-amber-500/80 rounded-full mb-3 mx-auto"></div>
+                        <h3 className="text-white font-bold text-base mb-2 tracking-wide">
                           {card.title}
                         </h3>
                       </div>
@@ -45,23 +45,23 @@ export default function About() {
                       altText={card.title}
                       captionText={card.title}
                       
-                      containerHeight="280px" 
-                      containerWidth="280px"
-                      imageHeight="280px"
-                      imageWidth="280px"
+                      containerHeight="240px" 
+                      containerWidth="240px"
+                      imageHeight="240px"
+                      imageWidth="240px"
                       
-                      rotateAmplitude={25}
-                      scaleOnHover={1.05}
+                      rotateAmplitude={15}
+                      scaleOnHover={1.03}
                       showMobileWarning={false}
                       showTooltip={false}
                       displayOverlayContent={true}
                       overlayContent={
-                        <div className="w-full h-full flex flex-col justify-center items-center text-center p-6 rounded-[15px] border border-white/10 bg-[#252525] hover:bg-[#2a2a2a] transition-colors shadow-2xl">
-                          <div className="w-10 h-1 bg-amber-500 rounded-full mb-3"></div>
-                          <h3 className="text-white font-bold text-xl mb-3 tracking-wide">
+                        <div className="w-full h-full flex flex-col justify-center items-center text-center p-5 rounded-2xl border border-white/5 bg-[#222222] hover:bg-[#282828] transition-colors shadow-lg">
+                          <div className="w-8 h-1 bg-amber-500/80 rounded-full mb-3"></div>
+                          <h3 className="text-white font-bold text-lg mb-2 tracking-wide">
                             {card.title}
                           </h3>
-                          <p className="text-gray-400 text-sm leading-relaxed">
+                          <p className="text-gray-400 text-xs leading-relaxed">
                             {card.content}
                           </p>
                         </div>
@@ -72,19 +72,19 @@ export default function About() {
               ))}
             </div>
 
-          <div className="flex flex-col items-center gap-2 mt-8 md:-mt-8 animate-on-scroll delay-300">
+          <div className="flex flex-col items-center gap-2 mt-6 md:-mt-6 animate-on-scroll delay-300">
              
              {/* Audio Player */}
-             <div className="w-full max-w-md flex justify-center">
+             <div className="w-full max-w-sm flex justify-center">
                 <AudioPlayer />
              </div>
 
              {/* 4. Quote Section: Ambil dari about.quote */}
-             <div className="text-center px-2 md:px-8 max-w-2xl">
+             <div className="text-center px-2 md:px-8 max-w-xl">
                 <p className="text-gray-500 text-xs md:text-sm italic relative font-serif leading-loose">
-                  <span className="text-amber-500/30 text-4xl absolute -top-4 -left-2 md:-left-6">"</span>
+                  <span className="text-amber-500/20 text-3xl absolute -top-3 -left-2 md:-left-4">"</span>
                   {about.quote}
-                  <span className="text-amber-500/30 text-4xl absolute -bottom-4 -right-2 md:-right-6">"</span>
+                  <span className="text-amber-500/20 text-3xl absolute -bottom-3 -right-2 md:-right-4">"</span>
                 </p>
              </div>
           </div>

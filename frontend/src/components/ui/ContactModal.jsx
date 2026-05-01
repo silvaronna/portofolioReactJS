@@ -158,11 +158,11 @@ export default function ContactModal({ isOpen, onClose, buttonRect }) {
   if (!isVisible) return null
 
   // Helper class for consistent inputs
-  // REFACTOR: py-4 -> py-3, rounded-2xl -> rounded-xl, text-base -> text-sm
+  // REFACTOR: Scaled down inputs with more subtle borders
   const inputClassName = (error) => `
-    w-full px-4 py-3 bg-black/40 border rounded-xl text-white placeholder-gray-500 
+    w-full px-3.5 py-2.5 bg-black/40 border rounded-lg text-white placeholder-gray-500 
     focus:outline-none focus:ring-2 transition-all duration-300 text-sm hover:bg-black/50
-    ${error ? "border-red-500 focus:ring-red-500/50" : "border-gray-700 focus:border-amber-500 focus:ring-amber-500/50"}
+    ${error ? "border-red-500 focus:ring-red-500/50" : "border-white/10 focus:border-amber-500 focus:ring-amber-500/30"}
   `
 
   const labelClassName = "block text-amber-400 font-semibold text-sm mb-1.5"
@@ -173,7 +173,7 @@ export default function ContactModal({ isOpen, onClose, buttonRect }) {
 
       {/* REFACTOR: max-h-[90vh] -> max-h-[85vh] agar tidak terlalu mepet */}
       <div
-        className={`relative w-full max-w-6xl max-h-[85vh] bg-gradient-to-br from-[#1a1a1a] via-[#242424] to-[#1a1a1a] rounded-3xl border border-amber-700/30 shadow-2xl overflow-hidden flex flex-col`}
+        className={`relative w-full max-w-6xl max-h-[85vh] bg-gradient-to-br from-[#1a1a1a] via-[#242424] to-[#1a1a1a] rounded-3xl border border-white/5 shadow-2xl overflow-hidden flex flex-col`}
         style={modalContentStyle}
       >
         <div className="flex-1 overflow-y-auto custom-scrollbar">
@@ -205,7 +205,7 @@ export default function ContactModal({ isOpen, onClose, buttonRect }) {
                       SEND ME <br />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">AN EMAIL</span>
                     </h2>
-                    <p className="text-gray-400 text-base md:text-lg">I'm very responsive to messages and always open to new opportunities.</p>
+                    <p className="text-gray-400 text-sm md:text-base">I'm very responsive to messages and always open to new opportunities.</p>
                   </div>
 
                   <div className="space-y-4">
@@ -217,7 +217,7 @@ export default function ContactModal({ isOpen, onClose, buttonRect }) {
                     ].map((item, idx) => (
                       <div
                         key={idx}
-                        className={`flex items-center p-4 bg-black/20 rounded-xl border border-white/5 hover:border-amber-700/30 transition-all duration-300 hover:transform hover:translate-x-1 ${isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                        className={`flex items-center p-4 bg-black/20 rounded-2xl border border-white/5 hover:border-amber-700/30 transition-all duration-300 hover:transform hover:translate-x-1 ${isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                         style={{ transitionDelay: `${200 + idx * 100}ms` }}
                       >
                         <div className="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center mr-4 shadow-lg shrink-0">
@@ -225,7 +225,7 @@ export default function ContactModal({ isOpen, onClose, buttonRect }) {
                         </div>
                         <div>
                           <p className="text-amber-400 font-semibold text-sm">{item.title}</p>
-                          <p className="text-gray-300 text-sm md:text-base">{item.value}</p>
+                          <p className="text-gray-300 text-sm">{item.value}</p>
                         </div>
                       </div>
                     ))}
@@ -310,13 +310,13 @@ export default function ContactModal({ isOpen, onClose, buttonRect }) {
                       {errors.message && <p className="text-red-400 text-xs mt-1 flex items-center"><Icon name="AlertCircle" size={12} className="mr-1" />{errors.message}</p>}
                     </div>
 
-                    {/* REFACTOR: Submit Button rounded-2xl -> rounded-full */}
+                    {/* REFACTOR: Scaled down button padding and text size */}
                     <div className="pt-2">
                       <button
                         type="button"
                         onClick={handleSubmit}
                         disabled={isSubmitting}
-                        className="w-full py-3.5 px-8 bg-gradient-gold text-black font-bold text-lg rounded-full hover:shadow-lg hover:shadow-amber-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center hover:scale-[1.02] active:scale-95 relative overflow-hidden group"
+                        className="w-full py-2.5 px-6 bg-gradient-gold text-black font-bold text-base rounded-full hover:shadow-lg hover:shadow-amber-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center hover:scale-[1.02] active:scale-95 relative overflow-hidden group"
                       >
                         {isSubmitting && <div className="absolute inset-0 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 animate-[shimmer_2s_infinite]"></div>}
                         <div className="relative z-10 flex items-center">

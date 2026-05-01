@@ -173,25 +173,27 @@ html {
 
   /* REFACTOR: Ukuran Heading diperkecil agar proporsional */
   .section-heading {
-    @apply text-2xl md:text-3xl font-bold relative;
+    @apply text-2xl md:text-3xl font-bold relative tracking-tight;
   }
 
   .section-heading::after {
     content: "";
-    @apply absolute -bottom-2 left-0 w-12 h-1; /* Garis lebih pendek & tipis */
+    @apply absolute -bottom-3 left-0 w-10 h-[2px]; /* Thinner, softer accent line */
     background-color: #df8107;
+    opacity: 0.8;
   }
 
   .section-heading-center {
-    @apply text-2xl md:text-3xl font-bold relative text-center;
+    @apply text-2xl md:text-3xl font-bold relative text-center tracking-tight;
   }
 
   .section-heading-center::after {
     content: "";
-    @apply absolute -bottom-2 w-12 h-1;
+    @apply absolute -bottom-3 w-10 h-[2px];
     background-color: #df8107;
     left: 50%;
     transform: translateX(-50%);
+    opacity: 0.8;
   }
 
   .text-gradient-gold {
@@ -199,7 +201,7 @@ html {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 0 10px rgba(223, 129, 7, 0.3);
+    text-shadow: 0 0 10px rgba(223, 129, 7, 0.2);
   }
 
   .bg-gradient-gold {
@@ -210,13 +212,15 @@ html {
     background-color: #1a1a1a;
   }
 
+  /* REFACTOR: Visual Hierarchy - Subtle borders and soft shadows */
   .card-dark {
-    @apply bg-[#252525] border border-gray-800 hover:border-amber-700/50 transition-all;
+    @apply bg-[#222222] border border-white/5 hover:border-white/10 transition-all duration-300 rounded-2xl;
+    box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.3), 0 0 2px 1px rgba(255, 255, 255, 0.02);
   }
 
-  /* REFACTOR: Container dibatasi max-w-7xl (1280px) dan padding vertical dikurangi drastis */
+  /* REFACTOR: Container dibatasi max-w-6xl dan padding vertical ditingkatkan untuk whitespace */
   .section-container {
-    @apply max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20;
+    @apply w-full max-w-6xl mx-auto px-6 sm:px-8 md:px-16 py-20 md:py-32;
   }
 
   /* Animation backgrounds */
@@ -285,40 +289,41 @@ html {
   }
 
   /* Certification card styles */
-/* REFACTOR: Certification Card Size Adjustment */
+/* REFACTOR: Certification Card Size Adjustment using rems */
   .cert-card {
-    @apply bg-[#252525] rounded-xl overflow-hidden border border-gray-800 transition-all duration-300;
-    min-width: 300px; /* Diperkecil dari 400px */
-    max-width: 350px; /* Diperkecil dari 450px */
-    height: 240px;    /* Diperkecil dari 280px */
+    @apply bg-[#222222] rounded-2xl overflow-hidden border border-white/5 transition-all duration-300;
+    min-width: 18rem; 
+    max-width: 22rem; 
+    height: 15rem;    
     position: relative;
     cursor: pointer;
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.3);
   }
 
   .cert-card:hover {
-    @apply border-amber-600/50 shadow-lg transform -translate-y-2;
-    box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.15);
+    @apply border-white/10 shadow-lg transform -translate-y-1;
+    box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.5), 0 0 2px 1px rgba(255, 255, 255, 0.03);
   }
 
   .cert-card-active {
-    @apply border-amber-600 shadow-xl;
-    box-shadow: 0 15px 30px -5px rgba(245, 158, 11, 0.2);
+    @apply border-amber-600/50 shadow-xl;
+    box-shadow: 0 15px 35px -5px rgba(245, 158, 11, 0.15);
   }
 
   .cert-slider-container {
     position: relative;
     overflow: hidden;
-    padding: 0 60px;
-    margin: 0 -60px;
+    padding: 0 4rem;
+    margin: 0 -4rem;
   }
 
   .cert-slider {
-    @apply flex gap-8 py-6 overflow-x-auto pb-10 snap-x;
+    @apply flex gap-6 py-8 overflow-x-auto pb-12 snap-x;
     scrollbar-width: thin;
     scrollbar-color: rgba(245, 158, 11, 0.3) rgba(30, 30, 30, 0.5);
     cursor: grab;
     -webkit-overflow-scrolling: touch;
-    padding: 0 60px;
+    padding: 0 4rem;
     scroll-behavior: smooth;
   }
 
@@ -327,7 +332,7 @@ html {
   }
 
   .cert-slider::-webkit-scrollbar {
-    height: 8px;
+    height: 6px;
   }
 
   .cert-slider::-webkit-scrollbar-track {
@@ -343,8 +348,8 @@ html {
   }
 
   .cert-detail {
-    @apply bg-[#252525] rounded-xl p-10 border border-gray-800 mt-10;
-    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+    @apply bg-[#222222] rounded-2xl p-8 md:p-12 border border-white/5 mt-12;
+    box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.4), 0 0 2px 1px rgba(255, 255, 255, 0.02);
   }
 
   /* Fade edges for cert slider */
@@ -353,7 +358,7 @@ html {
     left: 0;
     top: 0;
     bottom: 0;
-    width: 150px;
+    width: 8rem;
     background: linear-gradient(to right, #1a1a1a 0%, rgba(26, 26, 26, 0) 100%);
     z-index: 5;
     pointer-events: none;
@@ -364,7 +369,7 @@ html {
     right: 0;
     top: 0;
     bottom: 0;
-    width: 150px;
+    width: 8rem;
     background: linear-gradient(to left, #1a1a1a 0%, rgba(26, 26, 26, 0) 100%);
     z-index: 5;
     pointer-events: none;
@@ -372,8 +377,8 @@ html {
 
   /* Work item expanded details */
   .work-detail {
-    @apply bg-[#252525] rounded-xl p-8 border border-gray-800 mt-6;
-    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+    @apply bg-[#222222] rounded-2xl p-8 md:p-12 border border-white/5 mt-8;
+    box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.4), 0 0 2px 1px rgba(255, 255, 255, 0.02);
   }
 }
 

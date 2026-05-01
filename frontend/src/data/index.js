@@ -208,7 +208,7 @@ export const workExperience = [
   {
     id: 2,
     title: "Asia Sistem Indonesia",
-    categories: "System Administrator Associate - IT Support",
+    categories: "System Administrator Associate",
     logo: "/AsiaSistem.jpeg",
     period: "June 2024 - May 2025",
     description: "Managed server infrastructure include Dell and HPE Server with Vmware and Fortigate for Networking.",
@@ -296,7 +296,7 @@ export const portfolioActivities = [
       "Collaborated with MTM team to implementation, and international Principal Engineers for lab research and production validation, ensuring the deployment performed accurately."
     ],
     techStack: ["RedHat", "Ansible", "Docker Swarm", "VMware", "SNMP", "Netflow", "RPM", "OSPF", "BGP", "TACACS+", "vCenter"],
-    docLink: "https://www.notion.so/OpenShift-Container-Platform-2c87649716e780aabf8df99e4f7b74dd?source=copy_link"
+    docLink: ""
   },
 
   {

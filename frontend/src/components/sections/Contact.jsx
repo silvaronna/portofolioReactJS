@@ -26,44 +26,44 @@ export default function Contact() {
 
   return (
     <>
-      <footer id="contact" className="bg-gradient-to-r from-[#0a1525] to-[#3a2000] text-white py-20 md:py-24 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
+      <footer id="contact" className="bg-gradient-to-r from-[#0a1525] to-[#3a2000] text-white py-12 md:py-16 px-6 md:px-12">
+        <div className="max-w-6xl mx-auto">
           
           {/* Bagian Atas: Call to Action */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8 text-center md:text-left">
-            <div className="mb-6 md:mb-0 animate-on-scroll">
-              <h2 className="text-xl md:text-3xl font-bold text-amber-400 mb-4 tracking-tight">Have something to Build?</h2>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6 text-center md:text-left">
+            <div className="mb-4 md:mb-0 animate-on-scroll">
+              <h2 className="text-lg md:text-2xl font-bold text-amber-400 mb-2 tracking-tight">Have something to Build?</h2>
               
-              <div className="flex items-center animate-on-scroll delay-100">
-                <div className="w-10 h-10 rounded-full bg-gradient-gold mr-3 overflow-hidden shadow-lg border border-amber-500/30">
+              <div className="flex items-center justify-center md:justify-start animate-on-scroll delay-100">
+                <div className="w-8 h-8 rounded-full bg-gradient-gold mr-3 overflow-hidden shadow-sm border border-amber-500/20">
                   <img src="/mylogo.png" alt="Azka Abdillah" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-lg md:text-xl font-medium text-gray-200">let's build it together.</p>
+                <p className="text-base md:text-lg font-medium text-gray-300">let's build it together.</p>
               </div>
             </div>
 
             <button
               ref={contactButtonRef}
               onClick={handleOpenModal}
-              className="px-6 py-3 rounded-full bg-white text-amber-950 font-semibold text-base hover:bg-amber-50 transition-all duration-300 flex items-center shadow-lg animate-on-scroll delay-200 hover:scale-105 hover:shadow-amber-500/20"
+              className="px-5 py-2.5 rounded-full bg-white text-amber-950 font-semibold text-sm hover:bg-amber-50 transition-all duration-300 flex items-center shadow-md animate-on-scroll delay-200 hover:scale-105 hover:shadow-amber-500/10 mx-auto md:mx-0"
             >
-              <Icon name="Mail" className="mr-2" size={18} />
+              <Icon name="Mail" className="mr-2" size={16} />
               Reach me out
             </button>
           </div>
 
           {/* Bagian Bawah: Credits & Stack */}
-          <div className="border-t border-amber-900/30 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="border-t border-amber-900/20 pt-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-5">
               
               {/* Tech Stack Section */}
               <div className="animate-on-scroll w-full md:w-auto">
-                <p className="text-amber-400/80 text-xs mb-3 italic text-center md:text-left">
+                <p className="text-amber-400/70 text-[10px] mb-2 italic text-center md:text-left">
                   Designed & Developed by <span className="font-bold text-amber-300">Azka</span> using:
                 </p>
                 
                 <div
-                  className="flex flex-wrap items-center justify-center md:justify-start gap-4 px-5 py-3 rounded-2xl transition-all duration-300 border border-white/5"
+                  className="flex flex-wrap items-center justify-center md:justify-start gap-3 px-4 py-2 rounded-xl transition-all duration-300 border border-white/5"
                   style={{ background: "rgba(30, 30, 30, 0.4)" }}
                 >
                   {techStack.map((tech, index) => (
@@ -77,7 +77,7 @@ export default function Contact() {
                       <img
                         src={tech.logo || "/placeholder.svg"}
                         alt={tech.name}
-                        className="h-5 w-auto object-contain filter grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 ease-out group-hover:scale-110"
+                        className="h-4 w-auto object-contain filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 ease-out group-hover:scale-110"
                       />
                     </div>
                   ))}
@@ -85,16 +85,16 @@ export default function Contact() {
               </div>
 
               {/* Social Links */}
-              <div className="flex space-x-4 animate-on-scroll delay-300">
+              <div className="flex space-x-3 animate-on-scroll delay-300">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-amber-400 transition-colors p-2.5 hover:bg-white/5 rounded-full"
+                    className="text-gray-400 hover:text-amber-400 transition-colors p-2 hover:bg-white/5 rounded-full"
                   >
-                    <Icon name={social.icon} size={20} />
+                    <Icon name={social.icon} size={18} />
                     <span className="sr-only">{social.label}</span>
                   </a>
                 ))}
