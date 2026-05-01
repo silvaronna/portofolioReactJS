@@ -290,7 +290,7 @@ export const portfolioActivities = [
       "Orchestrated a migration and fresh-install upgrade from CentOS 7 to RHEL 8.10 to deploy ROA v25.04 using Docker Swarm microservices.",
       "Managed the provisioning of 12 dedicated nodes + 1 License Server, leveraging 12 HPE ProLiant DL380p Gen 10 bare-metal servers and VMware ESXi clusters to handle intensive telco-grade workloads.",
       "Streamlined the installation lifecycle through Ansible playbooks and custom Bash scripts, ensuring a standardized and repeatable deployment process.",
-      "Integrated deep network monitoring using SNMP, Netflow, RPM, OSPF, and BGP to maintain high-precision traffic assurance for telecommunication clients (Telkomsel)",
+      "Integrated deep network monitoring using SNMP, Netflow, RPM, OSPF, and BGP to maintain high-precision backbone traffic assurance for telecommunication clients (Telkomsel)",
       "Authored high-standard documentation, including Method of Procedure (MoP), technical timelines, and severity matrices to ensure operational continuity.",
       "Enhanced infrastructure security by integrating TACACS+ authentication and managing complex vCenter network interface mapping for service and management segregation.",
       "Collaborated with MTM team to implementation, and international Principal Engineers for lab research and production validation, ensuring the deployment performed accurately."

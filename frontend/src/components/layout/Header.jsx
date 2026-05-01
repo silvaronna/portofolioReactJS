@@ -1,20 +1,38 @@
 "use client"
 
 import { useState, useEffect } from "react"
-// Perhatikan path import Icon ini, sesuaikan dengan posisi file Header.jsx
-// Karena Header ada di components/layout, maka naik satu level (..) ke components, lalu ke ui
 import Icon from "../ui/Icon" 
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("")
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 20)
+      
+      // Simple scroll spy logic
+      const sections = navLinks.map(link => link.href.substring(1))
+      for (const section of sections.reverse()) {
+        const el = document.getElementById(section)
+        if (el && window.scrollY >= el.offsetTop - 150) {
+          setActiveSection(section)
+          break
+        }
+      }
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const handleHeaderToggle = (e) => {
+      setIsHeaderVisible(e.detail)
+    }
+    window.addEventListener("toggle-header", handleHeaderToggle)
+    return () => window.removeEventListener("toggle-header", handleHeaderToggle)
   }, [])
 
   const navLinks = [
@@ -29,58 +47,76 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isMobileMenuOpen ? "bg-black/80 backdrop-blur-md py-3" : "bg-transparent py-4"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] flex justify-center ${
+        isScrolled ? "py-3" : "py-6"
+      } ${
+        isHeaderVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
       }`}
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      <div 
+        className={`flex justify-between items-center w-full max-w-5xl px-6 transition-all duration-500 ${
+          isScrolled 
+            ? "bg-[#111111]/80 backdrop-blur-xl border border-white/10 rounded-full py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:w-auto md:px-8 mx-4 md:mx-auto" 
+            : "bg-transparent py-2"
+        }`}
+      >
         {/* LOGO */}
-        <a href="#" className="flex items-center gap-2 group">
-           <div className="bg-white p-1 rounded-full transition-transform group-hover:rotate-12">
-              <img src="/mylogo-nobg.png" alt="Logo" className="w-5 h-5" />
+        <a href="#" className="flex items-center gap-2 group z-20 md:pr-8">
+           <div className="bg-white p-[clamp(0.2rem,0.5vw,0.25rem)] rounded-full transition-transform duration-500 group-hover:rotate-12 shadow-sm">
+              <img src="/mylogo-nobg.png" alt="Logo" className="w-[clamp(1.2rem,2vw,1.5rem)] h-[clamp(1.2rem,2vw,1.5rem)]" />
            </div>
         </a>
 
-        {/* DESKTOP MENU (Hidden di Mobile) */}
-        <div className="hidden md:flex items-center gap-6 bg-black/30 px-6 py-2 rounded-full border border-white/10 backdrop-blur-sm">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-[13px] font-medium text-gray-300 hover:text-amber-400 transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
-        </div>
-
-        {/* MOBILE MENU BUTTON (Hamburger - Hidden di Desktop) */}
-        <button 
-          className="md:hidden text-white p-2 focus:outline-none"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <Icon name="X" size={24} /> : <Icon name="Menu" size={24} />}
-        </button>
-      </div>
-
-      {/* MOBILE DROPDOWN (Muncul saat tombol dipencet) */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-t border-white/10 shadow-2xl animate-fadeIn">
-          <div className="flex flex-col p-6 space-y-4">
-            {navLinks.map((link) => (
+        {/* DESKTOP MENU */}
+        <nav className="hidden md:flex items-center gap-[clamp(1rem,2vw,1.5rem)]">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.substring(1)
+            return (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-lg font-medium text-gray-300 hover:text-amber-400 py-2 border-b border-white/5 text-center"
-                onClick={() => setIsMobileMenuOpen(false)} // Tutup menu saat diklik
+                className={`text-[clamp(0.7rem,1vw,0.8rem)] font-medium transition-all duration-300 relative py-1 ${
+                  isActive ? "text-amber-400" : "text-gray-400 hover:text-white"
+                }`}
               >
                 {link.name}
+                {/* Active Indicator Underline */}
+                {isActive && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-amber-500 rounded-full opacity-80 animate-fadeIn"></span>
+                )}
               </a>
-            ))}
-          </div>
-        </div>
-      )}
+            )
+          })}
+        </nav>
+
+        {/* MOBILE MENU BUTTON */}
+        <button 
+          className="md:hidden text-white p-2 focus:outline-none z-20"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <Icon name="X" size={20} /> : <Icon name="Menu" size={20} />}
+        </button>
+      </div>
+
+      {/* MOBILE DROPDOWN */}
+      <div 
+        className={`md:hidden absolute top-0 left-0 w-full h-screen bg-[#0a0a0a]/95 backdrop-blur-2xl flex flex-col items-center justify-center space-y-6 transition-all duration-500 ease-in-out ${
+          isMobileMenuOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"
+        }`}
+      >
+        {navLinks.map((link, index) => (
+          <a
+            key={link.name}
+            href={link.href}
+            className="text-2xl font-semibold text-gray-300 hover:text-amber-400 tracking-wide transform transition-transform hover:scale-105"
+            style={{ transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : '0ms' }}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {link.name}
+          </a>
+        ))}
+      </div>
     </header>
   )
 }
