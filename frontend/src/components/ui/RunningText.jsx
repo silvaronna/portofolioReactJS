@@ -1,4 +1,4 @@
-const textItems = ["System Engineer", "Security Enthusiast"]
+const textItems = ["Site Reliability Engineer", "Tech Enthusiast"]
 
 export default function RunningText() {
   return (
