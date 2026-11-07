@@ -11,19 +11,19 @@ export default function Work() {
 
   return (
     <section id="work" className="bg-dark py-12 md:py-16">
-      <div className="container mx-auto px-6 max-w-6xl">
+      <div className="container mx-auto px-6 max-w-5xl">
         {/* Header Section */}
-        <div className="mb-10 animate-on-scroll text-center md:text-left">
+        <div className="mb-8 animate-on-scroll text-center md:text-left">
           <SectionHeading title="Recent Work" />
-          <p className="text-white/60 mt-3 text-xs md:text-sm animate-on-scroll delay-100 max-w-xl mx-auto md:mx-0">
+          <p className="text-white/60 mt-3 text-xs md:text-sm animate-on-scroll delay-100 max-w-xl mx-auto md:mx-0 leading-relaxed">
             Explore my professional experience and infrastructure systems I&apos;ve engineered.
           </p>
         </div>
 
-        {/* Content Grid */}
+        {/* Content Grid: Compact 5-column layout matching Education section */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
-          {/* Selector Column */}
-          <div className="lg:col-span-2 animate-on-scroll delay-200 sticky top-24">
+          {/* Card Swap Selector Column */}
+          <div className="lg:col-span-2 animate-on-scroll delay-200 lg:sticky lg:top-24 flex justify-center lg:justify-start">
             <WorkSelector
               workExperience={workExperience}
               activeWork={activeWork}
@@ -31,7 +31,7 @@ export default function Work() {
             />
           </div>
 
-          {/* Detail Column */}
+          {/* Untitled UI Inspired Detail Column */}
           <div className="lg:col-span-3 animate-on-scroll delay-300">
             <WorkDetail
               workExperience={workExperience}

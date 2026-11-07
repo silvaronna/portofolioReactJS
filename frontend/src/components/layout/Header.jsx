@@ -5,10 +5,10 @@ import Icon from "../ui/Icon"
 
 const navLinks = [
   { name: "About", href: "#about" },
+  { name: "Certifications", href: "#certifications" },
   { name: "Skills", href: "#skills" },
   { name: "Work", href: "#work" },
   { name: "Portfolio", href: "#activities" },
-  { name: "Certifications", href: "#certifications" },
   { name: "Education", href: "#education" },
   { name: "Contact", href: "#contact" },
 ]

@@ -1,6 +1,7 @@
 import SectionHeading from "../ui/SectionHeading"
 import AudioPlayer from "../ui/audioPlayer"
 import TiltedCard from "../ui/TiltedCard"
+import ReflectiveCard from "../ui/ReflectiveCard"
 import Icon from "../ui/Icon"
 import { about } from "../../data"
 
@@ -8,66 +9,69 @@ export default function About() {
   const cardIcons = ["Target", "Compass"]
 
   return (
-    <section id="about" className="section-container bg-dark py-12 md:py-16">
+    <section id="about" className="section-container bg-dark py-12 md:py-13">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-        <div className="animate-on-scroll">
-          <SectionHeading title="About" />
+        {/* Left Column: Section Heading + Compact Reflective Profile Card */}
+        <div className="animate-on-scroll flex flex-col items-center md:items-start gap-5">
+          <SectionHeading title="About" className="mb-1" />
+          <ReflectiveCard />
         </div>
 
-        <div className="lg:col-span-2 flex flex-col gap-8">
+        {/* Right Column: Intro, Goal/Mission Cards, and Audio Player */}
+        <div className="lg:col-span-2 flex flex-col gap-6">
           {/* Intro Text */}
-          <p className="text-center md:text-left text-white/80 leading-relaxed text-sm md:text-base max-w-3xl">
+          <p className="text-center md:text-left text-white/75 leading-relaxed text-xs md:text-sm max-w-2xl">
             {about.description}
           </p>
 
-          {/* MOTION CARDS SECTION */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+          {/* MOTION CARDS SECTION (Compact Size) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-xl mx-auto md:mx-0">
             {about.cards.map((card, index) => {
               const iconName = cardIcons[index % cardIcons.length]
               return (
                 <div
                   key={card.title}
-                  className={`w-full flex justify-center animate-on-scroll delay-${200 + index * 100}`}
+                  className={`w-full flex justify-center md:justify-start animate-on-scroll delay-${200 + index * 100}`}
                 >
-                  {/* MOBILE CARD (Static) */}
-                  <div className="md:hidden w-full card-dark p-6 rounded-2xl text-center flex flex-col items-center justify-center min-h-[180px] group">
-                    <div className="w-8 h-1 bg-[#C6F432] rounded-full mb-3.5" />
-                    <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white mb-2.5">
-                      <Icon name={iconName} size={17} />
+                  {/* MOBILE CARD (Static Compact) */}
+                  <div className="md:hidden w-full max-w-[260px] card-dark p-4 rounded-xl text-center flex flex-col items-center justify-center min-h-[140px] group">
+                    <div className="w-6 h-0.5 bg-[#C6F432] rounded-full mb-2" />
+                    <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white mb-2">
+                      <Icon name={iconName} size={14} />
                     </div>
-                    <h3 className="text-white font-bold text-base mb-2 tracking-wide">
+                    <h3 className="text-white font-bold text-xs sm:text-sm mb-1 tracking-tight">
                       {card.title}
                     </h3>
-                    <p className="text-white/65 text-xs leading-relaxed">
+                    <p className="text-white/60 text-[11px] leading-relaxed">
                       {card.content}
                     </p>
                   </div>
 
-                  {/* DESKTOP CARD (3D Tilted) */}
-                  <div className="hidden md:flex w-full items-center justify-center">
+                  {/* DESKTOP CARD (3D Tilted Compact) */}
+                  <div className="hidden md:flex w-full max-w-[260px] items-center justify-center">
                     <TiltedCard
                       altText={card.title}
                       captionText={card.title}
-                      containerHeight="210px"
+                      containerHeight="148px"
                       containerWidth="100%"
-                      imageHeight="210px"
+                      imageHeight="148px"
                       imageWidth="100%"
-                      rotateAmplitude={10}
-                      scaleOnHover={1.03}
+                      rotateAmplitude={8}
+                      scaleOnHover={1.02}
                       showMobileWarning={false}
                       showTooltip={false}
                       displayOverlayContent={true}
                       overlayContent={
-                        <div className="w-full h-full flex flex-col justify-center items-center text-center p-6 rounded-2xl border border-white/10 hover:border-white/25 bg-[#121215]/95 backdrop-blur-md transition-all duration-300 shadow-[0_14px_34px_-8px_rgba(0,0,0,0.85)] group relative overflow-hidden">
+                        <div className="w-full h-full flex flex-col justify-center items-center text-center p-4 rounded-xl border border-white/10 hover:border-white/25 bg-[#121215]/95 backdrop-blur-md transition-all duration-300 shadow-[0_12px_28px_-8px_rgba(0,0,0,0.85)] group relative overflow-hidden">
                           {/* Small Lime accent indicator bar */}
-                          <div className="w-8 h-1 bg-[#C6F432] rounded-full mb-3.5 group-hover:w-12 transition-all duration-300" />
-                          <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/80 mb-2.5 group-hover:scale-110 group-hover:border-[#C6F432]/40 group-hover:text-[#C6F432] transition-all duration-300">
-                            <Icon name={iconName} size={17} />
+                          <div className="w-6 h-0.5 bg-[#C6F432] rounded-full mb-2 group-hover:w-10 transition-all duration-300" />
+                          <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/80 mb-2 group-hover:scale-105 group-hover:border-[#C6F432]/40 group-hover:text-[#C6F432] transition-all duration-300">
+                            <Icon name={iconName} size={14} />
                           </div>
-                          <h3 className="text-white font-bold text-base lg:text-lg mb-2 tracking-tight">
+                          <h3 className="text-white font-bold text-xs sm:text-sm mb-1 tracking-tight">
                             {card.title}
                           </h3>
-                          <p className="text-white/65 text-xs leading-relaxed max-w-[240px]">
+                          <p className="text-white/60 text-[11px] leading-relaxed max-w-[210px]">
                             {card.content}
                           </p>
                         </div>
@@ -80,16 +84,16 @@ export default function About() {
           </div>
 
           {/* Audio Player & Quote Section */}
-          <div className="flex flex-col items-center gap-4 pt-2 animate-on-scroll delay-300">
-            <div className="w-full max-w-sm flex justify-center">
+          <div className="flex flex-col items-center md:items-start gap-3 pt-1 max-w-xl animate-on-scroll delay-300">
+            <div className="w-full flex justify-center">
               <AudioPlayer />
             </div>
 
-            <div className="text-center px-4 md:px-8 max-w-xl">
-              <p className="text-white/55 text-xs md:text-sm italic relative font-serif leading-loose">
-                <span className="text-[#C6F432]/60 text-2xl font-sans not-italic mr-1.5">&ldquo;</span>
+            <div className="w-full text-center px-4">
+              <p className="text-white/55 text-xs italic relative font-serif leading-loose">
+                <span className="text-[#C6F432]/60 text-lg font-sans not-italic mr-1">&ldquo;</span>
                 {about.quote}
-                <span className="text-[#C6F432]/60 text-2xl font-sans not-italic ml-1.5">&rdquo;</span>
+                <span className="text-[#C6F432]/60 text-lg font-sans not-italic ml-1">&rdquo;</span>
               </p>
             </div>
           </div>

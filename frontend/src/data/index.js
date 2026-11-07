@@ -7,7 +7,7 @@ export const about = {
     },
     {
       title: "Personal Mission",
-      content: "Continuously learn and grow as Global Engineerwhile delivering value to organizations.",
+      content: "Continuously learn and grow as Global Architect while delivering value to organizations.",
     }
   ],
   quote: "The right train won't pass you by"
@@ -19,29 +19,29 @@ export const skills = {
       icon: "Server",
       title: "Server Engineering",
       description: "Experienced in Various Operating System, ensuring optimal performance and security.",
-      tools: ["RedHat Enterprise Linux", "Windows Server", "VMware ESXi", "OpenShift"],
+      tools: ["Red Hat Enterprise Linux", "Windows Server", "VMware ESXi", "OpenShift"],
       bgClass: "server-bg",
     },
     {
       icon: "Cloud",
       title: "Cloud Engineering",
       description: "Experienced hands-on cloud based server for deploying and managing scalable infrastructure.",
-      tools: ["Amazon Web Services", "Biznet Gio"],
+      tools: ["Amazon Web Services", "Google Cloud Platform"],
       bgClass: "cloud-bg",
     },
     {
       icon: "Container",
-      title: "Deployment Tools",
+      title: "Services",
       description:
         "Skilled in setting up containers, managing multi-container apps, and streamlining CI/CD Pipeline Workflows.",
-      tools: ["Podman/Docker", "Nginx", "Cloudflare", "Ansible", "Jenkins", "SonarQube", "PostgreSQL"],
+      tools: ["Podman/Docker", "Nginx", "Cloudflare", "Ansible", "Jenkins", "Grafana", "Nagios", "PostgreSQL"],
       bgClass: "container-bg",
     },
     {
       icon: "Network",
       title: "Network Engineering",
       description: "Knowledgeable in designing, manage, and general implementation network infrastructures.",
-      tools: ["Cisco", "Mikrotik", "Fortinet"],
+      tools: ["Cisco", "Mikrotik", "Fortigate"],
       bgClass: "network-bg",
     },
   ],
@@ -120,35 +120,34 @@ export const education = [
 ]
 
 export const certifications = [
-  {
+    {
     id: 1,
+    title: "Red Hat Certified Engineer in Ansible",
+    issuer: "Red Hat",
+    issuedDate: "Sep 2026",
+    image: "/rhce.png",
+    skills: ["Ansible", "Red Hat", "Security Hardening", "Operating System", "DevOps"],
+    description:
+      "The Red Hat Certified Engineer in Ansible (RHCE in Ansible) is an advanced credential validating your ability to automate system administration tasks, systems management, MLOps, and virtualization environments using core components of Red Hat Ansible. It represents the updated, track-specific title for the traditional RHCE certification.",
+    credentialLink: "https://www.credly.com/badges/1aced0f0-339c-49c7-9c49-7184e3a52921",
+  },
+  {
+    id: 4,
     title: "Certified in CyberSecurity",
     issuer: "ISC2",
     issuedDate: "May 2025",
-    image: "/isc2.jpeg",
+    image: "/cc.png",
     skills: ["Risk Management", "Access Control", "Security Principles", "Network & Security"],
     description:
       "Establishes the core knowledge required of any cybersecurity role and provides a springboard to intermediate-level cybersecurity jobs, covering essential principles for network security and risk management.",
     credentialLink: "https://www.credly.com/badges/f0b7cb10-ccb5-4d5c-a27a-536501895ce8",
   },
   {
-    id: 2,
-    title: "RedHat Certified System Administrator (RHCSA)",
-    issuer: "RedHat",
-    issuedDate: "Mar 2025",
-    image: "/redhat.jpg",
-    skills: ["NFS", "SELinux", "FirewallD", "Bash Scripting", "User and Group Management", "Storage Management (LVM & Partitioning)", "Process Management", "Podman Container"],
-    description:
-      "Validate my Linux skills such as managing files, users, networking, services, storage management, security (SELinux), system tuning, boot troubleshooting, and Bash scripting for RHEL (Red Hat Enterprise Linux) environments.",
-    credentialLink: "https://www.credly.com/badges/4b4d5655-4b01-4b75-8ab7-9f95a9ae764b/public_url",
-  },
-
-  {
     id: 3,
     title: "AWS Cloud Practitioner",
     issuer: "Amazon Web Services",
     issuedDate: "Jan 2026",
-    image: "/aws.png",
+    image: "/ccp.png",
     skills: [
       "Amazon Web Services (AWS) Core Services",
       "Serverless Computing",
@@ -162,27 +161,38 @@ export const certifications = [
     credentialLink: "https://www.credly.com/badges/2ef2b72a-4d8e-4083-bcc6-c7a88bdf85b4",
   },
   {
-    id: 4,
+    id: 5,
     title: "Fortinet Certified Fundamentals Cybersecurity",
     issuer: "Fortinet",
     issuedDate: "Dec 2025",
-    image: "/fortinet.jpg",
+    image: "/nse3.png",
     skills: ["Network Security", "Firewall Configuration", "Threat Detection", "Security Policies", "ZTNA (Zero Trust Network Access)", "Secure Access Service Edge (SASE)"],
     description:
       "Covers essential IT support skills including user account management, troubleshooting hardware/software issues, working with ticketing systems, and supporting productivity tools such as Office 365 in a helpdesk environment.",
     credentialLink: "https://www.credly.com/badges/433ca746-8258-48e1-9253-21aa19dbbd2e",
   },
-  {
-    id: 5,
+    {
+    id: 6,
     title: "AWS re/Start Graduate",
-    issuer: "Orbit Future Academy",
+    issuer: "Amazon Web Service",
     issuedDate: "Jan 2026",
-    image: "/aws.png",
-    skills: ["Cloud Fundamentals", "AWS Core Services", "Cloud Security", "Cloud Networking", "DevOps Basics"],
+    image: "/awsrestart.png",
+    skills: ["AWS Cloud", "Cloud Comuting", "Serverless"],
     description:
-      "Covers the foundational knowledge of computer networks including OSI layers, IP addressing, subnetting, routing, switching, and basic Cisco configurations. Prepares learners to understand and design small to medium-sized network topologies.",
-    credentialLink: "https://course-net.com/certificate-verifier/1330E0B76-1330DE465-3036A9C/",
-  }
+      "Validate my Linux skills such as managing files, users, networking, services, storage management, security (SELinux), system tuning, boot troubleshooting, and Bash scripting for RHEL (Red Hat Enterprise Linux) environments.",
+    credentialLink: "https://www.credly.com/badges/4b4d5655-4b01-4b75-8ab7-9f95a9ae764b/public_url",
+  },
+    {
+    id: 2,
+    title: "RedHat Certified System Administrator (RHCSA)",
+    issuer: "RedHat",
+    issuedDate: "Mar 2025",
+    image: "/rhcsa.png",
+    skills: ["NFS", "SELinux", "FirewallD", "Bash Scripting", "User and Group Management", "Storage Management (LVM & Partitioning)", "Process Management", "Podman Container"],
+    description:
+      "Validate my Linux skills such as managing files, users, networking, services, storage management, security (SELinux), system tuning, boot troubleshooting, and Bash scripting for RHEL (Red Hat Enterprise Linux) environments.",
+    credentialLink: "https://www.credly.com/badges/4b4d5655-4b01-4b75-8ab7-9f95a9ae764b/public_url",
+  }  
 ]
 
 export const workExperience = [
@@ -203,7 +213,7 @@ export const workExperience = [
       "Successfully reducing average deployment time by 80%+ with Ansible Automation Tools.",
       "Build Containerized Robust Monitoring System with various endpoint and datasources using Grafana",
     ],
-    screenshots: ["/ansiblee.png?height=250&width=450", "/metricVmwareVisualization.png?height=250&width=450"],
+    screenshots: ["/ansiblee.png?height=250&width=450"],
   },
   {
     id: 2,
@@ -222,7 +232,7 @@ export const workExperience = [
       "Collaborated with development team for application deployment",
       "Monitored system performance and optimized resources",
     ],
-    screenshots: ["/asiasistem-act1.jpeg?height=250&width=450", "/asiasistem-act2.jpeg?height=250&width=450"],
+    screenshots: [],
   },
 ]
 
@@ -273,18 +283,6 @@ export const portfolioActivities = [
         src: "/ansiblee.png",
         caption: "Manage Complex Deployment Scenarios with Ansible."
       },
-      {
-        src: "/bgp-igp-integration.png",
-        caption: "Integrating BGP and IGP Protocols for Route Optimization and Analysis."
-      },
-      {
-        src: "/configureCollector.png",
-        caption: "Configuring various metric Recorder include NetFlow, SNMP, RPM, etc for traffic breakdown analysis."
-      },
-      {
-        src: "/ManageCluster-withvCenter.png",
-        caption: "Managing Cluster with vCenter for Service Management."
-      }
     ],
     description: [
       "Orchestrated a migration and fresh-install upgrade from CentOS 7 to RHEL 8.10 to deploy ROA v25.04 using Docker Swarm microservices.",
@@ -307,27 +305,9 @@ export const portfolioActivities = [
     coverImage: "/grafana-wpp.png",
     gallery: [
       {
-        src: "/Dashboard-Craft.png",
-        caption: "Crafting Custom Grafana Dashboard for Visualizing Server Performance Metrics."
-      },
-      {
-        src: "/InfluxDB-Dashboard.png",
-        caption: "Configuring InfluxDB as Time-Series Database for Storing Monitoring Data."
-      },
-      {
         src: "/Deploy-withAnsible.png",
         caption: "Automating Deployment Process on multiple Apstra Nodes using Ansible Playbook for Consistent Setup."
-      },
-      {
-        src: "/SuccessVisualizedGrafanawithNodeExporter.png",
-        caption: "Integrating Node Exporter to gather General Linux Metrics."
-      },
-      {
-        src: "/bgp-flap.png",
-        caption: "Crafting Dashboard to Monitoring BGP Flaps on Juniper Switch Devices."
-      },
-
-    ],
+      }    ],
     description: [
       "Building Container Pipeline for Grafana Monitoring System",
       "Setting up PostgreSQL as Grafana Database Backend for better performance and reliability.",
@@ -349,26 +329,6 @@ export const portfolioActivities = [
       {
         src: "/proliant-poweredge-devices.jpeg",
         caption: "Manage Bare-Metal HPE Proliant and Dell PowerEdge Server"
-      },
-      {
-        src: "/ESXi-Installation.jpeg",
-        caption: "Installing VMware ESXi on Bare-Metal Server for Virtualization Platform."
-      },
-      {
-        src: "/vSwitch-Configuration-VLANTagging.jpeg",
-        caption: "Configuring vSwitch with VLAN Tagging for Network Segmentation, such as DMZ, Internal, and Management VLAN."
-      },
-      {
-        src: "/vCenter-Deployment.jpeg",
-        caption: "Deploying VCenter Server Appliance for Centralized Management of ESXi Hosts."
-      },
-      {
-        src: "/vSphere-clustering.jpeg",
-        caption: "Setting up vSphere Cluster with multiple ESXi Hosts for Resource Pooling"
-      },
-      {
-        src: "/Interhost-Migration.jpeg",
-        caption: "Cold Migrating Virtual Machines between ESXi Hosts"
       },
     ],
     description: [
@@ -417,18 +377,6 @@ export const portfolioActivities = [
     date: "February 2025",
     coverImage: "/dCompose-wpp.jpg",
     gallery: [
-      {
-        src: "/docker-compose-pipeline.png",
-        caption: "Crafting Docker Compose yaml file for Multi-Container Application Deployment"
-      },
-      {
-        src: "/docker-compose-pipeline-2.png",
-        caption: "Successfully connecting each component service under Docker Network Bridge"
-      },
-      {
-        src: "/dashboard-react.png",
-        caption: "Dashboard Frontend React Application successfully deployed and connected to Backend API Service"
-      }
     ],
     description: [
       "Build & Maintain Containerization Pipeline for Full-Stack JavaScript Application using Docker Compose.",

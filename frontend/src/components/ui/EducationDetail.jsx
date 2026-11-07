@@ -10,11 +10,11 @@ export default function EducationDetail({ education, activeTab }) {
       {/* Header Section */}
       <div className="mb-4 border-b border-white/10 pb-3.5 text-center md:text-left">
         <div className="flex flex-col gap-1.5 mb-3">
-          <h3 className="text-[clamp(1.1rem,2.5vw,1.3rem)] font-bold text-white tracking-tight">
+          <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
             {activeEducationData.institution}
           </h3>
 
-          <div className="flex flex-col md:flex-row md:items-center justify-center md:justify-start gap-1 md:gap-2 text-xs sm:text-sm font-medium">
+          <div className="flex flex-col md:flex-row md:items-center justify-center md:justify-start gap-1 md:gap-2 text-xs font-medium">
             <span className="text-white font-semibold">{activeEducationData.degree}</span>
             {activeEducationData.field && (
               <>
@@ -27,13 +27,13 @@ export default function EducationDetail({ education, activeTab }) {
 
         {/* Metadata Badges */}
         <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-          <div className="flex items-center bg-white/5 text-white px-3 py-1 rounded-full text-xs font-medium border border-white/15">
+          <div className="flex items-center bg-white/5 text-white px-2.5 py-1 rounded-full text-[11px] font-medium border border-white/15">
             <Icon name="Calendar" size={11} className="mr-1.5 text-[#C6F432]" />
             {activeEducationData.period}
           </div>
 
           {activeEducationData.location && (
-            <div className="flex items-center bg-[#0B0B0C] text-white/70 px-3 py-1 rounded-full text-xs font-medium border border-white/10">
+            <div className="flex items-center bg-[#0B0B0C] text-white/70 px-2.5 py-1 rounded-full text-[11px] font-medium border border-white/10">
               <Icon name="MapPin" size={11} className="mr-1.5 text-[#C6F432]" />
               {activeEducationData.location}
             </div>
@@ -42,7 +42,7 @@ export default function EducationDetail({ education, activeTab }) {
       </div>
 
       {/* Description */}
-      <p className="text-white/75 text-xs sm:text-sm mb-5 leading-relaxed animate-on-scroll text-center md:text-left">
+      <p className="text-white/75 text-xs mb-5 leading-relaxed animate-on-scroll text-center md:text-left">
         {activeEducationData.fullDescription}
       </p>
 

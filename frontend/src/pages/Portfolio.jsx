@@ -1,6 +1,6 @@
 "use client"
 
-import { lazy, Suspense, useRef } from "react" // Import useRef
+import { lazy, Suspense, useRef } from "react"
 import About from "../components/sections/About"
 import Skills from "../components/sections/Skills"
 import Work from "../components/sections/Work"
@@ -13,23 +13,16 @@ const LazyCertifications = lazy(() => import("../components/sections/Certificati
 const LazyEducation = lazy(() => import("../components/sections/Education"))
 
 export default function Portfolio() {
-  const mainContentRef = useRef(null) // Create a ref for the main content area
-  useScrollAnimation(mainContentRef) // Pass the ref to the hook
+  const mainContentRef = useRef(null)
+  useScrollAnimation(mainContentRef)
 
   return (
     <main className="min-h-screen bg-dark" ref={mainContentRef}>
-      {" "}
-      {/* Assign the ref */}
       <About />
       <SectionDivider />
-      <Skills />
-      <SectionDivider />
-      <Work />
-      <SectionDivider />
-      <Activities />
       <Suspense
         fallback={
-          <div className="section-container text-center text-gray-400 text-xl min-h-[500px] flex items-center justify-center">
+          <div className="section-container text-center text-white/50 text-xl min-h-[500px] flex items-center justify-center">
             Loading Certifications...
           </div>
         }
@@ -37,9 +30,15 @@ export default function Portfolio() {
         <LazyCertifications />
       </Suspense>
       <SectionDivider />
+      <Skills />
+      <SectionDivider />
+      <Work />
+      <SectionDivider />
+      <Activities />
+      <SectionDivider />
       <Suspense
         fallback={
-          <div className="section-container text-center text-gray-400 text-xl min-h-[500px] flex items-center justify-center">
+          <div className="section-container text-center text-white/50 text-xl min-h-[500px] flex items-center justify-center">
             Loading Education...
           </div>
         }

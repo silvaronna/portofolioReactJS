@@ -17,7 +17,7 @@ export default function Certifications() {
     <section id="certifications" className="section-container bg-dark py-12 md:py-16">
       <div className="mb-6 animate-on-scroll text-center md:text-left">
         <SectionHeading title="Certifications" />
-        <p className="text-white/65 mt-3 text-xs sm:text-sm md:text-base max-w-2xl mx-auto md:mx-0 animate-on-scroll delay-100">
+        <p className="text-white/60 mt-3 text-xs md:text-sm max-w-2xl mx-auto md:mx-0 animate-on-scroll delay-100 leading-relaxed">
           Professional certifications that validate my expertise and knowledge in various IT and cybersecurity domains.
         </p>
       </div>
