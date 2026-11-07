@@ -1,10 +1,12 @@
 import SectionHeading from "../ui/SectionHeading"
 import AudioPlayer from "../ui/audioPlayer"
 import TiltedCard from "../ui/TiltedCard"
-// 1. Import data 'about' dari index.js
+import Icon from "../ui/Icon"
 import { about } from "../../data"
 
 export default function About() {
+  const cardIcons = ["Target", "Compass"]
+
   return (
     <section id="about" className="section-container bg-dark py-12 md:py-16">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -12,56 +14,60 @@ export default function About() {
           <SectionHeading title="About" />
         </div>
 
-        <div className="lg:col-span-2">
-            
-            {/* 2. Intro Text: Ambil dari about.description */}
-            <p className="text-center md:text-left text-gray-300 leading-relaxed text-sm mb-8 max-w-3xl">
-              {about.description}
-            </p>
+        <div className="lg:col-span-2 flex flex-col gap-8">
+          {/* Intro Text */}
+          <p className="text-center md:text-left text-white/80 leading-relaxed text-sm md:text-base max-w-3xl">
+            {about.description}
+          </p>
 
-            {/* MOTION CARDS SECTION */}
-            <div className="flex flex-col md:flex-row justify-center items-center gap-5 w-full">
-              {/* 3. Cards Map: Ambil dari about.cards */}
-              {about.cards.map((card, index) => (
-                <div key={card.title} className={`w-full flex justify-center animate-on-scroll delay-${200 + index * 100}`}>
-                  
+          {/* MOTION CARDS SECTION */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+            {about.cards.map((card, index) => {
+              const iconName = cardIcons[index % cardIcons.length]
+              return (
+                <div
+                  key={card.title}
+                  className={`w-full flex justify-center animate-on-scroll delay-${200 + index * 100}`}
+                >
                   {/* MOBILE CARD (Static) */}
-                  <div className="md:hidden w-full bg-[#222222] p-5 rounded-2xl border border-white/5 shadow-lg text-center flex flex-col items-center justify-between">
-                      <div>
-                        <div className="w-8 h-1 bg-amber-500/80 rounded-full mb-3 mx-auto"></div>
-                        <h3 className="text-white font-bold text-base mb-2 tracking-wide">
-                          {card.title}
-                        </h3>
-                      </div>
-                      <p className="text-gray-400 text-xs leading-relaxed">
-                        {card.content}
-                      </p>
+                  <div className="md:hidden w-full card-dark p-6 rounded-2xl text-center flex flex-col items-center justify-center min-h-[180px] group">
+                    <div className="w-8 h-1 bg-[#C6F432] rounded-full mb-3.5" />
+                    <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white mb-2.5">
+                      <Icon name={iconName} size={17} />
+                    </div>
+                    <h3 className="text-white font-bold text-base mb-2 tracking-wide">
+                      {card.title}
+                    </h3>
+                    <p className="text-white/65 text-xs leading-relaxed">
+                      {card.content}
+                    </p>
                   </div>
 
-                  {/* DESKTOP CARD (Tilted) */}
-                  <div className="hidden md:block flex items-center">
+                  {/* DESKTOP CARD (3D Tilted) */}
+                  <div className="hidden md:flex w-full items-center justify-center">
                     <TiltedCard
-                      imageSrc="https://placehold.co/600x600/1a1a1a/1a1a1a.png"
                       altText={card.title}
                       captionText={card.title}
-                      
-                      containerHeight="240px" 
-                      containerWidth="240px"
-                      imageHeight="240px"
-                      imageWidth="240px"
-                      
-                      rotateAmplitude={15}
+                      containerHeight="210px"
+                      containerWidth="100%"
+                      imageHeight="210px"
+                      imageWidth="100%"
+                      rotateAmplitude={10}
                       scaleOnHover={1.03}
                       showMobileWarning={false}
                       showTooltip={false}
                       displayOverlayContent={true}
                       overlayContent={
-                        <div className="w-full h-full flex flex-col justify-center items-center text-center p-5 rounded-2xl border border-white/5 bg-[#222222] hover:bg-[#282828] transition-colors shadow-lg">
-                          <div className="w-8 h-1 bg-amber-500/80 rounded-full mb-3"></div>
-                          <h3 className="text-white font-bold text-lg mb-2 tracking-wide">
+                        <div className="w-full h-full flex flex-col justify-center items-center text-center p-6 rounded-2xl border border-white/10 hover:border-white/25 bg-[#121215]/95 backdrop-blur-md transition-all duration-300 shadow-[0_14px_34px_-8px_rgba(0,0,0,0.85)] group relative overflow-hidden">
+                          {/* Small Lime accent indicator bar */}
+                          <div className="w-8 h-1 bg-[#C6F432] rounded-full mb-3.5 group-hover:w-12 transition-all duration-300" />
+                          <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/80 mb-2.5 group-hover:scale-110 group-hover:border-[#C6F432]/40 group-hover:text-[#C6F432] transition-all duration-300">
+                            <Icon name={iconName} size={17} />
+                          </div>
+                          <h3 className="text-white font-bold text-base lg:text-lg mb-2 tracking-tight">
                             {card.title}
                           </h3>
-                          <p className="text-gray-400 text-xs leading-relaxed">
+                          <p className="text-white/65 text-xs leading-relaxed max-w-[240px]">
                             {card.content}
                           </p>
                         </div>
@@ -69,26 +75,24 @@ export default function About() {
                     />
                   </div>
                 </div>
-              ))}
-            </div>
-
-          <div className="flex flex-col items-center gap-2 mt-6 md:-mt-6 animate-on-scroll delay-300">
-             
-             {/* Audio Player */}
-             <div className="w-full max-w-sm flex justify-center">
-                <AudioPlayer />
-             </div>
-
-             {/* 4. Quote Section: Ambil dari about.quote */}
-             <div className="text-center px-2 md:px-8 max-w-xl">
-                <p className="text-gray-500 text-xs md:text-sm italic relative font-serif leading-loose">
-                  <span className="text-amber-500/20 text-3xl absolute -top-3 -left-2 md:-left-4">"</span>
-                  {about.quote}
-                  <span className="text-amber-500/20 text-3xl absolute -bottom-3 -right-2 md:-right-4">"</span>
-                </p>
-             </div>
+              )
+            })}
           </div>
 
+          {/* Audio Player & Quote Section */}
+          <div className="flex flex-col items-center gap-4 pt-2 animate-on-scroll delay-300">
+            <div className="w-full max-w-sm flex justify-center">
+              <AudioPlayer />
+            </div>
+
+            <div className="text-center px-4 md:px-8 max-w-xl">
+              <p className="text-white/55 text-xs md:text-sm italic relative font-serif leading-loose">
+                <span className="text-[#C6F432]/60 text-2xl font-sans not-italic mr-1.5">&ldquo;</span>
+                {about.quote}
+                <span className="text-[#C6F432]/60 text-2xl font-sans not-italic ml-1.5">&rdquo;</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

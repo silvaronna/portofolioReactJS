@@ -5,6 +5,37 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Primary / Background: Midnight Black (#0B0B0C) */
+    --background: 240 4% 5%;
+    /* Secondary / Text: Pure White (#FFFFFF) */
+    --foreground: 0 0% 100%;
+    --primary: 240 4% 5%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 240 4% 5%;
+    /* Accent / Interactive: Lime Green (#C6F432) */
+    --accent: 74 90% 58%;
+    --accent-foreground: 240 4% 5%;
+    --card: 240 8% 8%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 8% 7%;
+    --popover-foreground: 0 0% 100%;
+    --muted: 240 6% 12%;
+    --muted-foreground: 240 5% 65%;
+    --border: 0 0% 100%;
+    --input: 240 6% 12%;
+    --ring: 74 90% 58%;
+    --radius: 1rem;
+
+    /* Hex variables */
+    --color-midnight: #0B0B0C;
+    --color-midnight-card: #121215;
+    --color-midnight-elevated: #18181C;
+    --color-white: #FFFFFF;
+    --color-lime: #C6F432;
+  }
+
   html,
   body {
     height: 100%;
@@ -12,29 +43,28 @@
     overflow-x: hidden;
     font-family: "Inter", sans-serif;
     scroll-behavior: smooth;
-    background-color: #1a1a1a;
-    color: #f5f5f5;
+    background-color: #0B0B0C;
+    color: #FFFFFF;
     user-select: none;
-    /* Menambahkan antialiasing agar font terlihat tajam di ukuran kecil */
-    -webkit-font-smoothing: antialiased; 
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    background-color: #b45309;
-    color: white;
+    background-color: #C6F432;
+    color: #0B0B0C;
   }
 }
 
+/* Custom & Global Scrollbar */
 @layer utilities {
-
-.custom-scrollbar {
+  .custom-scrollbar {
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
   }
 
   .custom-scrollbar::-webkit-scrollbar {
-    width: 5px;  /* Sangat tipis */
+    width: 5px;
     height: 5px;
   }
 
@@ -43,187 +73,137 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.1); /* Abu-abu transparan samar */
+    background-color: rgba(255, 255, 255, 0.15);
     border-radius: 20px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(245, 158, 11, 0.8); /* Amber terang saat disentuh */
+    background-color: #C6F432;
   }
 }
 
-/* Global Scrollbar (Halaman Utama) */
 ::-webkit-scrollbar {
-  width: 10px; /* Lebar sedang */
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a; /* Gelap pekat menyatu dengan background */
+  background: #0B0B0C;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333; /* Abu-abu gelap */
+  background: #222226;
   border-radius: 5px;
-  border: 2px solid #0a0a0a; /* Border ini memberi efek 'padding' pada scrollbar */
+  border: 2px solid #0B0B0C;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #f59e0b; /* Amber menyala saat di-hover */
+  background: #C6F432;
 }
 
-/* Dukungan Firefox */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #333 #0a0a0a;
+  scrollbar-color: #222226 #0B0B0C;
 }
 
-.custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 5px;  /* Sangat tipis */
-    height: 5px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.1); /* Abu-abu transparan samar */
-    border-radius: 20px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(245, 158, 11, 0.8); /* Amber terang saat disentuh */
-  }
-
-/* Global Scrollbar (Halaman Utama) */
-::-webkit-scrollbar {
-  width: 10px; /* Lebar sedang */
+/* JELLY / POP & SLIDE ANIMATIONS */
+@keyframes jellyIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  50% { transform: scale(1.03); opacity: 1; }
+  70% { transform: scale(0.98); }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-::-webkit-scrollbar-track {
-  background: #0a0a0a; /* Gelap pekat menyatu dengan background */
+@keyframes jellyOut {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0; }
 }
 
-::-webkit-scrollbar-thumb {
-  background: #333; /* Abu-abu gelap */
-  border-radius: 5px;
-  border: 2px solid #0a0a0a; /* Border ini memberi efek 'padding' pada scrollbar */
+@keyframes slideInRight {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #f59e0b; /* Amber menyala saat di-hover */
+@keyframes slideInLeft {
+  from { transform: translateX(-30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
-/* Dukungan Firefox */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: #333 #0a0a0a;
+.animate-jelly-in {
+  animation: jellyIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-/* ANIMASI JELLY / POP */
-  @keyframes jellyIn {
-    0% { transform: scale(0.9); opacity: 0; }
-    50% { transform: scale(1.03); opacity: 1; } /* Overshoot sedikit biar mantul */
-    70% { transform: scale(0.98); }
-    100% { transform: scale(1); opacity: 1; }
-  }
+.animate-jelly-out {
+  animation: jellyOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
 
-  @keyframes jellyOut {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(0.9); opacity: 0; }
-  }
+.animate-slide-right {
+  animation: slideInRight 0.4s ease-out forwards;
+}
 
-  /* ANIMASI SLIDE GAMBAR */
-  @keyframes slideInRight {
-    from { transform: translateX(30px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-
-  @keyframes slideInLeft {
-    from { transform: translateX(-30px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-
-  .animate-jelly-in {
-    animation: jellyIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  }
-
-  .animate-jelly-out {
-    animation: jellyOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  }
-
-  .animate-slide-right {
-    animation: slideInRight 0.4s ease-out forwards;
-  }
-
-  .animate-slide-left {
-    animation: slideInLeft 0.4s ease-out forwards;
-  }
-
+.animate-slide-left {
+  animation: slideInLeft 0.4s ease-out forwards;
+}
 
 @layer components {
   .shadow-text {
-    text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
   }
 
-  /* REFACTOR: Ukuran Heading diperkecil agar proporsional */
   .section-heading {
-    @apply text-2xl md:text-3xl font-bold relative tracking-tight;
+    @apply text-2xl md:text-3xl font-bold relative tracking-tight text-white;
   }
 
   .section-heading::after {
     content: "";
-    @apply absolute -bottom-3 left-0 w-10 h-[2px]; /* Thinner, softer accent line */
-    background-color: #df8107;
-    opacity: 0.8;
+    @apply absolute -bottom-3 left-0 w-9 h-[2.5px] rounded-full;
+    background-color: #C6F432;
   }
 
   .section-heading-center {
-    @apply text-2xl md:text-3xl font-bold relative text-center tracking-tight;
+    @apply text-2xl md:text-3xl font-bold relative text-center tracking-tight text-white;
   }
 
   .section-heading-center::after {
     content: "";
-    @apply absolute -bottom-3 w-10 h-[2px];
-    background-color: #df8107;
+    @apply absolute -bottom-3 w-10 h-[2.5px] rounded-full;
+    background-color: #C6F432;
     left: 50%;
     transform: translateX(-50%);
-    opacity: 0.8;
   }
 
-  .text-gradient-gold {
-    background: linear-gradient(to right, #df8107, #794604);
+  /* Running text & subtle gradient text (Pure White to subtle Silver with a whisper of Lime) */
+  .text-gradient-gold,
+  .text-gradient-accent {
+    background: linear-gradient(135deg, #FFFFFF 0%, rgba(255, 255, 255, 0.65) 75%, #C6F432 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 0 10px rgba(223, 129, 7, 0.2);
   }
 
-  .bg-gradient-gold {
-    background: linear-gradient(135deg, #df8107, #794604);
+  .bg-gradient-gold,
+  .bg-gradient-accent {
+    background: #C6F432;
   }
 
   .bg-dark {
-    background-color: #1a1a1a;
+    background-color: #0B0B0C;
   }
 
-  /* REFACTOR: Visual Hierarchy - Subtle borders and soft shadows */
+  /* Midnight Black Surface Card with crisp White/10 border and subtle Lime hover accent */
   .card-dark {
-    @apply bg-[#222222] border border-white/5 hover:border-white/10 transition-all duration-300 rounded-2xl;
-    box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.3), 0 0 2px 1px rgba(255, 255, 255, 0.02);
+    @apply bg-[#121215]/90 backdrop-blur-md border border-white/10 hover:border-white/25 transition-all duration-300 rounded-2xl;
+    box-shadow: 0 10px 30px -6px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
   }
 
-  /* REFACTOR: Container dibatasi max-w-6xl dan padding vertical ditingkatkan untuk whitespace */
+  .card-dark:hover {
+    box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(198, 244, 50, 0.25);
+  }
+
   .section-container {
     @apply w-full max-w-6xl mx-auto px-6 sm:px-8 md:px-16 py-20 md:py-32;
   }
 
-  /* Animation backgrounds */
+  /* Animated SVG Pattern Backgrounds — monochrome white with subtle lime nodes */
   .network-bg {
     position: relative;
     overflow: hidden;
@@ -233,11 +213,12 @@ html {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L50 10 L50 50 L10 50 Z' stroke='rgba(245, 158, 11, 0.15)' fill='none' stroke-width='1'/%3E%3Cpath d='M20 10 L20 50' stroke='rgba(245, 158, 11, 0.1)' stroke-width='1' stroke-dasharray='2 4'/%3E%3Cpath d='M30 10 L30 50' stroke='rgba(245, 158, 11, 0.1)' stroke-width='1' stroke-dasharray='2 4'/%3E%3Cpath d='M40 10 L40 50' stroke='rgba(245, 158, 11, 0.1)' stroke-width='1' stroke-dasharray='2 4'/%3E%3Cpath d='M10 20 L50 20' stroke='rgba(245, 158, 11, 0.1)' stroke-width='1' stroke-dasharray='2 4'/%3E%3Cpath d='M10 30 L50 30' stroke='rgba(245, 158, 11, 0.1)' stroke-width='1' stroke-dasharray='2 4'/%3E%3Cpath d='M10 40 L50 40' stroke='rgba(245, 158, 11, 0.1)' stroke-width='1' stroke-dasharray='2 4'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L50 10 L50 50 L10 50 Z' stroke='rgba(255, 255, 255, 0.07)' fill='none' stroke-width='1'/%3E%3Cpath d='M20 10 L20 50' stroke='rgba(255, 255, 255, 0.04)' stroke-width='1' stroke-dasharray='2 4'/%3E%3Cpath d='M30 10 L30 50' stroke='rgba(255, 255, 255, 0.04)' stroke-width='1' stroke-dasharray='2 4'/%3E%3Cpath d='M40 10 L40 50' stroke='rgba(255, 255, 255, 0.04)' stroke-width='1' stroke-dasharray='2 4'/%3E%3Cpath d='M10 20 L50 20' stroke='rgba(255, 255, 255, 0.04)' stroke-width='1' stroke-dasharray='2 4'/%3E%3Cpath d='M10 30 L50 30' stroke='rgba(255, 255, 255, 0.04)' stroke-width='1' stroke-dasharray='2 4'/%3E%3Cpath d='M10 40 L50 40' stroke='rgba(255, 255, 255, 0.04)' stroke-width='1' stroke-dasharray='2 4'/%3E%3C/svg%3E");
     background-size: 60px 60px;
     animation: network-pulse 15s infinite linear;
     z-index: 0;
-    opacity: 0.5;
+    opacity: 0.6;
+    pointer-events: none;
   }
 
   .cloud-bg {
@@ -249,11 +230,12 @@ html {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 40 Q40 20 50 40 Q60 60 70 40' stroke='rgba(245, 158, 11, 0.15)' fill='none' stroke-width='1.5'/%3E%3Cpath d='M20 60 Q40 40 60 60 Q80 80 100 60' stroke='rgba(245, 158, 11, 0.1)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 40 Q40 20 50 40 Q60 60 70 40' stroke='rgba(255, 255, 255, 0.07)' fill='none' stroke-width='1.5'/%3E%3Cpath d='M20 60 Q40 40 60 60 Q80 80 100 60' stroke='rgba(255, 255, 255, 0.04)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
     background-size: 100px 100px;
     animation: cloud-drift 20s infinite linear;
     z-index: 0;
-    opacity: 0.5;
+    opacity: 0.6;
+    pointer-events: none;
   }
 
   .container-bg {
@@ -265,11 +247,12 @@ html {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='10' y='10' width='60' height='60' rx='2' stroke='rgba(245, 158, 11, 0.15)' fill='none' stroke-width='1.5'/%3E%3Crect x='20' y='20' width='40' height='40' rx='2' stroke='rgba(245, 158, 11, 0.1)' fill='none' stroke-width='1' stroke-dasharray='3 3'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='10' y='10' width='60' height='60' rx='2' stroke='rgba(255, 255, 255, 0.07)' fill='none' stroke-width='1.5'/%3E%3Crect x='20' y='20' width='40' height='40' rx='2' stroke='rgba(255, 255, 255, 0.04)' fill='none' stroke-width='1' stroke-dasharray='3 3'/%3E%3C/svg%3E");
     background-size: 80px 80px;
     animation: container-move 15s infinite linear;
     z-index: 0;
-    opacity: 0.5;
+    opacity: 0.6;
+    pointer-events: none;
   }
 
   .server-bg {
@@ -281,272 +264,80 @@ html {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='10' y='10' width='40' height='8' rx='2' stroke='rgba(245, 158, 11, 0.15)' fill='none' stroke-width='1.5'/%3E%3Crect x='10' y='26' width='40' height='8' rx='2' stroke='rgba(245, 158, 11, 0.15)' fill='none' stroke-width='1.5'/%3E%3Crect x='10' y='42' width='40' height='8' rx='2' stroke='rgba(245, 158, 11, 0.15)' fill='none' stroke-width='1.5'/%3E%3Ccircle cx='15  rx='2' stroke='rgba(245, 158, 11, 0.15)' fill='none' stroke-width='1.5'/%3E%3Ccircle cx='15' cy='14' r='1.5' fill='rgba(245, 158, 11, 0.3)'/%3E%3Ccircle cx='15' cy='30' r='1.5' fill='rgba(245, 158, 11, 0.3)'/%3E%3Ccircle cx='15' cy='46' r='1.5' fill='rgba(245, 158, 11, 0.3)'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='10' y='10' width='40' height='8' rx='2' stroke='rgba(255, 255, 255, 0.07)' fill='none' stroke-width='1.5'/%3E%3Crect x='10' y='26' width='40' height='8' rx='2' stroke='rgba(255, 255, 255, 0.07)' fill='none' stroke-width='1.5'/%3E%3Crect x='10' y='42' width='40' height='8' rx='2' stroke='rgba(255, 255, 255, 0.07)' fill='none' stroke-width='1.5'/%3E%3Ccircle cx='15' cy='14' r='1.5' fill='rgba(198, 244, 50, 0.35)'/%3E%3Ccircle cx='15' cy='30' r='1.5' fill='rgba(198, 244, 50, 0.35)'/%3E%3Ccircle cx='15' cy='46' r='1.5' fill='rgba(198, 244, 50, 0.35)'/%3E%3C/svg%3E");
     background-size: 60px 60px;
     animation: server-pulse 12s infinite linear;
     z-index: 0;
-    opacity: 0.5;
-  }
-
-  /* Certification card styles */
-/* REFACTOR: Certification Card Size Adjustment using rems */
-  .cert-card {
-    @apply bg-[#222222] rounded-2xl overflow-hidden border border-white/5 transition-all duration-300;
-    min-width: 18rem; 
-    max-width: 22rem; 
-    height: 15rem;    
-    position: relative;
-    cursor: pointer;
-    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.3);
-  }
-
-  .cert-card:hover {
-    @apply border-white/10 shadow-lg transform -translate-y-1;
-    box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.5), 0 0 2px 1px rgba(255, 255, 255, 0.03);
-  }
-
-  .cert-card-active {
-    @apply border-amber-600/50 shadow-xl;
-    box-shadow: 0 15px 35px -5px rgba(245, 158, 11, 0.15);
-  }
-
-  .cert-slider-container {
-    position: relative;
-    overflow: hidden;
-    padding: 0 4rem;
-    margin: 0 -4rem;
-  }
-
-  .cert-slider {
-    @apply flex gap-6 py-8 overflow-x-auto pb-12 snap-x;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(245, 158, 11, 0.3) rgba(30, 30, 30, 0.5);
-    cursor: grab;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 4rem;
-    scroll-behavior: smooth;
-  }
-
-  .cert-slider:active {
-    cursor: grabbing;
-  }
-
-  .cert-slider::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .cert-slider::-webkit-scrollbar-track {
-    @apply bg-gray-800/20 rounded-full;
-  }
-
-  .cert-slider::-webkit-scrollbar-thumb {
-    @apply bg-amber-700/50 rounded-full;
-  }
-
-  .cert-slider::-webkit-scrollbar-thumb:hover {
-    @apply bg-amber-600/70;
-  }
-
-  .cert-detail {
-    @apply bg-[#222222] rounded-2xl p-8 md:p-12 border border-white/5 mt-12;
-    box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.4), 0 0 2px 1px rgba(255, 255, 255, 0.02);
-  }
-
-  /* Fade edges for cert slider */
-  .fade-edge-left {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 8rem;
-    background: linear-gradient(to right, #1a1a1a 0%, rgba(26, 26, 26, 0) 100%);
-    z-index: 5;
+    opacity: 0.6;
     pointer-events: none;
-  }
-
-  .fade-edge-right {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 8rem;
-    background: linear-gradient(to left, #1a1a1a 0%, rgba(26, 26, 26, 0) 100%);
-    z-index: 5;
-    pointer-events: none;
-  }
-
-  /* Work item expanded details */
-  .work-detail {
-    @apply bg-[#222222] rounded-2xl p-8 md:p-12 border border-white/5 mt-8;
-    box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.4), 0 0 2px 1px rgba(255, 255, 255, 0.02);
   }
 }
 
 @layer utilities {
   .animate-runningText {
-    animation: runningText 20s linear infinite;
+    animation: runningText 22s linear infinite;
   }
 
   @keyframes runningText {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateX(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-50px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(50px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes scrollDown {
-    0% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    75% {
-      transform: translateY(8px);
-      opacity: 0.5;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    0% { transform: translateY(0); opacity: 1; }
+    75% { transform: translateY(8px); opacity: 0.4; }
+    100% { transform: translateY(0); opacity: 1; }
   }
 
   @keyframes checkmark {
-    0% {
-      transform: scale(0) rotate(45deg);
-      opacity: 0;
-    }
-    50% {
-      transform: scale(1.2) rotate(45deg);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1) rotate(45deg);
-      opacity: 1;
-    }
+    0% { transform: scale(0) rotate(45deg); opacity: 0; }
+    50% { transform: scale(1.2) rotate(45deg); opacity: 1; }
+    100% { transform: scale(1) rotate(45deg); opacity: 1; }
   }
 
   @keyframes shimmer {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
   }
 
   @keyframes network-pulse {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 60px 60px;
-    }
+    0% { background-position: 0 0; }
+    100% { background-position: 60px 60px; }
   }
 
   @keyframes cloud-drift {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 100px 100px;
-    }
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
   }
 
   @keyframes container-move {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 80px 80px;
-    }
+    0% { background-position: 0 0; }
+    100% { background-position: 80px 80px; }
   }
 
   @keyframes server-pulse {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 60px 60px;
-    }
+    0% { background-position: 0 0; }
+    100% { background-position: 60px 60px; }
   }
 
-  @keyframes cert-slide {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-400px * 5 - 8rem)); /* Card width * number of cards + gap */
-    }
-  }
-
-  .gold-shadow {
-    box-shadow: 0 15px 30px -5px rgba(223, 129, 7, 0.2);
-  }
-
-  .gold-glow {
-    filter: drop-shadow(0 0 8px rgba(223, 129, 7, 0.5));
+  .animate-scroll-down {
+    animation: scrollDown 1.8s ease-in-out infinite;
   }
 
   .animate-on-scroll {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .animate-on-scroll.visible {
@@ -558,23 +349,12 @@ html {
     animation: fadeIn 0.5s ease-out forwards;
   }
 
-  .delay-100 {
-    transition-delay: 100ms;
-  }
-
-  .delay-200 {
-    transition-delay: 200ms;
-  }
-
-  .delay-300 {
-    transition-delay: 300ms;
-  }
-
-  .delay-400 {
-    transition-delay: 400ms;
-  }
+  .delay-100 { transition-delay: 100ms; }
+  .delay-200 { transition-delay: 200ms; }
+  .delay-300 { transition-delay: 300ms; }
+  .delay-400 { transition-delay: 400ms; }
 
   .section-divider {
-    @apply w-full h-px bg-gradient-to-r from-transparent via-amber-700/30 to-transparent my-10;
+    @apply w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-10;
   }
 }

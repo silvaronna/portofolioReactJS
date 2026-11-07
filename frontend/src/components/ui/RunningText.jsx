@@ -2,21 +2,20 @@ const textItems = ["Site Reliability Engineer", "Tech Enthusiast"]
 
 export default function RunningText() {
   return (
-    // REVISI: 
-    // bottom-52 : Di Mobile naik tinggi (208px) agar tidak ketutupan mouse.
-    // md:bottom-[22%] : Di Desktop tetap seperti settingan awal Anda.
-    <div className="absolute bottom-60 md:bottom-[22%] left-0 w-full overflow-hidden z-20">
+    <div className="absolute bottom-52 md:bottom-[20%] left-0 w-full overflow-hidden z-20 pointer-events-none">
       <div className="relative whitespace-nowrap w-full overflow-hidden">
-        <div className="inline-block animate-runningText text-[clamp(2rem,8vw,8rem)] font-bold text-gradient-gold">
+        <div className="inline-block animate-runningText text-[clamp(2rem,8vw,8rem)] font-bold text-white/15">
           {textItems.map((text, index) => (
             <span key={index} className="inline-block pr-[100px]">
-              - {text}
+              <span className="text-[#C6F432]/60 mr-4">—</span>
+              {text}
             </span>
           ))}
           {/* Duplicate for seamless loop */}
           {textItems.map((text, index) => (
             <span key={`duplicate-${index}`} className="inline-block pr-[100px]">
-              - {text}
+              <span className="text-[#C6F432]/60 mr-4">—</span>
+              {text}
             </span>
           ))}
         </div>

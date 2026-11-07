@@ -15,10 +15,10 @@ export default function TiltedCard({
   containerWidth = '100%',
   imageHeight = '300px',
   imageWidth = '300px',
-  scaleOnHover = 1.1,
-  rotateAmplitude = 14,
-  showMobileWarning = true,
-  showTooltip = true,
+  scaleOnHover = 1.05,
+  rotateAmplitude = 12,
+  showMobileWarning = false,
+  showTooltip = false,
   overlayContent = null,
   displayOverlayContent = false
 }) {
@@ -99,18 +99,16 @@ export default function TiltedCard({
           scale
         }}
       >
-        <motion.img
-          src={imageSrc}
-          alt={altText}
-          className="absolute top-0 left-0 object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
-          style={{
-            width: imageWidth,
-            height: imageHeight
-          }}
-        />
+        {imageSrc && (
+          <motion.img
+            src={imageSrc}
+            alt={altText}
+            className="absolute inset-0 w-full h-full object-cover rounded-2xl will-change-transform [transform:translateZ(0)]"
+          />
+        )}
 
         {displayOverlayContent && overlayContent && (
-          <motion.div className="absolute top-0 left-0 z-[2] will-change-transform [transform:translateZ(30px)]">
+          <motion.div className="absolute inset-0 w-full h-full z-[2] will-change-transform [transform:translateZ(20px)]">
             {overlayContent}
           </motion.div>
         )}
@@ -118,7 +116,7 @@ export default function TiltedCard({
 
       {showTooltip && (
         <motion.figcaption
-          className="pointer-events-none absolute left-0 top-0 rounded-[4px] bg-white px-[10px] py-[4px] text-[10px] text-[#2d2d2d] opacity-0 z-[3] hidden sm:block"
+          className="pointer-events-none absolute left-0 top-0 rounded-[4px] bg-white px-[10px] py-[4px] text-[10px] text-[#0B0B0C] font-semibold opacity-0 z-[3] hidden sm:block"
           style={{
             x,
             y,

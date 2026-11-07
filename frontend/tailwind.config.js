@@ -10,6 +10,24 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        forest: {
+          DEFAULT: "#1F3D2B",
+          dark: "#14281C",
+          card: "#183022",
+          light: "#274D37",
+        },
+        sand: {
+          DEFAULT: "#E8DCC4",
+          light: "#F5EFE2",
+          muted: "#C4B59B",
+          dim: "#9E9078",
+        },
+        electric: {
+          DEFAULT: "#8B5CF6",
+          light: "#A78BFA",
+          lighter: "#C4B5FD",
+          dark: "#7C3AED",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

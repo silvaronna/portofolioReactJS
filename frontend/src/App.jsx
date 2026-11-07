@@ -5,13 +5,13 @@ import Header from "./components/layout/Header"
 import Hero from "./components/sections/Hero"
 import Portfolio from "./pages/Portfolio"
 import GravitySocials from "./components/ui/GravitySocials"
-import { useLocalStorage } from "./hooks/useLocalStorage" // Import useLocalStorage
+import { useLocalStorage } from "./hooks/useLocalStorage"
 import "./App.css"
 
 function App() {
   const [scrolled, setScrolled] = useState(false)
   const [isWhiteSection, setIsWhiteSection] = useState(false)
-  const [hasVisited, setHasVisited] = useLocalStorage("hasVisited", false) // Example usage of useLocalStorage
+  const [hasVisited, setHasVisited] = useLocalStorage("hasVisited", false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,7 +23,6 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Set hasVisited to true after initial render
   useEffect(() => {
     if (!hasVisited) {
       setHasVisited(true)
@@ -33,15 +32,16 @@ function App() {
 
   return (
     <div
-      className="relative min-h-screen w-full flex flex-col bg-cover bg-center bg-no-repeat bg-fixed"
+      className="relative min-h-screen w-full flex flex-col bg-cover bg-center bg-no-repeat bg-fixed bg-[#0B0B0C] text-white"
       style={{ backgroundImage: "url('/background.webp')" }}
     >
-      <div className="absolute inset-0 bg-[#0a1525] bg-opacity-70 z-0"></div>
+      {/* Midnight Black overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0C]/85 via-[#0B0B0C]/85 to-[#0B0B0C] z-0"></div>
 
       <Header scrolled={scrolled} isWhiteSection={isWhiteSection} />
       <GravitySocials />
 
-      <main className="flex-1 pt-32 relative z-20">
+      <main className="flex-1 pt-28 relative z-20">
         <Hero />
         <Portfolio />
       </main>
