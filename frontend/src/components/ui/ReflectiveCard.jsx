@@ -175,10 +175,10 @@ export default function ReflectiveCard({
 
                 {/* Bottom Gradient Name & Role Overlay on Portrait */}
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0B0B0C] via-[#0B0B0C]/85 to-transparent pt-6 pb-2 px-2.5 text-center">
-                  <h3 className="text-xs font-bold text-white tracking-tight leading-tight">
+                  <h3 className="text-xs sm:text-sm font-bold text-white tracking-tight leading-snug">
                     {name}
                   </h3>
-                  <p className="text-[10px] font-medium text-[#C6F432] mt-0.5">
+                  <p className="text-[11px] font-medium text-[#C6F432] mt-0.5">
                     {role}
                   </p>
                 </div>
@@ -187,7 +187,7 @@ export default function ReflectiveCard({
           </div>
 
           {/* Bottom Metallic Spec Bar with Email */}
-          <div className="relative z-10 pt-2 border-t border-white/10 flex items-center justify-center text-[9px] text-white/60">
+          <div className="relative z-10 pt-2 border-t border-white/10 flex items-center justify-center text-[10px] text-white/65">
             <div className="flex items-center gap-1.5 font-medium min-w-0">
               <Icon name="Mail" size={10} className="text-[#C6F432] shrink-0" />
               <span className="truncate">{email}</span>

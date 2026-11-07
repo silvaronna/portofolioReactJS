@@ -20,7 +20,7 @@ export default function About() {
         {/* Right Column: Intro, Goal/Mission Cards, and Audio Player */}
         <div className="lg:col-span-2 flex flex-col gap-6">
           {/* Intro Text */}
-          <p className="text-center md:text-left text-white/75 leading-relaxed text-xs md:text-sm max-w-2xl">
+          <p className="text-center md:text-left text-white/65 leading-relaxed text-xs md:text-sm max-w-2xl">
             {about.description}
           </p>
 
@@ -39,10 +39,10 @@ export default function About() {
                     <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white mb-2">
                       <Icon name={iconName} size={14} />
                     </div>
-                    <h3 className="text-white font-bold text-xs sm:text-sm mb-1 tracking-tight">
+                    <h3 className="text-white font-bold text-xs sm:text-sm mb-1 tracking-tight leading-snug">
                       {card.title}
                     </h3>
-                    <p className="text-white/60 text-[11px] leading-relaxed">
+                    <p className="text-white/65 text-[11px] sm:text-xs leading-relaxed">
                       {card.content}
                     </p>
                   </div>
@@ -68,10 +68,10 @@ export default function About() {
                           <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/80 mb-2 group-hover:scale-105 group-hover:border-[#C6F432]/40 group-hover:text-[#C6F432] transition-all duration-300">
                             <Icon name={iconName} size={14} />
                           </div>
-                          <h3 className="text-white font-bold text-xs sm:text-sm mb-1 tracking-tight">
+                          <h3 className="text-white font-bold text-xs sm:text-sm mb-1 tracking-tight leading-snug">
                             {card.title}
                           </h3>
-                          <p className="text-white/60 text-[11px] leading-relaxed max-w-[210px]">
+                          <p className="text-white/65 text-[11px] sm:text-xs leading-relaxed max-w-[215px]">
                             {card.content}
                           </p>
                         </div>

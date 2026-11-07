@@ -186,15 +186,15 @@ export default function ActivityModal({ isOpen, onClose, activity }) {
         <div className="lg:w-[45%] flex flex-col h-full bg-[#121215] min-h-0">
           <div className="p-4 lg:p-5 overflow-y-auto custom-scrollbar flex-1">
             <div className="mb-4 pr-6">
-              <h3 className="text-base lg:text-lg font-bold text-white mb-2 leading-tight">
+              <h3 className="text-sm sm:text-base font-bold text-white mb-2 leading-snug tracking-tight">
                 {activity.title}
               </h3>
               <div className="flex flex-wrap gap-1.5">
-                <div className="flex items-center text-white font-medium bg-white/5 px-2.5 py-0.5 rounded-full border border-white/15 w-fit text-[10px]">
+                <div className="flex items-center text-white font-medium bg-white/5 px-2.5 py-0.5 rounded-full border border-white/15 w-fit text-[11px]">
                   <Icon name="MapPin" size={10} className="mr-1 text-[#C6F432]" />
                   {activity.location}
                 </div>
-                <div className="flex items-center text-white/65 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10 w-fit text-[10px]">
+                <div className="flex items-center text-white/65 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10 w-fit text-[11px]">
                   <Icon name="Calendar" size={10} className="mr-1" />
                   {activity.date}
                 </div>
@@ -203,14 +203,14 @@ export default function ActivityModal({ isOpen, onClose, activity }) {
 
             <div className="space-y-4">
               <div>
-                <h4 className="text-white text-[10px] font-bold uppercase tracking-wider mb-2 flex items-center border-b border-white/10 pb-1">
-                  <Icon name="FileText" size={10} className="mr-1.5 text-[#C6F432]" /> Project Description
+                <h4 className="text-white/65 text-[11px] font-bold uppercase tracking-wider mb-2 flex items-center border-b border-white/10 pb-1">
+                  <Icon name="FileText" size={11} className="mr-1.5 text-[#C6F432]" /> Project Description
                 </h4>
                 <div className="space-y-2">
                   {(activity.description || []).map((desc, i) => (
                     <div
                       key={i}
-                      className="flex items-start text-white/75 text-[11px] leading-relaxed group hover:text-white transition-colors"
+                      className="flex items-start text-white/75 text-xs leading-relaxed group hover:text-white transition-colors"
                     >
                       <span className="w-1.5 h-1.5 bg-[#C6F432] rounded-full mt-1.5 mr-2 flex-shrink-0" />
                       {desc}
@@ -220,14 +220,14 @@ export default function ActivityModal({ isOpen, onClose, activity }) {
               </div>
 
               <div>
-                <h4 className="text-white text-[10px] font-bold uppercase tracking-wider mb-2 flex items-center border-b border-white/10 pb-1">
-                  <Icon name="Cpu" size={10} className="mr-1.5 text-[#C6F432]" /> Tech Stack
+                <h4 className="text-white/65 text-[11px] font-bold uppercase tracking-wider mb-2 flex items-center border-b border-white/10 pb-1">
+                  <Icon name="Cpu" size={11} className="mr-1.5 text-[#C6F432]" /> Tech Stack
                 </h4>
                 <div className="flex flex-wrap gap-1.5">
                   {(activity.techStack || []).map((tech, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-0.5 bg-[#0B0B0C] text-white/85 rounded-full text-[9px] font-medium border border-white/10 shadow-sm cursor-default"
+                      className="px-2.5 py-0.5 bg-[#0B0B0C] text-white/85 rounded-full text-[10px] font-medium border border-white/10 shadow-sm cursor-default"
                     >
                       {tech}
                     </span>

@@ -23,7 +23,7 @@ export default function Activities() {
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="mb-8 animate-on-scroll text-center md:text-left">
           <SectionHeading title="Portfolio" />
-          <p className="text-white/60 mt-3 text-xs sm:text-sm max-w-xl mx-auto md:mx-0 animate-on-scroll delay-100">
+          <p className="text-white/60 mt-3 text-xs md:text-sm max-w-xl mx-auto md:mx-0 animate-on-scroll delay-100 leading-relaxed">
             Selected detailed implementations and projects I&apos;ve executed in real-world environments.
           </p>
         </div>
@@ -61,7 +61,7 @@ export default function Activities() {
 
                 {/* Content */}
                 <div className="p-4 flex flex-col flex-grow relative z-20">
-                  <h3 className="text-[13px] font-bold text-white mb-1.5 line-clamp-2 leading-snug">
+                  <h3 className="text-xs sm:text-sm font-bold text-white mb-1.5 line-clamp-2 leading-snug tracking-tight">
                     {activity.title}
                   </h3>
 
@@ -74,20 +74,20 @@ export default function Activities() {
                     {activity.techStack.slice(0, 3).map((tech, i) => (
                       <span
                         key={i}
-                        className="text-[9px] uppercase font-bold tracking-wider text-white/85 bg-[#0B0B0C] px-2 py-0.5 rounded-md border border-white/10"
+                        className="text-[10px] font-medium text-white/85 bg-[#0B0B0C] px-2 py-0.5 rounded-full border border-white/10"
                       >
                         {tech}
                       </span>
                     ))}
                     {activity.techStack.length > 3 && (
-                      <span className="text-[9px] text-white/50 px-1.5 py-0.5 font-semibold">
+                      <span className="text-[10px] text-white/50 px-1.5 py-0.5 font-semibold">
                         +{activity.techStack.length - 3}
                       </span>
                     )}
                   </div>
 
                   <div className="pt-2.5 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[10px] text-white/50 font-medium">{activity.date}</span>
+                    <span className="text-[11px] text-white/50 font-medium">{activity.date}</span>
                     <div className="flex items-center text-white group-hover:text-[#C6F432] font-bold text-[11px] group-hover:translate-x-1 transition-all">
                       Details <Icon name="ArrowRight" size={11} className="ml-1" />
                     </div>

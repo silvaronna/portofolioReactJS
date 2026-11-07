@@ -41,22 +41,22 @@ export default function SkillCard({ skill, index, showTools = false }) {
       </div>
 
       {/* Title */}
-      <h3 className="relative z-10 text-[clamp(0.85rem,1.5vw,0.95rem)] font-bold mb-[clamp(0.3rem,1vw,0.5rem)] text-white text-center tracking-tight transition-colors">
+      <h3 className="relative z-10 text-xs sm:text-sm font-bold mb-1.5 text-white text-center tracking-tight leading-snug transition-colors">
         {skill.title}
       </h3>
 
       {/* Description */}
-      <p className="relative z-10 text-white/60 text-[clamp(0.68rem,1.2vw,0.75rem)] mb-[clamp(0.75rem,2vw,1.25rem)] leading-relaxed flex-grow text-center">
+      <p className="relative z-10 text-white/65 text-[11px] sm:text-xs mb-4 leading-relaxed flex-grow text-center">
         {skill.description}
       </p>
 
       {/* Tools Pills */}
       {showTools && skill.tools && (
-        <div className="relative z-10 mt-auto pt-[clamp(0.5rem,1.5vw,0.75rem)] border-t border-white/10 flex flex-wrap gap-[clamp(0.25rem,0.5vw,0.35rem)] justify-center w-full">
+        <div className="relative z-10 mt-auto pt-3 border-t border-white/10 flex flex-wrap gap-1.5 justify-center w-full">
           {skill.tools.map((tool, i) => (
             <span
               key={i}
-              className="text-[clamp(0.58rem,1vw,0.65rem)] font-medium bg-[#0B0B0C] text-white/80 hover:text-white hover:border-white/30 px-[clamp(0.45rem,1vw,0.6rem)] py-[clamp(0.15rem,0.5vw,0.25rem)] rounded-full border border-white/10 transition-colors cursor-default text-center"
+              className="text-[10px] font-medium bg-[#0B0B0C] text-white/80 hover:text-white hover:border-white/30 px-2.5 py-0.5 rounded-full border border-white/10 transition-colors cursor-default text-center"
             >
               {tool}
             </span>

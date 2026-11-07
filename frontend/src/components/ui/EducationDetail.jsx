@@ -1,73 +1,177 @@
+"use client"
+
+import { motion, AnimatePresence } from "motion/react"
 import Icon from "./Icon"
 
-export default function EducationDetail({ education, activeTab }) {
+export default function EducationDetail({ education = [], activeTab }) {
   const activeEducationData = education.find((item) => item.id === activeTab)
 
   if (!activeEducationData) return null
 
+  const isOngoing =
+    activeEducationData.period?.includes("2028") ||
+    activeEducationData.period?.toLowerCase().includes("present")
+
+  const getTrackType = (degree = "") => {
+    const lower = degree.toLowerCase()
+    if (lower.includes("bachelor")) return "Undergraduate"
+    if (lower.includes("program") || lower.includes("aws")) return "Intensive Track"
+    return "Vocational"
+  }
+
   return (
-    <div className="card-dark p-[clamp(1.25rem,3vw,1.75rem)] shadow-lg animate-fadeIn w-full mx-auto md:max-w-2xl lg:max-w-3xl xl:max-w-4xl max-h-[clamp(25rem,65vh,40rem)] overflow-y-auto custom-scrollbar flex flex-col">
-      {/* Header Section */}
-      <div className="mb-4 border-b border-white/10 pb-3.5 text-center md:text-left">
-        <div className="flex flex-col gap-1.5 mb-3">
-          <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
-            {activeEducationData.institution}
-          </h3>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={activeEducationData.id}
+        initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
+        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+        className="relative bg-[#121215]/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.85)] overflow-hidden w-full max-w-xl mx-auto lg:mx-0"
+      >
+        {/* Top Subtle Dual-Tone Accent Line */}
+        <div className="h-[2px] w-full bg-gradient-to-r from-white/25 via-[#C6F432] to-transparent" />
 
-          <div className="flex flex-col md:flex-row md:items-center justify-center md:justify-start gap-1 md:gap-2 text-xs font-medium">
-            <span className="text-white font-semibold">{activeEducationData.degree}</span>
-            {activeEducationData.field && (
-              <>
-                <span className="hidden md:inline text-[#C6F432]">•</span>
-                <span className="text-white/65">{activeEducationData.field}</span>
-              </>
-            )}
-          </div>
-        </div>
+        {/* Header Section */}
+        <div className="p-3.5 sm:p-4 border-b border-white/10">
+          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2.5 text-center sm:text-left">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3">
+              {/* Academic Crest Icon Box */}
+              <div className="w-10 h-10 rounded-xl bg-[#0B0B0C] border border-white/15 flex items-center justify-center shrink-0 text-[#C6F432] shadow-inner">
+                <Icon name="GraduationCap" size={18} />
+              </div>
 
-        {/* Metadata Badges */}
-        <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-          <div className="flex items-center bg-white/5 text-white px-2.5 py-1 rounded-full text-[11px] font-medium border border-white/15">
-            <Icon name="Calendar" size={11} className="mr-1.5 text-[#C6F432]" />
-            {activeEducationData.period}
-          </div>
+              <div>
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1">
+                  <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
+                    {activeEducationData.institution}
+                  </h3>
 
-          {activeEducationData.location && (
-            <div className="flex items-center bg-[#0B0B0C] text-white/70 px-2.5 py-1 rounded-full text-[11px] font-medium border border-white/10">
-              <Icon name="MapPin" size={11} className="mr-1.5 text-[#C6F432]" />
-              {activeEducationData.location}
+                  <span
+                    className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-semibold border ${
+                      isOngoing
+                        ? "bg-[#C6F432]/10 text-[#C6F432] border-[#C6F432]/30"
+                        : "bg-white/5 text-white/65 border-white/15"
+                    }`}
+                  >
+                    <span
+                      className={`w-1 h-1 rounded-full ${
+                        isOngoing ? "bg-[#C6F432] animate-pulse" : "bg-white/40"
+                      }`}
+                    />
+                    {isOngoing ? "In Progress" : "Graduated"}
+                  </span>
+                </div>
+
+                {/* Degree & Major */}
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-2 gap-y-1 text-[11px]">
+                  <span className="font-semibold text-white/90">
+                    {activeEducationData.degree}
+                  </span>
+                  {activeEducationData.field && (
+                    <>
+                      <span className="hidden sm:inline text-[#C6F432]">•</span>
+                      <span className="text-white/60">
+                        {activeEducationData.field}
+                      </span>
+                    </>
+                  )}
+                </div>
+              </div>
             </div>
-          )}
+          </div>
+
+          {/* 3-Column Academic Metadata Strip (Distinct from Work Section) */}
+          <div className="grid grid-cols-3 gap-2 mt-3.5">
+            <div className="p-2 rounded-xl bg-[#0B0B0C]/80 border border-white/10 text-center sm:text-left">
+              <span className="text-[9px] font-mono uppercase tracking-wider text-white/40 block">
+                Period
+              </span>
+              <div className="flex items-center justify-center sm:justify-start gap-1 mt-0.5 text-[11px] font-semibold text-white/85">
+                <Icon name="Calendar" size={10} className="text-[#C6F432] shrink-0" />
+                <span className="truncate">{activeEducationData.period}</span>
+              </div>
+            </div>
+
+            <div className="p-2 rounded-xl bg-[#0B0B0C]/80 border border-white/10 text-center sm:text-left">
+              <span className="text-[9px] font-mono uppercase tracking-wider text-white/40 block">
+                Location
+              </span>
+              <div className="flex items-center justify-center sm:justify-start gap-1 mt-0.5 text-[11px] font-semibold text-white/85">
+                <Icon name="MapPin" size={10} className="text-[#C6F432] shrink-0" />
+                <span className="truncate">{activeEducationData.location}</span>
+              </div>
+            </div>
+
+            <div className="p-2 rounded-xl bg-[#0B0B0C]/80 border border-white/10 text-center sm:text-left">
+              <span className="text-[9px] font-mono uppercase tracking-wider text-white/40 block">
+                Track
+              </span>
+              <div className="flex items-center justify-center sm:justify-start gap-1 mt-0.5 text-[11px] font-semibold text-white/85">
+                <Icon name="Award" size={10} className="text-[#C6F432] shrink-0" />
+                <span className="truncate">
+                  {getTrackType(activeEducationData.degree)}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Description */}
-      <p className="text-white/75 text-xs mb-5 leading-relaxed animate-on-scroll text-center md:text-left">
-        {activeEducationData.fullDescription}
-      </p>
+        {/* Body Content: Overview + 2-Column Bento Curriculum Grid */}
+        <div className="p-3.5 sm:p-4 space-y-4">
+          {/* Academic Overview Box */}
+          <div className="p-3 rounded-xl bg-[#0B0B0C]/70 border border-white/10 text-left">
+            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-white/50 mb-1.5">
+              <Icon name="BookOpen" size={11} className="text-[#C6F432]" />
+              <span>Program Overview</span>
+            </div>
+            <p className="text-white/75 text-[11px] sm:text-xs leading-relaxed">
+              {activeEducationData.fullDescription}
+            </p>
+          </div>
 
-      {/* Key Courses */}
-      <div className="mb-2 animate-on-scroll delay-100 flex-1">
-        <h5 className="text-white/60 font-bold uppercase tracking-wider mb-3 text-xs flex items-center justify-center md:justify-start">
-          <Icon name="BookOpen" size={13} className="mr-1.5 text-[#C6F432]" />
-          Key Courses
-        </h5>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-          {activeEducationData.courses.map((course, i) => (
-            <div
-              key={i}
-              className="flex items-center bg-[#0B0B0C]/80 hover:bg-[#0B0B0C] rounded-xl p-2.5 transition-all duration-300 animate-on-scroll border border-white/10 hover:border-white/25 group text-left"
-              style={{ transitionDelay: `${150 + i * 40}ms` }}
-            >
-              <span className="w-1.5 h-1.5 bg-[#C6F432] rounded-full mr-2.5 flex-shrink-0 group-hover:scale-125 transition-transform" />
-              <span className="text-white/85 text-xs font-medium leading-snug">
-                {course}
+          {/* Core Curriculum Modules (2-Column Bento Grid) */}
+          <div>
+            <div className="flex items-center justify-between mb-2.5 px-0.5">
+              <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-white/70">
+                <Icon name="Layers" size={12} className="text-[#C6F432]" />
+                <span>Core Curriculum &amp; Modules</span>
+              </div>
+              <span className="text-[10px] font-mono font-semibold text-white/45 bg-white/5 px-2 py-0.5 rounded-full border border-white/10">
+                {activeEducationData.courses?.length || 0} Subjects
               </span>
             </div>
-          ))}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {activeEducationData.courses?.map((course, i) => (
+                <motion.div
+                  key={course}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: i * 0.04,
+                    duration: 0.22,
+                    ease: "easeOut",
+                  }}
+                  whileHover={{ y: -2 }}
+                  className="group flex items-center justify-between gap-2 p-2.5 rounded-xl bg-[#0B0B0C]/85 hover:bg-[#0B0B0C] border border-white/10 hover:border-[#C6F432]/40 transition-all duration-200 text-left"
+                >
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C6F432] shrink-0 group-hover:scale-125 transition-transform" />
+                    <span className="text-white/80 group-hover:text-white text-[11px] sm:text-xs font-medium leading-snug truncate">
+                      {course}
+                    </span>
+                  </div>
+
+                  <span className="text-[9px] font-mono text-white/30 group-hover:text-[#C6F432] shrink-0 transition-colors">
+                    M{String(i + 1).padStart(2, "0")}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </AnimatePresence>
   )
 }

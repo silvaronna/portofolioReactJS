@@ -43,7 +43,7 @@ export default function Contact() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p className="text-sm md:text-base font-medium text-white/65">
+                <p className="text-xs md:text-sm font-medium text-white/65">
                   let&apos;s build it together.
                 </p>
               </div>
@@ -52,9 +52,9 @@ export default function Contact() {
             <button
               ref={contactButtonRef}
               onClick={handleOpenModal}
-              className="px-6 py-3 rounded-full bg-[#C6F432] hover:bg-[#b5e222] text-[#0B0B0C] font-bold text-sm transition-all duration-300 flex items-center shadow-[0_8px_25px_-6px_rgba(198,244,50,0.35)] animate-on-scroll delay-200 hover:scale-105 active:scale-95 mx-auto md:mx-0"
+              className="px-5 py-2.5 rounded-full bg-[#C6F432] hover:bg-[#b5e222] text-[#0B0B0C] font-bold text-xs sm:text-sm transition-all duration-300 flex items-center shadow-[0_8px_25px_-6px_rgba(198,244,50,0.35)] animate-on-scroll delay-200 hover:scale-105 active:scale-95 mx-auto md:mx-0"
             >
-              <Icon name="Mail" className="mr-2" size={16} />
+              <Icon name="Mail" className="mr-2" size={15} />
               Reach me out
             </button>
           </div>

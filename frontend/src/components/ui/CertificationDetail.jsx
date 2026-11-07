@@ -90,12 +90,12 @@ export default function CertificationDetail({ certification, onClose }) {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg sm:text-xl font-bold text-white leading-snug mb-3 pr-4">
+                <h3 className="text-sm sm:text-base font-bold text-white leading-snug mb-3 pr-4 tracking-tight">
                   {certification.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-white/75 text-xs sm:text-sm leading-relaxed mb-5 md:pl-3.5 md:border-l-2 border-[#C6F432]">
+                <p className="text-white/75 text-xs leading-relaxed mb-5 md:pl-3.5 md:border-l-2 border-[#C6F432]">
                   {certification.description}
                 </p>
 
