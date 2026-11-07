@@ -1,18 +1,18 @@
-FROM node:20-bullseye AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 
-RUN npm install -g pnpm
+# Salin package.json dan package-lock.json (jika ada)
+COPY package*.json ./
 
-COPY package.json pnpm-lock.yaml ./
+# Install dependensi via npm
+RUN npm install
 
-RUN pnpm install --frozen-lockfile
-
+# Salin sisa source code dan build
 COPY . .
+RUN npm run build
 
-RUN pnpm run build
-
+# Stage Nginx
 FROM nginx:alpine
-
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/dist /usr/share/nginx/html
 
