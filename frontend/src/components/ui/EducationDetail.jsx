@@ -135,7 +135,7 @@ export default function EducationDetail({ education = [], activeTab }) {
             <div className="flex items-center justify-between mb-2.5 px-0.5">
               <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-white/70">
                 <Icon name="Layers" size={12} className="text-[#C6F432]" />
-                <span>Core Curriculum &amp; Modules</span>
+                <span>Featured Subject &amp; Modules</span>
               </div>
               <span className="text-[10px] font-mono font-semibold text-white/45 bg-white/5 px-2 py-0.5 rounded-full border border-white/10">
                 {activeEducationData.courses?.length || 0} Subjects

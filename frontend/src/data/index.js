@@ -213,7 +213,7 @@ export const workExperience = [
       "Successfully reducing average deployment time by 80%+ with Ansible Automation Tools.",
       "Build Containerized Robust Monitoring System with various endpoint and datasources using Grafana",
     ],
-    screenshots: ["/ansiblee.png?height=250&width=450"],
+    screenshots: ["/ansiblee.png?height=250&width=450", "/meetwithOG.jpeg", "mtmHQ.jpeg", "onsite.jpeg"],
   },
   {
     id: 2,
@@ -232,7 +232,7 @@ export const workExperience = [
       "Collaborated with development team for application deployment",
       "Monitored system performance and optimized resources",
     ],
-    screenshots: [],
+    screenshots: ["/proliant-poweredge-devices.jpeg", "ASIpic.jpeg", "spipt.jpeg"],
   },
 ]
 

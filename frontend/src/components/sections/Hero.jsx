@@ -5,6 +5,7 @@ import Particles from "react-tsparticles"
 import { loadSlim } from "tsparticles-slim"
 import ScrollIndicator from "../ui/ScrollIndicator"
 import RunningText from "../ui/RunningText"
+import TechText from "../ui/TechText"
 
 export default function Hero() {
   const particlesInit = useCallback(async (engine) => {
@@ -88,9 +89,9 @@ export default function Hero() {
       {/* Container max-w-6xl */}
       <div className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center max-w-6xl h-full mt-10 md:mt-0 pointer-events-none">
         <div className="text-center relative -mt-12 md:-mt-20">
-          <h1 className="text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/60 text-4xl md:text-6xl font-bold text-center mb-4 tracking-tight drop-shadow-sm">
-            Hello, I&apos;m Azka<span className="text-[#C6F432]">.</span>
-          </h1>
+          <div className="mb-4 pointer-events-auto">
+            <TechText text="Hello, I'm Azka." />
+          </div>
           <p className="text-white/70 text-[clamp(1rem,2vw,1.15rem)] text-center max-w-xl mx-auto font-light leading-relaxed">
             Building secure and scalable infrastructure with a passion for system security.
           </p>
